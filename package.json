@@ -1,0 +1,74 @@
+{
+  "name": "glorified-todo",
+  "version": "1.0.0",
+  "description": "Glorified todo list app",
+  "main": "./server/server.js",
+  "scripts": {
+    "build": "rm -rf dist/ && NODE_ENV=production webpack -p --progress --colors",
+    "start": "npm run build && babel-node server/server.js | node",
+    "test": "jest --coverage --watch",
+    "dev": "npm-run-all --parallel start:dev watch",
+    "watch": "webpack --progress --colors --watch",
+    "start:dev": "nodemon server/server.js --exec babel-node --ext js,css",
+    "start:dev-hmr": "webpack --progress --colors && NODE_ENV=dev-hmr babel-node server/server.js | node"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^5.0.2",
+    "react-router": "^2.6.1",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.6.1",
+    "babel-core": "^6.4.5",
+    "babel-jest": "^18.0.0",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.1.0",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.26.0",
+    "jest": "^18.1.0",
+    "node-sass": "^4.1.1",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.1",
+    "postcss-loader": "^1.2.1",
+    "react-test-renderer": "^15.4.2",
+    "reload": "^1.1.0",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.13",
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-hot-middleware": "^2.6.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zendra1994/glorified-todo/"
+  },
+  "keywords": [
+    "Server side rendering",
+    "React",
+    "React Router",
+    "Redux",
+    "Webpack",
+    "Sass",
+    "Express",
+    "NodeJS"
+  ],
+  "author": "Drazen Buljovcic <drazen.buljovcic@gmail.com>",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/zendra1994/glorified-todo/issues"
+  },
+  "homepage": "https://github.com/zendra1994/glorified-todo/#readme"
+}
