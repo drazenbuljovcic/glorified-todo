@@ -8,8 +8,8 @@
     "start": "npm run build && babel-node server/server.js | node",
     "test": "jest --coverage --watch",
     "dev": "npm-run-all --parallel start:dev watch",
-    "watch": "webpack --progress --colors --watch",
-    "start:dev": "nodemon server/server.js --exec babel-node --ext js,css",
+    "watch": "NODE_ENV=development webpack --progress --colors --watch",
+    "start:dev": "NODE_ENV=development nodemon server/server.js --exec babel-node --ext js,css",
     "start:dev-hmr": "webpack --progress --colors && NODE_ENV=dev-hmr babel-node server/server.js | node"
   },
   "babel": {

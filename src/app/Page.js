@@ -1,19 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Header from './components/Header';
+import Main from './components/Main';
 
-export default class Page extends React.Component {
+class Page extends React.Component {
+
+  constructor() {
+    super();
+  }
+
   render() {
     return (
       <html>
         <head>
-          <title>React SSR w/ Express Boilerplate</title>
+          <title>Glorified ToDo list</title>
           <link rel='stylesheet' type="text/css" href="app.bundle.css" />
         </head>
-        <body>
+        <body ref={ body => this.bodyDOM = body } >
           <Header />
-          <div id="main">
-            { this.props.children }
+          <div id="main" className="below-header">
+            <Main children={this.props.children}/>
           </div>
           <script src="vendor.bundle.js" />
           <script src="app.bundle.js" />
@@ -23,3 +30,8 @@ export default class Page extends React.Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return state;
+}
+export default connect(mapStateToProps)(Page);
