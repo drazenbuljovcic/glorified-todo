@@ -9,13 +9,13 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(90);
+	var _reactDom = __webpack_require__(36);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _reactRouter = __webpack_require__(38);
+	var _reactRouter = __webpack_require__(28);
 	
-	var _reactRedux = __webpack_require__(35);
+	var _reactRedux = __webpack_require__(51);
 	
 	var _store = __webpack_require__(145);
 	
@@ -28,7 +28,7 @@ webpackJsonp([1],{
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	__webpack_require__(150);
-	__webpack_require__(76);
+	__webpack_require__(78);
 	
 	console.clear();
 	_reactDom2.default.render(_react2.default.createElement(
@@ -43,10 +43,10 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 75:
+/***/ 76:
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -57,12 +57,6 @@ webpackJsonp([1],{
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRedux = __webpack_require__(35);
-	
-	var _Content = __webpack_require__(138);
-	
-	var _Content2 = _interopRequireDefault(_Content);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -82,11 +76,11 @@ webpackJsonp([1],{
 	  }
 	
 	  _createClass(Main, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
-	        null,
+	        "div",
+	        { id: "main", className: "below-header" },
 	        this.props.children
 	      );
 	    }
@@ -99,7 +93,66 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 136:
+/***/ 77:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SocialAuth = function (_React$Component) {
+	  _inherits(SocialAuth, _React$Component);
+	
+	  function SocialAuth() {
+	    _classCallCheck(this, SocialAuth);
+	
+	    return _possibleConstructorReturn(this, (SocialAuth.__proto__ || Object.getPrototypeOf(SocialAuth)).call(this));
+	  }
+	
+	  _createClass(SocialAuth, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "signup-social social-auth flexible flex flex--center flex--column" },
+	        _react2.default.createElement(
+	          "button",
+	          { className: "btn width-100 btn-fb" },
+	          "Signin with Facebook"
+	        ),
+	        _react2.default.createElement(
+	          "button",
+	          { className: "btn width-100 btn-gplus" },
+	          "Signin with Google+"
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return SocialAuth;
+	}(_react2.default.Component);
+	
+	exports.default = SocialAuth;
+
+/***/ },
+
+/***/ 137:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -114,13 +167,23 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(35);
+	var _reactDom = __webpack_require__(36);
 	
-	var _Header = __webpack_require__(139);
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _reactRouter = __webpack_require__(28);
+	
+	var _reactRedux = __webpack_require__(51);
+	
+	var _promisePolyfill = __webpack_require__(178);
+	
+	var _promisePolyfill2 = _interopRequireDefault(_promisePolyfill);
+	
+	var _Header = __webpack_require__(138);
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
-	var _Main = __webpack_require__(75);
+	var _Main = __webpack_require__(76);
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
@@ -135,20 +198,56 @@ webpackJsonp([1],{
 	var Page = function (_React$Component) {
 	  _inherits(Page, _React$Component);
 	
-	  function Page() {
+	  function Page(props, context) {
 	    _classCallCheck(this, Page);
 	
-	    return _possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).call(this));
+	    var _this = _possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).call(this, props, context));
+	
+	    _this.state = {
+	      devReload: false
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(Page, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      console.log('Initializing page render in ' + this.props.env + ' mode!');
+	
+	      if (this.props.env === 'dev-hmr') console.log("Hot Module Reload enabled.");
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	
+	      if (!window.Promise) {
+	        window.Promise = _promisePolyfill2.default;
+	      }
+	      console.log('Page rendered in ' + this.props.env + ' mode!');
+	
+	      if (this.props.env === 'development') this.setState({ devReload: true });
+	    }
+	  }, {
+	    key: 'maybeInjectDevelopmentReloadScript',
+	    value: function maybeInjectDevelopmentReloadScript() {
+	      if (this.state.devReload) {
+	        var s = document.createElement('script');
+	        s.setAttribute('src', '/reload/reload.js');
+	        document.body.appendChild(s);
+	
+	        s.onload = function () {
+	          return console.log('Development mode with autoreload.');
+	        };
+	      };
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
 	
 	      return _react2.default.createElement(
 	        'html',
-	        null,
+	        { lang: 'en', dir: 'ltr' },
 	        _react2.default.createElement(
 	          'head',
 	          null,
@@ -157,6 +256,8 @@ webpackJsonp([1],{
 	            null,
 	            'Glorified ToDo list'
 	          ),
+	          _react2.default.createElement('meta', { charSet: 'utf-8' }),
+	          _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0, user-scalable=0, maximum-scale=1.0, minimum-scale=1.0' }),
 	          _react2.default.createElement('link', { rel: 'stylesheet', type: 'text/css', href: 'app.bundle.css' })
 	        ),
 	        _react2.default.createElement(
@@ -164,15 +265,15 @@ webpackJsonp([1],{
 	          { ref: function ref(body) {
 	              return _this2.bodyDOM = body;
 	            } },
-	          _react2.default.createElement(_Header2.default, null),
 	          _react2.default.createElement(
 	            'div',
-	            { id: 'main', className: 'below-header' },
+	            { className: 'wrapper' },
+	            _react2.default.createElement(_Header2.default, null),
 	            _react2.default.createElement(_Main2.default, { children: this.props.children })
 	          ),
 	          _react2.default.createElement('script', { src: 'vendor.bundle.js' }),
 	          _react2.default.createElement('script', { src: 'app.bundle.js' }),
-	          _react2.default.createElement('script', { src: '/reload/reload.js' })
+	          this.maybeInjectDevelopmentReloadScript()
 	        )
 	      );
 	    }
@@ -185,29 +286,6 @@ webpackJsonp([1],{
 	  return state;
 	}
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Page);
-
-/***/ },
-
-/***/ 137:
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	var ACTIONS = {
-	    CHANGE_TEXT: 'CHANGE_TEXT'
-	};
-	
-	exports.default = {
-	    addText: function addText(text) {
-	        return {
-	            type: ACTIONS.CHANGE_TEXT,
-	            payload: text
-	        };
-	    }
-	};
 
 /***/ },
 
@@ -226,9 +304,11 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _actions = __webpack_require__(137);
+	var _reactDom = __webpack_require__(36);
 	
-	var _actions2 = _interopRequireDefault(_actions);
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _reactRouter = __webpack_require__(28);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -238,26 +318,128 @@ webpackJsonp([1],{
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Content = function (_React$Component) {
-	  _inherits(Content, _React$Component);
+	var Header = function (_React$Component) {
+	  _inherits(Header, _React$Component);
 	
-	  function Content() {
-	    _classCallCheck(this, Content);
+	  function Header() {
+	    _classCallCheck(this, Header);
 	
-	    return _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this));
+	    var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
+	
+	    _this.state = {
+	      navOpened: false
+	    };
+	    return _this;
 	  }
 	
-	  _createClass(Content, [{
+	  // componentWillMount() {
+	  // console.log('header will mount');
+	  // }
+	
+	  // componentDidMount() {
+	  // }
+	
+	  // shouldComponentUpdate() {
+	  //   console.log('Should header update')
+	  //   return true
+	  // }
+	  // componentWillUpdate() {
+	  //   console.log('header will update');
+	  // }
+	  // componentDidUpdate() {
+	  //   console.log('header did update');
+	  // }
+	
+	  _createClass(Header, [{
+	    key: 'hideMobileNav',
+	    value: function hideMobileNav() {
+	      var _this2 = this;
+	
+	      Promise.resolve(this.setState({ navOpened: false })).then(function () {
+	        if (!_this2.state.navOpened) _this2.nav.classList.remove('active');
+	      });
+	    }
+	  }, {
+	    key: 'toggleMobileNav',
+	    value: function toggleMobileNav() {
+	      var _this3 = this;
+	
+	      Promise.resolve(this.setState({ navOpened: !this.state.navOpened })).then(function () {
+	        if (!_this3.state.navOpened) {
+	          _this3.nav.classList.remove('active');
+	        } else {
+	          _this3.nav.classList.add('active');
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('div', null);
+	      var _this4 = this;
+	
+	      return _react2.default.createElement(
+	        'header',
+	        { className: 'main-header fixed width-100' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container flexible flex flex--between' },
+	          _react2.default.createElement(
+	            'h1',
+	            { className: 'logo self--center' },
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/' },
+	              'LOGO'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'signing-links flex self--center', ref: function ref(nav) {
+	                return _this4.nav = nav;
+	              } },
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'signing-link link' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { onClick: function onClick() {
+	                    return _this4.hideMobileNav();
+	                  }, to: 'signin', activeClassName: 'active' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { className: 'btn' },
+	                  'Sign in'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'signing-link link' },
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { onClick: function onClick() {
+	                    return _this4.hideMobileNav();
+	                  }, to: 'signup', activeClassName: 'active' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { className: 'btn' },
+	                  'Sign up'
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement('i', { onClick: function onClick() {
+	              return _this4.toggleMobileNav();
+	            }, className: 'fa fa-bars mobile-nav-toggle', 'aria-hidden': 'true' })
+	        )
+	      );
 	    }
 	  }]);
 	
-	  return Content;
+	  return Header;
 	}(_react2.default.Component);
 	
-	exports.default = Content;
+	exports.default = Header;
 
 /***/ },
 
@@ -276,8 +458,6 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(38);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -286,59 +466,30 @@ webpackJsonp([1],{
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Header = function (_React$Component) {
-	  _inherits(Header, _React$Component);
+	var Dashboard = function (_React$Component) {
+	  _inherits(Dashboard, _React$Component);
 	
-	  function Header() {
-	    _classCallCheck(this, Header);
+	  function Dashboard(props, context) {
+	    _classCallCheck(this, Dashboard);
 	
-	    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this, props, context));
 	  }
 	
-	  _createClass(Header, [{
+	  _createClass(Dashboard, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'header',
-	        { className: 'main-header fixed width-100 flex flex--end' },
-	        _react2.default.createElement(
-	          'ul',
-	          { className: 'signing-links flex self--center' },
-	          _react2.default.createElement(
-	            'li',
-	            { className: 'signing-link link' },
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/' },
-	              _react2.default.createElement(
-	                'button',
-	                { className: 'btn' },
-	                'Sign in'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            { className: 'signing-link link' },
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/signup' },
-	              _react2.default.createElement(
-	                'button',
-	                { className: 'btn' },
-	                'Sign up'
-	              )
-	            )
-	          )
-	        )
+	        'h1',
+	        null,
+	        'Dashboard'
 	      );
 	    }
 	  }]);
 	
-	  return Header;
+	  return Dashboard;
 	}(_react2.default.Component);
 	
-	exports.default = Header;
+	exports.default = Dashboard;
 
 /***/ },
 
@@ -407,6 +558,10 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _SocialAuth = __webpack_require__(77);
+	
+	var _SocialAuth2 = _interopRequireDefault(_SocialAuth);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -428,9 +583,38 @@ webpackJsonp([1],{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'h1',
-	        null,
-	        'Signin'
+	        'div',
+	        { className: 'signin-wrapper wrapper relative flex flex--center' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'signin-modal basic-modal flex' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'signin-local custom-auth flexible flex flex--center flex--column' },
+	            _react2.default.createElement(
+	              'h1',
+	              { className: 'text-white' },
+	              'Sign in'
+	            ),
+	            _react2.default.createElement('input', { className: 'input text-white center-text width-100', type: 'email', name: 'local-email', placeholder: 'email' }),
+	            _react2.default.createElement('input', { className: 'input text-white center-text width-100', type: 'password', name: 'local-password', placeholder: 'password' }),
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'btn', name: 'local-form-submit' },
+	              'sign in'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'divider text-white' },
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              'or'
+	            )
+	          ),
+	          _react2.default.createElement(_SocialAuth2.default, null)
+	        )
 	      );
 	    }
 	  }]);
@@ -457,6 +641,10 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _SocialAuth = __webpack_require__(77);
+	
+	var _SocialAuth2 = _interopRequireDefault(_SocialAuth);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -465,30 +653,61 @@ webpackJsonp([1],{
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Signup = function (_React$Component) {
-	  _inherits(Signup, _React$Component);
+	var Signin = function (_React$Component) {
+	  _inherits(Signin, _React$Component);
 	
-	  function Signup() {
-	    _classCallCheck(this, Signup);
+	  function Signin() {
+	    _classCallCheck(this, Signin);
 	
-	    return _possibleConstructorReturn(this, (Signup.__proto__ || Object.getPrototypeOf(Signup)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Signin.__proto__ || Object.getPrototypeOf(Signin)).apply(this, arguments));
 	  }
 	
-	  _createClass(Signup, [{
+	  _createClass(Signin, [{
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'h1',
-	        null,
-	        'Signup'
+	        'div',
+	        { className: 'signup-wrapper wrapper relative flex flex--center' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'signup-modal basic-modal flex' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'signup-local custom-auth flexible flex flex--center flex--column' },
+	            _react2.default.createElement(
+	              'h1',
+	              { className: 'text-white' },
+	              'Create an account'
+	            ),
+	            _react2.default.createElement('input', { className: 'input text-white center-text width-100', type: 'text', name: 'singup-fn', placeholder: 'First Name' }),
+	            _react2.default.createElement('input', { className: 'input text-white center-text width-100', type: 'text', name: 'singup-ln', placeholder: 'Last Name' }),
+	            _react2.default.createElement('input', { className: 'input text-white center-text width-100', type: 'email', name: 'singup-email', placeholder: 'Email' }),
+	            _react2.default.createElement('input', { className: 'input text-white center-text width-100', type: 'password', name: 'singup-password', placeholder: 'Password' }),
+	            _react2.default.createElement(
+	              'button',
+	              { className: 'btn', name: 'local-form-submit' },
+	              'sign in'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'divider text-white' },
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              'or'
+	            )
+	          ),
+	          _react2.default.createElement(_SocialAuth2.default, null)
+	        )
 	      );
 	    }
 	  }]);
 	
-	  return Signup;
+	  return Signin;
 	}(_react2.default.Component);
 	
-	exports.default = Signup;
+	exports.default = Signin;
 
 /***/ },
 
@@ -530,13 +749,13 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(38);
+	var _reactRouter = __webpack_require__(28);
 	
-	var _Page = __webpack_require__(136);
+	var _Page = __webpack_require__(137);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
-	var _Main = __webpack_require__(75);
+	var _Main = __webpack_require__(76);
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
@@ -548,16 +767,25 @@ webpackJsonp([1],{
 	
 	var _Signin2 = _interopRequireDefault(_Signin);
 	
+	var _Dashboard = __webpack_require__(139);
+	
+	var _Dashboard2 = _interopRequireDefault(_Dashboard);
+	
 	var _NotFound = __webpack_require__(140);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function requireAuth(nextState, replaceState) {
+	  replaceState('/signin');
+	}
+	
 	var routes = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _Page2.default },
-	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Signin2.default }),
+	  _react2.default.createElement(_reactRouter.IndexRoute, { component: _Dashboard2.default, onEnter: requireAuth }),
+	  _react2.default.createElement(_reactRouter.Route, { path: 'signin', component: _Signin2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: 'signup', component: _Signup2.default }),
 	  _react2.default.createElement(_reactRouter.Route, { path: '*', component: _NotFound2.default })
 	);
@@ -575,9 +803,9 @@ webpackJsonp([1],{
 	});
 	exports.default = configStore;
 	
-	var _redux = __webpack_require__(74);
+	var _redux = __webpack_require__(75);
 	
-	var _reduxLogger = __webpack_require__(132);
+	var _reduxLogger = __webpack_require__(133);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
@@ -590,7 +818,7 @@ webpackJsonp([1],{
 	var reduxCreateStore = (0, _redux.compose)((0, _redux.applyMiddleware)((0, _reduxLogger2.default)()))(_redux.createStore);
 	
 	function configStore() {
-	  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { env: ({"env":"development"}).env, text: 'Redux works!' };
+	  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { env: ({}).env, text: 'Redux works!' };
 	
 	  return reduxCreateStore(_reducer2.default, initialState);
 	}
@@ -601,6 +829,688 @@ webpackJsonp([1],{
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 177:
+/***/ function(module, exports) {
+
+	// shim for using process in browser
+	var process = module.exports = {};
+	
+	// cached from whatever global is present so that test runners that stub it
+	// don't break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// function because try/catches deoptimize in certain engines.
+	
+	var cachedSetTimeout;
+	var cachedClearTimeout;
+	
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout () {
+	    throw new Error('clearTimeout has not been defined');
+	}
+	(function () {
+	    try {
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
+	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
+	    }
+	    try {
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
+	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
+	    }
+	} ())
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch(e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch(e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+	
+	
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e){
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e){
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+	
+	
+	
+	}
+	var queue = [];
+	var draining = false;
+	var currentQueue;
+	var queueIndex = -1;
+	
+	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
+	    draining = false;
+	    if (currentQueue.length) {
+	        queue = currentQueue.concat(queue);
+	    } else {
+	        queueIndex = -1;
+	    }
+	    if (queue.length) {
+	        drainQueue();
+	    }
+	}
+	
+	function drainQueue() {
+	    if (draining) {
+	        return;
+	    }
+	    var timeout = runTimeout(cleanUpNextTick);
+	    draining = true;
+	
+	    var len = queue.length;
+	    while(len) {
+	        currentQueue = queue;
+	        queue = [];
+	        while (++queueIndex < len) {
+	            if (currentQueue) {
+	                currentQueue[queueIndex].run();
+	            }
+	        }
+	        queueIndex = -1;
+	        len = queue.length;
+	    }
+	    currentQueue = null;
+	    draining = false;
+	    runClearTimeout(timeout);
+	}
+	
+	process.nextTick = function (fun) {
+	    var args = new Array(arguments.length - 1);
+	    if (arguments.length > 1) {
+	        for (var i = 1; i < arguments.length; i++) {
+	            args[i - 1] = arguments[i];
+	        }
+	    }
+	    queue.push(new Item(fun, args));
+	    if (queue.length === 1 && !draining) {
+	        runTimeout(drainQueue);
+	    }
+	};
+	
+	// v8 likes predictible objects
+	function Item(fun, array) {
+	    this.fun = fun;
+	    this.array = array;
+	}
+	Item.prototype.run = function () {
+	    this.fun.apply(null, this.array);
+	};
+	process.title = 'browser';
+	process.browser = true;
+	process.env = {};
+	process.argv = [];
+	process.version = ''; // empty string to avoid regexp issues
+	process.versions = {};
+	
+	function noop() {}
+	
+	process.on = noop;
+	process.addListener = noop;
+	process.once = noop;
+	process.off = noop;
+	process.removeListener = noop;
+	process.removeAllListeners = noop;
+	process.emit = noop;
+	
+	process.binding = function (name) {
+	    throw new Error('process.binding is not supported');
+	};
+	
+	process.cwd = function () { return '/' };
+	process.chdir = function (dir) {
+	    throw new Error('process.chdir is not supported');
+	};
+	process.umask = function() { return 0; };
+
+
+/***/ },
+
+/***/ 178:
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(setImmediate) {(function (root) {
+	
+	  // Store setTimeout reference so promise-polyfill will be unaffected by
+	  // other code modifying setTimeout (like sinon.useFakeTimers())
+	  var setTimeoutFunc = setTimeout;
+	
+	  function noop() {}
+	  
+	  // Polyfill for Function.prototype.bind
+	  function bind(fn, thisArg) {
+	    return function () {
+	      fn.apply(thisArg, arguments);
+	    };
+	  }
+	
+	  function Promise(fn) {
+	    if (typeof this !== 'object') throw new TypeError('Promises must be constructed via new');
+	    if (typeof fn !== 'function') throw new TypeError('not a function');
+	    this._state = 0;
+	    this._handled = false;
+	    this._value = undefined;
+	    this._deferreds = [];
+	
+	    doResolve(fn, this);
+	  }
+	
+	  function handle(self, deferred) {
+	    while (self._state === 3) {
+	      self = self._value;
+	    }
+	    if (self._state === 0) {
+	      self._deferreds.push(deferred);
+	      return;
+	    }
+	    self._handled = true;
+	    Promise._immediateFn(function () {
+	      var cb = self._state === 1 ? deferred.onFulfilled : deferred.onRejected;
+	      if (cb === null) {
+	        (self._state === 1 ? resolve : reject)(deferred.promise, self._value);
+	        return;
+	      }
+	      var ret;
+	      try {
+	        ret = cb(self._value);
+	      } catch (e) {
+	        reject(deferred.promise, e);
+	        return;
+	      }
+	      resolve(deferred.promise, ret);
+	    });
+	  }
+	
+	  function resolve(self, newValue) {
+	    try {
+	      // Promise Resolution Procedure: https://github.com/promises-aplus/promises-spec#the-promise-resolution-procedure
+	      if (newValue === self) throw new TypeError('A promise cannot be resolved with itself.');
+	      if (newValue && (typeof newValue === 'object' || typeof newValue === 'function')) {
+	        var then = newValue.then;
+	        if (newValue instanceof Promise) {
+	          self._state = 3;
+	          self._value = newValue;
+	          finale(self);
+	          return;
+	        } else if (typeof then === 'function') {
+	          doResolve(bind(then, newValue), self);
+	          return;
+	        }
+	      }
+	      self._state = 1;
+	      self._value = newValue;
+	      finale(self);
+	    } catch (e) {
+	      reject(self, e);
+	    }
+	  }
+	
+	  function reject(self, newValue) {
+	    self._state = 2;
+	    self._value = newValue;
+	    finale(self);
+	  }
+	
+	  function finale(self) {
+	    if (self._state === 2 && self._deferreds.length === 0) {
+	      Promise._immediateFn(function() {
+	        if (!self._handled) {
+	          Promise._unhandledRejectionFn(self._value);
+	        }
+	      });
+	    }
+	
+	    for (var i = 0, len = self._deferreds.length; i < len; i++) {
+	      handle(self, self._deferreds[i]);
+	    }
+	    self._deferreds = null;
+	  }
+	
+	  function Handler(onFulfilled, onRejected, promise) {
+	    this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
+	    this.onRejected = typeof onRejected === 'function' ? onRejected : null;
+	    this.promise = promise;
+	  }
+	
+	  /**
+	   * Take a potentially misbehaving resolver function and make sure
+	   * onFulfilled and onRejected are only called once.
+	   *
+	   * Makes no guarantees about asynchrony.
+	   */
+	  function doResolve(fn, self) {
+	    var done = false;
+	    try {
+	      fn(function (value) {
+	        if (done) return;
+	        done = true;
+	        resolve(self, value);
+	      }, function (reason) {
+	        if (done) return;
+	        done = true;
+	        reject(self, reason);
+	      });
+	    } catch (ex) {
+	      if (done) return;
+	      done = true;
+	      reject(self, ex);
+	    }
+	  }
+	
+	  Promise.prototype['catch'] = function (onRejected) {
+	    return this.then(null, onRejected);
+	  };
+	
+	  Promise.prototype.then = function (onFulfilled, onRejected) {
+	    var prom = new (this.constructor)(noop);
+	
+	    handle(this, new Handler(onFulfilled, onRejected, prom));
+	    return prom;
+	  };
+	
+	  Promise.all = function (arr) {
+	    var args = Array.prototype.slice.call(arr);
+	
+	    return new Promise(function (resolve, reject) {
+	      if (args.length === 0) return resolve([]);
+	      var remaining = args.length;
+	
+	      function res(i, val) {
+	        try {
+	          if (val && (typeof val === 'object' || typeof val === 'function')) {
+	            var then = val.then;
+	            if (typeof then === 'function') {
+	              then.call(val, function (val) {
+	                res(i, val);
+	              }, reject);
+	              return;
+	            }
+	          }
+	          args[i] = val;
+	          if (--remaining === 0) {
+	            resolve(args);
+	          }
+	        } catch (ex) {
+	          reject(ex);
+	        }
+	      }
+	
+	      for (var i = 0; i < args.length; i++) {
+	        res(i, args[i]);
+	      }
+	    });
+	  };
+	
+	  Promise.resolve = function (value) {
+	    if (value && typeof value === 'object' && value.constructor === Promise) {
+	      return value;
+	    }
+	
+	    return new Promise(function (resolve) {
+	      resolve(value);
+	    });
+	  };
+	
+	  Promise.reject = function (value) {
+	    return new Promise(function (resolve, reject) {
+	      reject(value);
+	    });
+	  };
+	
+	  Promise.race = function (values) {
+	    return new Promise(function (resolve, reject) {
+	      for (var i = 0, len = values.length; i < len; i++) {
+	        values[i].then(resolve, reject);
+	      }
+	    });
+	  };
+	
+	  // Use polyfill for setImmediate for performance gains
+	  Promise._immediateFn = (typeof setImmediate === 'function' && function (fn) { setImmediate(fn); }) ||
+	    function (fn) {
+	      setTimeoutFunc(fn, 0);
+	    };
+	
+	  Promise._unhandledRejectionFn = function _unhandledRejectionFn(err) {
+	    if (typeof console !== 'undefined' && console) {
+	      console.warn('Possible Unhandled Promise Rejection:', err); // eslint-disable-line no-console
+	    }
+	  };
+	
+	  /**
+	   * Set the immediate function to execute callbacks
+	   * @param fn {function} Function to execute
+	   * @deprecated
+	   */
+	  Promise._setImmediateFn = function _setImmediateFn(fn) {
+	    Promise._immediateFn = fn;
+	  };
+	
+	  /**
+	   * Change the function to execute on unhandled rejection
+	   * @param {function} fn Function to execute on unhandled rejection
+	   * @deprecated
+	   */
+	  Promise._setUnhandledRejectionFn = function _setUnhandledRejectionFn(fn) {
+	    Promise._unhandledRejectionFn = fn;
+	  };
+	  
+	  if (typeof module !== 'undefined' && module.exports) {
+	    module.exports = Promise;
+	  } else if (!root.Promise) {
+	    root.Promise = Promise;
+	  }
+	
+	})(this);
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(277).setImmediate))
+
+/***/ },
+
+/***/ 272:
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
+	    "use strict";
+	
+	    if (global.setImmediate) {
+	        return;
+	    }
+	
+	    var nextHandle = 1; // Spec says greater than zero
+	    var tasksByHandle = {};
+	    var currentlyRunningATask = false;
+	    var doc = global.document;
+	    var registerImmediate;
+	
+	    function setImmediate(callback) {
+	      // Callback can either be a function or a string
+	      if (typeof callback !== "function") {
+	        callback = new Function("" + callback);
+	      }
+	      // Copy function arguments
+	      var args = new Array(arguments.length - 1);
+	      for (var i = 0; i < args.length; i++) {
+	          args[i] = arguments[i + 1];
+	      }
+	      // Store and register the task
+	      var task = { callback: callback, args: args };
+	      tasksByHandle[nextHandle] = task;
+	      registerImmediate(nextHandle);
+	      return nextHandle++;
+	    }
+	
+	    function clearImmediate(handle) {
+	        delete tasksByHandle[handle];
+	    }
+	
+	    function run(task) {
+	        var callback = task.callback;
+	        var args = task.args;
+	        switch (args.length) {
+	        case 0:
+	            callback();
+	            break;
+	        case 1:
+	            callback(args[0]);
+	            break;
+	        case 2:
+	            callback(args[0], args[1]);
+	            break;
+	        case 3:
+	            callback(args[0], args[1], args[2]);
+	            break;
+	        default:
+	            callback.apply(undefined, args);
+	            break;
+	        }
+	    }
+	
+	    function runIfPresent(handle) {
+	        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
+	        // So if we're currently running a task, we'll need to delay this invocation.
+	        if (currentlyRunningATask) {
+	            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
+	            // "too much recursion" error.
+	            setTimeout(runIfPresent, 0, handle);
+	        } else {
+	            var task = tasksByHandle[handle];
+	            if (task) {
+	                currentlyRunningATask = true;
+	                try {
+	                    run(task);
+	                } finally {
+	                    clearImmediate(handle);
+	                    currentlyRunningATask = false;
+	                }
+	            }
+	        }
+	    }
+	
+	    function installNextTickImplementation() {
+	        registerImmediate = function(handle) {
+	            process.nextTick(function () { runIfPresent(handle); });
+	        };
+	    }
+	
+	    function canUsePostMessage() {
+	        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
+	        // where `global.postMessage` means something completely different and can't be used for this purpose.
+	        if (global.postMessage && !global.importScripts) {
+	            var postMessageIsAsynchronous = true;
+	            var oldOnMessage = global.onmessage;
+	            global.onmessage = function() {
+	                postMessageIsAsynchronous = false;
+	            };
+	            global.postMessage("", "*");
+	            global.onmessage = oldOnMessage;
+	            return postMessageIsAsynchronous;
+	        }
+	    }
+	
+	    function installPostMessageImplementation() {
+	        // Installs an event handler on `global` for the `message` event: see
+	        // * https://developer.mozilla.org/en/DOM/window.postMessage
+	        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
+	
+	        var messagePrefix = "setImmediate$" + Math.random() + "$";
+	        var onGlobalMessage = function(event) {
+	            if (event.source === global &&
+	                typeof event.data === "string" &&
+	                event.data.indexOf(messagePrefix) === 0) {
+	                runIfPresent(+event.data.slice(messagePrefix.length));
+	            }
+	        };
+	
+	        if (global.addEventListener) {
+	            global.addEventListener("message", onGlobalMessage, false);
+	        } else {
+	            global.attachEvent("onmessage", onGlobalMessage);
+	        }
+	
+	        registerImmediate = function(handle) {
+	            global.postMessage(messagePrefix + handle, "*");
+	        };
+	    }
+	
+	    function installMessageChannelImplementation() {
+	        var channel = new MessageChannel();
+	        channel.port1.onmessage = function(event) {
+	            var handle = event.data;
+	            runIfPresent(handle);
+	        };
+	
+	        registerImmediate = function(handle) {
+	            channel.port2.postMessage(handle);
+	        };
+	    }
+	
+	    function installReadyStateChangeImplementation() {
+	        var html = doc.documentElement;
+	        registerImmediate = function(handle) {
+	            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
+	            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
+	            var script = doc.createElement("script");
+	            script.onreadystatechange = function () {
+	                runIfPresent(handle);
+	                script.onreadystatechange = null;
+	                html.removeChild(script);
+	                script = null;
+	            };
+	            html.appendChild(script);
+	        };
+	    }
+	
+	    function installSetTimeoutImplementation() {
+	        registerImmediate = function(handle) {
+	            setTimeout(runIfPresent, 0, handle);
+	        };
+	    }
+	
+	    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
+	    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
+	    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
+	
+	    // Don't get fooled by e.g. browserify environments.
+	    if ({}.toString.call(global.process) === "[object process]") {
+	        // For Node.js before 0.9
+	        installNextTickImplementation();
+	
+	    } else if (canUsePostMessage()) {
+	        // For non-IE10 modern browsers
+	        installPostMessageImplementation();
+	
+	    } else if (global.MessageChannel) {
+	        // For web workers, where supported
+	        installMessageChannelImplementation();
+	
+	    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
+	        // For IE 6–8
+	        installReadyStateChangeImplementation();
+	
+	    } else {
+	        // For older browsers
+	        installSetTimeoutImplementation();
+	    }
+	
+	    attachTo.setImmediate = setImmediate;
+	    attachTo.clearImmediate = clearImmediate;
+	}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(177)))
+
+/***/ },
+
+/***/ 277:
+/***/ function(module, exports, __webpack_require__) {
+
+	var apply = Function.prototype.apply;
+	
+	// DOM APIs, for completeness
+	
+	exports.setTimeout = function() {
+	  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
+	};
+	exports.setInterval = function() {
+	  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
+	};
+	exports.clearTimeout =
+	exports.clearInterval = function(timeout) {
+	  if (timeout) {
+	    timeout.close();
+	  }
+	};
+	
+	function Timeout(id, clearFn) {
+	  this._id = id;
+	  this._clearFn = clearFn;
+	}
+	Timeout.prototype.unref = Timeout.prototype.ref = function() {};
+	Timeout.prototype.close = function() {
+	  this._clearFn.call(window, this._id);
+	};
+	
+	// Does not start the time, just sets up the members needed.
+	exports.enroll = function(item, msecs) {
+	  clearTimeout(item._idleTimeoutId);
+	  item._idleTimeout = msecs;
+	};
+	
+	exports.unenroll = function(item) {
+	  clearTimeout(item._idleTimeoutId);
+	  item._idleTimeout = -1;
+	};
+	
+	exports._unrefActive = exports.active = function(item) {
+	  clearTimeout(item._idleTimeoutId);
+	
+	  var msecs = item._idleTimeout;
+	  if (msecs >= 0) {
+	    item._idleTimeoutId = setTimeout(function onTimeout() {
+	      if (item._onTimeout)
+	        item._onTimeout();
+	    }, msecs);
+	  }
+	};
+	
+	// setimmediate attaches itself to the global object
+	__webpack_require__(272);
+	exports.setImmediate = setImmediate;
+	exports.clearImmediate = clearImmediate;
+
 
 /***/ }
 

@@ -2,6 +2,7 @@
 import path from 'path';
 import http from 'http';
 import express from 'express';
+import morgan from 'morgan';
 import reload from 'reload';
 //React 
 import React from 'react';
@@ -35,7 +36,7 @@ if(process.env.NODE_ENV === 'dev-hmr') {
   ));
   app.use(webpackHotMiddleware(compiler));
 }
-
+app.use(morgan('dev')); // log every request to the console
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 // React routing wildcard

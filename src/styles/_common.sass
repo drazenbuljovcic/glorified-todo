@@ -45,7 +45,8 @@
   display: inline-block
 .block
   display: block
-
+.hide
+  display: none
 // Position //
 .fixed
   position: fixed
@@ -53,6 +54,7 @@
   position: relative
 .absolute
   position: absolute
+
 .center-block
   margin: 0 auto
 
@@ -62,18 +64,24 @@
 // Typography
 .center-text
   text-align: center
+
 .lighten-font
   font-weight: lighter
 .bold-font
   font-weight: bold
+.text-white
+  color: $satori-pallete-light-white
+.text-green
+  color: $satori-pallete-light-green
 
-button.btn
+.btn
+  background: none
   font-size: .8em
+  cursor: pointer
   border: 1px solid $satori-pallete-light-white
   color: $satori-pallete-light-white
   line-height: 1.2em
   padding: 5px
-  width: 150px
   border-radius: 15px
   &:focus
     outline: none
@@ -81,3 +89,21 @@ button.btn
     background: 
       color: $satori-pallete-light-white
     color: $satori-pallete-light-green
+
+.input
+  background: none
+  border: 1px solid white
+  line-height: 1.1em
+  padding: 5px
+  border-radius: 15px
+  &:focus
+    outline: none
+    box-shadow: $lighter-shadow 
+  &::-webkit-input-placeholder
+    color: $satori-pallete-light-white
+  &:-moz-placeholder
+    color: $satori-pallete-light-white
+  &::-moz-placeholder
+    color: $satori-pallete-light-white
+  &:-ms-input-placeholder
+    color: $satori-pallete-light-white  
