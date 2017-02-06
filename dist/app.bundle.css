@@ -1,141 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito:300,400,600);@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);@charset "UTF-8";
-.flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
-
-.flexible {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1; }
-
-.flex-30 {
-  -ms-flex-preferred-size: 30%;
-      flex-basis: 30%; }
-
-.flex-50 {
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%; }
-
-.flex--column {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-
-.flex--row {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row; }
-
-.flex--center {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
-
-.flex--around {
-  -ms-flex-pack: distribute;
-      justify-content: space-around; }
-
-.flex--between {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between; }
-
-.flex--end {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end; }
-
-.self--start {
-  -ms-flex-item-align: start;
-      align-self: flex-start; }
-
-.self--center {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center; }
-
-.self--end {
-  -ms-flex-item-align: end;
-      align-self: flex-end; }
-
-.inline {
-  display: inline-block; }
-
-.block, .basic-modal div.divider:before, .basic-modal div.divider:after, .basic-modal div.social-auth button:before {
-  display: block; }
-
-.hide, header.main-header div.container i.mobile-nav-toggle {
-  display: none; }
-
-.fixed {
-  position: fixed; }
-
-.relative, .basic-modal div.divider:before, .basic-modal div.divider:after, .basic-modal div.social-auth button {
-  position: relative; }
-
-.absolute, .basic-modal div.social-auth button:before {
-  position: absolute; }
-
-.center-block {
-  margin: 0 auto; }
-
-.width-100, .basic-modal {
-  width: 100%; }
-
-.center-text {
-  text-align: center; }
-
-.lighten-font {
-  font-weight: lighter; }
-
-.bold-font {
-  font-weight: bold; }
-
-.text-white {
-  color: #f0fcf6; }
-
-.text-green {
-  color: #8dd0af; }
-
-.btn {
-  background: none;
-  font-size: .8em;
-  cursor: pointer;
-  border: 1px solid #f0fcf6;
-  color: #f0fcf6;
-  line-height: 1.2em;
-  padding: 5px;
-  border-radius: 15px; }
-  .btn:focus {
-    outline: none; }
-  .btn:hover {
-    background-color: #f0fcf6;
-    color: #8dd0af; }
-
-.input {
-  background: none;
-  border: 1px solid white;
-  line-height: 1.1em;
-  padding: 5px;
-  border-radius: 15px; }
-  .input:focus {
-    outline: none;
-    box-shadow: 0 2px 12px rgba(34, 49, 63, 0.2); }
-  .input::-webkit-input-placeholder {
-    color: #f0fcf6; }
-  .input:-moz-placeholder {
-    color: #f0fcf6; }
-  .input::-moz-placeholder {
-    color: #f0fcf6; }
-  .input:-ms-input-placeholder {
-    color: #f0fcf6; }
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -178,6 +41,250 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+.flex, .wrapper.user-wrapper, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.flexible {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
+
+.flex-30 {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%; }
+
+.flex-50 {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%; }
+
+.flex--column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.flex--row, .wrapper.user-wrapper {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row; }
+
+.flex--center, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.flex--around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+.flex--between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.flex--end {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+
+.self--start {
+  -ms-flex-item-align: start;
+      align-self: flex-start; }
+
+.self--center {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center; }
+
+.self--end {
+  -ms-flex-item-align: end;
+      align-self: flex-end; }
+
+.inline {
+  display: inline-block; }
+
+.block, .basic-modal div.divider:before, .basic-modal div.divider:after, .basic-modal aside.social-auth button:before, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span:before {
+  display: block; }
+
+.hide, header.main-header div i.mobile-nav-toggle {
+  display: none; }
+
+.fixed {
+  position: fixed; }
+
+.relative, .basic-modal div.divider:before, .basic-modal div.divider:after, .basic-modal aside.social-auth button, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
+  position: relative; }
+
+.absolute, .basic-modal aside.social-auth button:before, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span:before {
+  position: absolute; }
+
+.center-block {
+  margin: 0 auto; }
+
+.width-100, .basic-modal, section.dashboard-wrapper main dialog.dashboard-modal {
+  width: 100%; }
+
+.height-100, #main {
+  height: 100%; }
+
+.center-text, aside.user-panel nav ul a li {
+  text-align: center; }
+
+.lighten-font, aside.user-panel nav ul a {
+  font-weight: lighter; }
+
+.bold-font, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
+  font-weight: bold; }
+
+.text-white, aside.user-panel nav ul a.active, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
+  color: #f1faf6; }
+
+.text-green, aside.user-panel nav ul a {
+  color: #87d5b2; }
+
+.uppercase, aside.user-panel nav ul a, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
+  text-transform: uppercase; }
+
+.btn {
+  background: none;
+  font-size: .8em;
+  cursor: pointer;
+  border: 1px solid #f1faf6;
+  color: #f1faf6;
+  line-height: 1.2em;
+  padding: 5px;
+  border-radius: 15px; }
+  .btn:focus {
+    outline: none; }
+  .btn:hover {
+    background-color: #f1faf6;
+    color: #87d5b2; }
+
+.input {
+  background: none;
+  border: 1px solid white;
+  line-height: 1.1em;
+  padding: 5px;
+  border-radius: 15px; }
+  .input:focus {
+    outline: none;
+    box-shadow: 0 2px 12px rgba(34, 49, 63, 0.2); }
+  .input::-webkit-input-placeholder {
+    color: #f1faf6; }
+  .input:-moz-placeholder {
+    color: #f1faf6; }
+  .input::-moz-placeholder {
+    color: #f1faf6; }
+  .input:-ms-input-placeholder {
+    color: #f1faf6; }
+
+.basic-modal {
+  max-width: 800px;
+  margin: 20px;
+  padding: 50px 30px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 25px 5px rgba(34, 49, 63, 0.8);
+  background-color: #87d5b2; }
+  .basic-modal aside.custom-auth {
+    -ms-flex-preferred-size: 45%;
+        flex-basis: 45%; }
+    .basic-modal aside.custom-auth h1 {
+      font-size: 2em;
+      margin: 10px; }
+    .basic-modal aside.custom-auth input {
+      margin: 10px;
+      font-size: .9em;
+      line-height: 1.3em;
+      padding: 5px; }
+    .basic-modal aside.custom-auth button {
+      margin: 10px;
+      width: 150px; }
+  .basic-modal div.divider {
+    margin: 0 60px; }
+    .basic-modal div.divider:before, .basic-modal div.divider:after {
+      content: '';
+      left: 10px;
+      width: 2px;
+      height: 18%;
+      background-color: #f1faf6; }
+    .basic-modal div.divider:after {
+      top: 4px; }
+    .basic-modal div.divider span {
+      font-size: 1.5em;
+      margin: 10px 0; }
+  .basic-modal aside.social-auth {
+    -ms-flex-preferred-size: 45%;
+        flex-basis: 45%; }
+    .basic-modal aside.social-auth button {
+      border: none;
+      outline: none;
+      border-radius: 0;
+      font-size: .9em;
+      line-height: 1.4em;
+      padding: 5px;
+      padding-left: 20%;
+      margin: 10px 0;
+      box-shadow: 0 2px 12px rgba(34, 49, 63, 0.2); }
+      .basic-modal aside.social-auth button:hover {
+        box-shadow: 0 5px 15px rgba(34, 49, 63, 0.4); }
+      .basic-modal aside.social-auth button:before {
+        width: 25px;
+        height: 25px;
+        left: 10px;
+        top: 5px;
+        text-align: center;
+        font-size: 1.4em; }
+      .basic-modal aside.social-auth button.btn-fb {
+        background-color: #3b5998; }
+        .basic-modal aside.social-auth button.btn-fb:before {
+          font-family: FontAwesome;
+          content: "\F09A"; }
+        .basic-modal aside.social-auth button.btn-fb:hover {
+          background-color: #3b5997;
+          color: #f1faf6; }
+      .basic-modal aside.social-auth button.btn-gplus {
+        background-color: #dd4f43; }
+        .basic-modal aside.social-auth button.btn-gplus:before {
+          font-family: FontAwesome;
+          content: "\F0D5"; }
+        .basic-modal aside.social-auth button.btn-gplus:hover {
+          background-color: #dd4e42;
+          color: #f1faf6; }
+
+@media screen and (max-width: 660px) {
+  div.basic-modal {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100%;
+    padding: 20px; }
+    div.basic-modal aside.custom-auth, div.basic-modal aside.social-auth {
+      -ms-flex-preferred-size: auto;
+          flex-basis: auto; }
+    div.basic-modal div.custom-auth {
+      -webkit-box-flex: 3;
+          -ms-flex: 3;
+              flex: 3; }
+    div.basic-modal div.divider {
+      text-align: center;
+      margin: 10px 0 !important; }
+      div.basic-modal div.divider:before, div.basic-modal div.divider:after {
+        width: 40% !important;
+        height: 2px !important;
+        left: 0px !important;
+        top: 14px !important; }
+      div.basic-modal div.divider:before {
+        float: left; }
+      div.basic-modal div.divider:after {
+        float: right; } }
+
 * {
   margin: 0;
   padding: 0;
@@ -193,7 +300,7 @@ body {
   position: relative;
   color: #22313F;
   font-family: 'Nunito';
-  background-color: #f0fcf6; }
+  background-color: #f1faf6; }
 
 h1, h2, h3, h4, h5, h6, span, p, label {
   margin: 0;
@@ -233,7 +340,7 @@ form ul {
     padding: 10px 0px; }
 
 .wrapper {
-  min-height: calc(100% - 80px); }
+  min-height: 100%; }
 
 .container {
   max-width: 1140px;
@@ -243,129 +350,28 @@ form ul {
 .below-header {
   padding-top: 80px !important; }
 
-.basic-modal {
-  max-width: 800px;
-  margin: 20px;
-  padding: 50px 30px;
-  border-radius: 15px;
-  box-shadow: 10px 10px 25px 5px rgba(34, 49, 63, 0.8);
-  background-color: #8dd0af; }
-  .basic-modal div.custom-auth {
-    -ms-flex-preferred-size: 45%;
-        flex-basis: 45%; }
-    .basic-modal div.custom-auth h1 {
-      font-size: 2em;
-      margin: 10px; }
-    .basic-modal div.custom-auth input {
-      margin: 10px;
-      font-size: .9em;
-      line-height: 1.3em;
-      padding: 5px; }
-    .basic-modal div.custom-auth button {
-      margin: 10px;
-      width: 150px; }
-  .basic-modal div.divider {
-    margin: 0 60px; }
-    .basic-modal div.divider:before, .basic-modal div.divider:after {
-      content: '';
-      left: 10px;
-      width: 2px;
-      height: 15%;
-      background-color: #f0fcf6; }
-    .basic-modal div.divider:after {
-      top: 4px; }
-    .basic-modal div.divider span {
-      font-size: 1.5em;
-      margin: 10px 0; }
-  .basic-modal div.social-auth {
-    -ms-flex-preferred-size: 45%;
-        flex-basis: 45%; }
-    .basic-modal div.social-auth button {
-      border: none;
-      outline: none;
-      border-radius: 0;
-      font-size: .9em;
-      line-height: 1.4em;
-      padding: 5px;
-      padding-left: 20%;
-      margin: 10px 0;
-      box-shadow: 0 2px 12px rgba(34, 49, 63, 0.2); }
-      .basic-modal div.social-auth button:hover {
-        box-shadow: 0 5px 15px rgba(34, 49, 63, 0.4); }
-      .basic-modal div.social-auth button:before {
-        width: 25px;
-        height: 25px;
-        left: 10px;
-        top: 5px;
-        text-align: center;
-        font-size: 1.4em; }
-      .basic-modal div.social-auth button.btn-fb {
-        background-color: #3b5998; }
-        .basic-modal div.social-auth button.btn-fb:before {
-          font-family: FontAwesome;
-          content: "\F09A"; }
-        .basic-modal div.social-auth button.btn-fb:hover {
-          background-color: #3b5997;
-          color: #f0fcf6; }
-      .basic-modal div.social-auth button.btn-gplus {
-        background-color: #dd4f43; }
-        .basic-modal div.social-auth button.btn-gplus:before {
-          font-family: FontAwesome;
-          content: "\F0D5"; }
-        .basic-modal div.social-auth button.btn-gplus:hover {
-          background-color: #dd4e42;
-          color: #f0fcf6; }
-
-@media screen and (max-width: 660px) {
-  div.basic-modal {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    height: 100%;
-    padding: 20px; }
-    div.basic-modal div.custom-auth, div.basic-modal div.social-auth {
-      -ms-flex-preferred-size: auto;
-          flex-basis: auto; }
-    div.basic-modal div.custom-auth {
-      -webkit-box-flex: 3;
-          -ms-flex: 3;
-              flex: 3; }
-    div.basic-modal div.divider {
-      text-align: center;
-      margin: 10px 0 !important; }
-      div.basic-modal div.divider:before, div.basic-modal div.divider:after {
-        width: 40% !important;
-        height: 2px !important;
-        left: 0px !important;
-        top: 14px !important; }
-      div.basic-modal div.divider:before {
-        float: left; }
-      div.basic-modal div.divider:after {
-        float: right; } }
-
 header.main-header {
   height: 80px;
   z-index: 1;
-  background-color: #8dd0af;
+  background-color: #87d5b2;
   box-shadow: 0 5px 15px rgba(34, 49, 63, 0.4); }
-  header.main-header div.container {
+  header.main-header div {
     padding: 0 20px; }
-    header.main-header div.container ul.signing-links li.signing-link {
+    header.main-header div nav ul.signing-links li.signing-link {
       padding: 10px; }
-      header.main-header div.container ul.signing-links li.signing-link a {
+      header.main-header div nav ul.signing-links li.signing-link a {
         text-decoration: none; }
-        header.main-header div.container ul.signing-links li.signing-link a button {
+        header.main-header div nav ul.signing-links li.signing-link a button {
           width: 150px; }
-        header.main-header div.container ul.signing-links li.signing-link a.active button {
-          background-color: #f0fcf6;
-          color: #8dd0af; }
-    header.main-header div.container i.mobile-nav-toggle {
+        header.main-header div nav ul.signing-links li.signing-link a.active button {
+          background-color: #f1faf6;
+          color: #87d5b2; }
+    header.main-header div i.mobile-nav-toggle {
       width: 0px;
       height: 0px; }
 
 @media screen and (max-width: 660px) {
-  header.main-header div.container ul.signing-links {
+  header.main-header div nav ul.signing-links {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -379,18 +385,18 @@ header.main-header {
     left: 0;
     top: 80px;
     height: 0px;
-    background-color: #8dd0af;
+    background-color: #87d5b2;
     box-shadow: 0 2px 12px rgba(34, 49, 63, 0.2);
     overflow: hidden; }
-    header.main-header div.container ul.signing-links else {
+    header.main-header div nav ul.signing-links else {
       -webkit-box-pack: center;
           -ms-flex-pack: center;
               justify-content: center; }
-    header.main-header div.container ul.signing-links.active {
+    header.main-header div nav ul.signing-links.active {
       height: 60px; }
-    header.main-header div.container ul.signing-links li.signing-link {
+    header.main-header div nav ul.signing-links li.signing-link {
       padding: 5px; }
-  header.main-header div.container i.mobile-nav-toggle {
+  header.main-header div i.mobile-nav-toggle {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -402,16 +408,48 @@ header.main-header {
             justify-content: center;
     width: auto;
     height: auto; }
-    header.main-header div.container i.mobile-nav-toggle else {
+    header.main-header div i.mobile-nav-toggle else {
       -webkit-box-pack: center;
           -ms-flex-pack: center;
               justify-content: center; }
-    header.main-header div.container i.mobile-nav-toggle:before {
+    header.main-header div i.mobile-nav-toggle:before {
       cursor: pointer;
       font-size: 3em;
-      color: #f0fcf6;
+      color: #f1faf6;
       padding: 5px;
       top: 50px; } }
+
+aside.user-panel {
+  background-color: #d7f9e9;
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+  box-shadow: 0px 1px 10px 1px #87d5b2; }
+  aside.user-panel figure.user-greeting {
+    margin: 20px; }
+    aside.user-panel figure.user-greeting img.user-avatar {
+      width: 50px;
+      height: 50px;
+      border: none;
+      outline: none;
+      border-radius: 0;
+      display: inline;
+      border: 2px solid #87d5b2;
+      margin: 10px; }
+    aside.user-panel figure.user-greeting figcaption.greeting-text span {
+      font-size: 1.1em;
+      line-height: 1.3;
+      letter-spacing: 1px;
+      color: #87d5b2; }
+  aside.user-panel nav {
+    margin: 60px 0; }
+    aside.user-panel nav ul a {
+      font-size: 1.1em;
+      text-decoration: none; }
+      aside.user-panel nav ul a.active li {
+        background-color: #87d5b2; }
+      aside.user-panel nav ul a li {
+        margin: 15px 0;
+        padding: 10px; }
 
 @media screen and (max-width: 660px) {
   div.signin-wrapper div.signin-modal {
@@ -423,5 +461,36 @@ header.main-header {
         -ms-flex: 1;
             flex: 1;
     height: 700px; } }
+
+section.dashboard-wrapper main dialog.dashboard-modal {
+  border: none;
+  outline: none;
+  border-radius: 0;
+  max-width: 800px;
+  box-shadow: 0 2px 12px rgba(34, 49, 63, 0.2);
+  height: 500px; }
+  section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header {
+    background-color: #87d5b2;
+    height: 60px; }
+    section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority {
+      box-shadow: 0 2px 12px rgba(34, 49, 63, 0.2);
+      cursor: pointer; }
+      section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
+        font-size: 1.2em; }
+        section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span:before {
+          content: '';
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          top: 3px;
+          left: -15px; }
+        section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span.priority-high:before {
+          background-color: #a92118; }
+        section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span.priority-medium:before {
+          background-color: #ffc55f; }
+        section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span.priority-low:before {
+          background-color: #245c4d; }
+  section.dashboard-wrapper main dialog.dashboard-modal section.dashboard-modal-content {
+    height: 400px; }
 
 /*# sourceMappingURL=app.bundle.css.map*/

@@ -1,0 +1,44 @@
+@import '../_variables'
+
+section.dashboard-wrapper
+  main
+    dialog.dashboard-modal
+      @include nothing-around()
+      @extend .width-100
+      max-width: 800px
+      box-shadow: $lighter-shadow
+      height: 500px
+      header.dashboard-modal-header
+        background-color: $satori-pallete-light-green
+        height: 60px 
+        ul.task-priorities li.task-priority
+          @extend .flex
+          @extend .flex--center
+          @extend .relative
+          box-shadow: $lighter-shadow
+          cursor: pointer
+          span
+            @extend .text-white
+            @extend .uppercase
+            @extend .bold-font
+            @extend .relative
+            font-size: 1.2em
+            &:before
+              content: ''
+              @extend .block
+              @extend .absolute
+              @include size(10px, 10px)
+              border-radius: 50%
+              top: 3px
+              left: -15px
+            &.priority-high
+              &:before 
+                background-color: $satori-pallete-strong-red
+            &.priority-medium
+              &:before 
+                background-color: $satori-pallete-strong-yellow
+            &.priority-low
+              &:before 
+                background-color: $satori-pallete-strong-green
+      section.dashboard-modal-content
+        height: 400px

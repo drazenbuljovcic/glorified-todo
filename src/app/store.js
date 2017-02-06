@@ -7,6 +7,14 @@ let reduxCreateStore = compose(
   applyMiddleware(logger())
 )(createStore);
 
-export default function configStore(initialState = { env: process.env.env, text: 'Redux works!' }) {
+export default function configStore(initialState = {
+  env: process.env.env,
+  user: {
+    userLoggedIn: true,
+    userFirstName: 'Nebojsa'
+  },
+  route: '',
+  text: 'Redux works!'
+  }) {
   return reduxCreateStore(reducer, initialState);
 }

@@ -1,14 +1,14 @@
 @import '../_variables.sass'
 
 header.main-header
-  height: 80px
+  height: $header-height
   z-index: 1
   background:
     color: $satori-pallete-light-green
   box-shadow: $standard-shadow
-  div.container
+  div
     padding: 0 20px
-    ul.signing-links
+    nav ul.signing-links
       li.signing-link
         padding: 10px
         a
@@ -26,8 +26,8 @@ header.main-header
 
 @media screen and (max-width: $mobile-breakpoint)
   header.main-header
-    div.container
-      ul.signing-links
+    div
+      nav ul.signing-links
         @include flex--pos(center)
         @include position(absolute)
         @include width-100

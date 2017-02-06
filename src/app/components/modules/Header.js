@@ -4,16 +4,16 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 
 export default class Header extends React.Component {
-  constructor() {
-    super();
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       navOpened: false
     }
   }
 
-  // componentWillMount() {
-    // console.log('header will mount');
-  // }
+  componentWillMount() {
+    console.log(this.props);
+  }
 
   // componentDidMount() {
   // }
@@ -33,8 +33,10 @@ export default class Header extends React.Component {
     Promise.resolve(
       this.setState({ navOpened: false })
     ).then(() => {
-      if(!this.state.navOpened)
+      if(!this.state.navOpened) {
         this.nav.classList.remove('active');
+        window.scrollTo(1, 0);
+      }
     })
   }
   
@@ -53,15 +55,22 @@ export default class Header extends React.Component {
   render() {
     return (
       <header className="main-header fixed width-100">
-        <div className="container flexible flex flex--between">
+        <div className="height-100 flexible flex flex--between">
           <h1 className="logo self--center"><Link to="/">LOGO</Link></h1>
-          <ul className="signing-links flex self--center" ref={ nav => this.nav = nav }>
-            <li className="signing-link link"><Link onClick={() => this.hideMobileNav()} to="signin" activeClassName="active"><button className="btn">Sign in</button></Link></li>
-            <li className="signing-link link"><Link onClick={() => this.hideMobileNav()} to="signup" activeClassName="active"><button className="btn">Sign up</button></Link></li>
-          </ul>
-          <i onClick={() => this.toggleMobileNav()} className="fa fa-bars mobile-nav-toggle" aria-hidden="true"></i>
+          { !this.props.user.userLoggedIn ?
+              <nav className="self--center">
+                <ul className="signing-links flex self--center" ref={ nav => this.nav = nav }>
+                  <li className="signing-link link"><Link onClick={() => this.hideMobileNav()} to="/auth/signin" activeClassName="active"><button className="btn">Sign in</button></Link></li>
+                  <li className="signing-link link"><Link onClick={() => this.hideMobileNav()} to="/auth/signup" activeClassName="active"><button className="btn">Sign up</button></Link></li>
+                </ul>
+                <i onClick={() => this.toggleMobileNav()} className="fa fa-bars mobile-nav-toggle" aria-hidden="true"></i>
+              </nav>
+            :
+            <h2 className="route-name flexible self--center text-white lighten-font center-text uppercase">{this.props.route}</h2>
+          }
         </div>
       </header>
     )
   }
 }
+

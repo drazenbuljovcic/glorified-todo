@@ -1,8 +1,8 @@
 export default function reducer(state, action) {
   switch(action.type) {
-    case 'CHANGE_TEXT':
+    case 'CHANGE_ROUTE':
       return Object.assign({}, state, {
-        text: action.payload
+        route: action.payload
       }, ...state);
     default:
       return state;

@@ -60,6 +60,8 @@
 
 .width-100
   width: 100%
+.height-100
+  height: 100%
 
 // Typography
 .center-text
@@ -73,6 +75,9 @@
   color: $satori-pallete-light-white
 .text-green
   color: $satori-pallete-light-green
+
+.uppercase
+  text-transform: uppercase
 
 .btn
   background: none
@@ -107,3 +112,99 @@
     color: $satori-pallete-light-white
   &:-ms-input-placeholder
     color: $satori-pallete-light-white  
+
+
+.basic-modal
+  @extend .width-100
+  max-width: 800px
+  margin: 20px
+  padding: 50px 30px
+  border-radius: 15px
+  box-shadow: $bold-shadow
+  background: 
+    color: $satori-pallete-light-green
+  aside.custom-auth
+    flex-basis: 45%
+    h1
+      font-size: 2em
+      margin: 10px
+    input
+      margin: 10px
+      font-size: .9em
+      line-height: 1.3em
+      padding: 5px
+    button
+      margin: 10px
+      width: 150px
+  div.divider
+    margin: 0 60px
+    &:before, &:after
+      content: ''
+      @extend .block
+      @extend .relative
+      left: 10px
+      width: 2px
+      height: 18%
+      background:
+        color: $satori-pallete-light-white
+    &:after
+      top: 4px
+    span
+      font-size: 1.5em
+      margin: 10px 0
+  aside.social-auth
+    flex-basis: 45%
+    button
+      @extend .relative
+      @include nothing-around()
+      font-size: .9em
+      line-height: 1.4em
+      padding: 5px
+      padding-left: 20%
+      margin: 10px 0
+      box-shadow: $lighter-shadow
+      &:hover
+        box-shadow: $standard-shadow          
+      &:before
+        @extend .block
+        @extend .absolute
+        @include size(25px, 25px)
+        left: 10px
+        top: 5px 
+        text-align: center
+        font-size: 1.4em
+      &.btn-fb
+        background-color: $fb-blue
+        &:before
+          @include font-awesome('\f09a')
+        &:hover
+          background-color: darken($fb-blue, .2)
+          color: $satori-pallete-light-white
+      &.btn-gplus
+        background-color: $gplus-red
+        &:before
+          @include font-awesome('\f0d5')
+        &:hover
+          background-color: darken($gplus-red, .2)
+          color: $satori-pallete-light-white
+
+@media screen and (max-width: $mobile-breakpoint)
+    div.basic-modal
+      @include flex--dir(column)
+      @include height-100()
+      padding: 20px
+      aside.custom-auth, aside.social-auth
+        flex-basis: auto
+      div.custom-auth
+        flex: 3
+      div.divider
+        @include text-align(center)
+        margin: 10px 0 !important
+        &:before, &:after
+          @include size(40% !important, 2px !important)
+          left: 0px !important
+          top: 14px !important
+        &:before
+          float: left
+        &:after
+          float: right

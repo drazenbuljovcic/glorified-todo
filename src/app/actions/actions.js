@@ -1,12 +1,12 @@
 const ACTIONS = {
-    CHANGE_TEXT: 'CHANGE_TEXT'
+  CHANGE_ROUTE: 'CHANGE_ROUTE'
 }
 
 export default {
-    addText(text) {
-        return {
-            type: ACTIONS.CHANGE_TEXT,
-            payload: text
-        }
+  changeRoute(route) {
+    return {
+      type: ACTIONS.CHANGE_ROUTE,
+      payload: route
     }
+  }
 }
