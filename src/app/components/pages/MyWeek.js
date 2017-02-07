@@ -10,7 +10,22 @@ export default class MyWeek extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(actions.changeRoute('My Week'));
-    console.log(this.props.dayByHours);
+  }
+
+  componentDidMount() {
+    this.props.events.map((event) => {
+      let child = document.createElement('div');
+      child.setAttribute('id', event.eventId);
+      child.style.top = '120px';
+      child.style.height = '50px';
+      child.style.backgroundColor = 'green';
+      child.style.position = 'absolute';
+      child.style.width = '100%';
+      
+      document.getElementById(event.day)
+        .appendChild(child)
+    })
+    // document.querySelector()
   }
 
   getDayByHours(displayHour, day) {
@@ -18,21 +33,22 @@ export default class MyWeek extends React.Component {
       .map((hour, i) => {
         let day = day ? day : '';
         let time = displayHour ? hour : '';
-        return (<div 
-                  key={i}
-                  data-time={hour}
-                  className="day-hour hour-space center-text text-green">
-                  {time}
-                </div>)
+        return (
+          <div 
+            key={i}
+            data-time={hour}
+            className="day-hour hour-space center-text text-green">
+            {time}
+          </div>
+        )
       });
   }
 
   getWeekByDays() {
-
     return this.props.weekByDays.map((day, i) => {
       let weekend = true ? day === 'Sat' || day === 'Sun' : false;
       return (
-        <div key={i} className="week-day flexible text-green">
+        <div key={i} id={day} className="week-day flexible text-green relative">
           <div className="day-heading center-text">{day}</div>
           <div className="day-schedule">
             <div key={i} data-weekend={weekend} data-day={day} className="week-day">

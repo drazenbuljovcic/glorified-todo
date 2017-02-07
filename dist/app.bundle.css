@@ -369,7 +369,7 @@ form ul {
 
 .hour-space {
   width: auto;
-  height: 180px; }
+  height: calc(60 * 3px); }
 
 header.main-header {
   height: 80px;
@@ -442,8 +442,8 @@ header.main-header {
 
 aside.user-panel {
   background-color: #d7f9e9;
-  -ms-flex-preferred-size: 20%;
-      flex-basis: 20%;
+  -ms-flex-preferred-size: 15%;
+      flex-basis: 15%;
   box-shadow: 0px 1px 10px 1px #87d5b2; }
   aside.user-panel figure.user-greeting {
     margin: 20px; }
