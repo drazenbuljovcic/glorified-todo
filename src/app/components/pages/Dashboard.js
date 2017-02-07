@@ -18,11 +18,10 @@ export default class Dashboard extends React.Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    Array.prototype.map.call(document.querySelectorAll(`li[data-priority]`), (obj) => {
-      obj.style = "";
-    });
-    console.log(document.querySelector(`li[data-priority=${nextState.tabActive}]`));
-    document.querySelector(`li[data-priority=${nextState.tabActive}]`).style.boxShadow = 'none';
+    Array.prototype.map
+      .call(document.querySelectorAll(`li[data-priority]`), obj => obj.style = "");
+    document.querySelector(`li[data-priority=${nextState.tabActive}]`)
+      .style.boxShadow = 'none';
   }
 
   switchTab(priority) {

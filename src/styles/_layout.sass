@@ -58,10 +58,28 @@ form
     @extend .flex--row
 #main
   @extend .height-100
-  // height: calc(100% - #{$header-height})
+  // height: calc(100% - #$header-height})
 .container
   max-width: $max-width
   margin: 0 auto
   height: 100%
 .below-header
   padding-top: 80px !important
+
+::-webkit-scrollbar 
+  width: 12px
+
+ 
+::-webkit-scrollbar-track
+  // -webkit-box-shadow: inset 0 0 6px rgba($satori-pallete-light-white, .6)
+  // border-radius: 5px
+
+ 
+::-webkit-scrollbar-thumb
+  border-radius: 5px
+  -webkit-box-shadow: inset 0 0 10px rgba($satori-pallete-light-white, .6)
+  background-color: transparentize($satori-pallete-light-green, .4) 
+
+.hour-space
+  width: auto
+  height: 180px

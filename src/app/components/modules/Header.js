@@ -11,9 +11,8 @@ export default class Header extends React.Component {
     }
   }
 
-  componentWillMount() {
-    console.log(this.props);
-  }
+  // componentWillMount() {
+  // }
 
   // componentDidMount() {
   // }

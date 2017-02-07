@@ -485,27 +485,24 @@ webpackJsonp([1],{
 	    return _this;
 	  }
 	
+	  // componentWillMount() {
+	  // }
+	
+	  // componentDidMount() {
+	  // }
+	
+	  // shouldComponentUpdate() {
+	  //   console.log('Should header update')
+	  //   return true
+	  // }
+	  // componentWillUpdate() {
+	  //   console.log('header will update');
+	  // }
+	  // componentDidUpdate() {
+	  //   console.log('header did update');
+	  // }
+	
 	  _createClass(Header, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      console.log(this.props);
-	    }
-	
-	    // componentDidMount() {
-	    // }
-	
-	    // shouldComponentUpdate() {
-	    //   console.log('Should header update')
-	    //   return true
-	    // }
-	    // componentWillUpdate() {
-	    //   console.log('header will update');
-	    // }
-	    // componentDidUpdate() {
-	    //   console.log('header did update');
-	    // }
-	
-	  }, {
 	    key: 'hideMobileNav',
 	    value: function hideMobileNav() {
 	      var _this2 = this;
@@ -665,9 +662,8 @@ webpackJsonp([1],{
 	    key: 'componentWillUpdate',
 	    value: function componentWillUpdate(nextProps, nextState) {
 	      Array.prototype.map.call(document.querySelectorAll('li[data-priority]'), function (obj) {
-	        obj.style = "";
+	        return obj.style = "";
 	      });
-	      console.log(document.querySelector('li[data-priority=' + nextState.tabActive + ']'));
 	      document.querySelector('li[data-priority=' + nextState.tabActive + ']').style.boxShadow = 'none';
 	    }
 	  }, {
@@ -936,6 +932,50 @@ webpackJsonp([1],{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      this.props.dispatch(_actions2.default.changeRoute('My Week'));
+	      console.log(this.props.dayByHours);
+	    }
+	  }, {
+	    key: 'getDayByHours',
+	    value: function getDayByHours(displayHour, day) {
+	      return this.props.dayByHours.map(function (hour, i) {
+	        var day = day ? day : '';
+	        var time = displayHour ? hour : '';
+	        return _react2.default.createElement(
+	          'div',
+	          {
+	            key: i,
+	            'data-time': hour,
+	            className: 'day-hour hour-space center-text text-green' },
+	          time
+	        );
+	      });
+	    }
+	  }, {
+	    key: 'getWeekByDays',
+	    value: function getWeekByDays() {
+	      var _this2 = this;
+	
+	      return this.props.weekByDays.map(function (day, i) {
+	        var weekend = true ? day === 'Sat' || day === 'Sun' : false;
+	        return _react2.default.createElement(
+	          'div',
+	          { key: i, className: 'week-day flexible text-green' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'day-heading center-text' },
+	            day
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'day-schedule' },
+	            _react2.default.createElement(
+	              'div',
+	              { key: i, 'data-weekend': weekend, 'data-day': day, className: 'week-day' },
+	              _this2.getDayByHours(false, day)
+	            )
+	          )
+	        );
+	      });
 	    }
 	  }, {
 	    key: 'render',
@@ -944,7 +984,77 @@ webpackJsonp([1],{
 	        'section',
 	        { className: 'week-wrapper wrapper user-wrapper' },
 	        _react2.default.createElement(_AsideNav2.default, { userFirstName: this.props.user.userFirstName }),
-	        _react2.default.createElement('main', { className: 'flexible flex flex--column' })
+	        _react2.default.createElement(
+	          'main',
+	          { className: 'flexible flex flex--row' },
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'weekly-events flexible flex flex--row height-100' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'day-timeline flex flex--column' },
+	              this.getDayByHours(true)
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'week-timeline flexible flex flex--row' },
+	              this.getWeekByDays()
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'aside',
+	            { className: 'weekly-manager flex flex--column' },
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'task-priorities flex flex--column' },
+	              _react2.default.createElement(
+	                'h2',
+	                null,
+	                'Priority list'
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { 'data-priority': 'none',
+	                  className: 'task-priority flexible self--end' },
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'priority-none' },
+	                  'None'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { 'data-priority': 'high',
+	                  className: 'task-priority flexible self--end' },
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'priority-high' },
+	                  'High'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { 'data-priority': 'medium',
+	                  className: 'task-priority flexible self--end' },
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'priority-medium' },
+	                  'Medium'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { 'data-priority': 'low',
+	                  className: 'task-priority flexible self--end' },
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'priority-low' },
+	                  'Low'
+	                )
+	              )
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -1389,13 +1499,14 @@ webpackJsonp([1],{
 	
 	function configStore() {
 	  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-	    env: ({}).env,
+	    env: ({"env":"development"}).env,
 	    user: {
 	      userLoggedIn: true,
 	      userFirstName: 'Nebojsa'
 	    },
 	    route: '',
-	    text: 'Redux works!'
+	    dayByHours: ['08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM', '12:00 AM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM', '07:00 PM', '08:00 PM', '09:00 PM', '10:00 PM', '11:00 PM', '12:00 PM', '01:00 AM', '02:00 AM', '03:00 AM', '04:00 AM', '05:00 AM', '06:00 AM', '07:00 AM'],
+	    weekByDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 	  };
 	
 	  return reduxCreateStore(_reducer2.default, initialState);

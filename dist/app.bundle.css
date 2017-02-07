@@ -109,7 +109,7 @@ table {
 .inline {
   display: inline-block; }
 
-.block, .basic-modal div.divider:before, .basic-modal div.divider:after, .basic-modal aside.social-auth button:before, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span:before {
+.block, .basic-modal div.divider:before, .basic-modal div.divider:after, .basic-modal aside.social-auth button:before, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span:before, section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span:before {
   display: block; }
 
 .hide, header.main-header div i.mobile-nav-toggle {
@@ -118,10 +118,10 @@ table {
 .fixed {
   position: fixed; }
 
-.relative, .basic-modal div.divider:before, .basic-modal div.divider:after, .basic-modal aside.social-auth button, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
+.relative, .basic-modal div.divider:before, .basic-modal div.divider:after, .basic-modal aside.social-auth button, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span, section.week-wrapper main aside.weekly-manager ul.task-priorities {
   position: relative; }
 
-.absolute, .basic-modal aside.social-auth button:before, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span:before {
+.absolute, .basic-modal aside.social-auth button:before, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span:before, section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span:before {
   position: absolute; }
 
 .center-block {
@@ -136,19 +136,28 @@ table {
 .center-text, aside.user-panel nav ul a li {
   text-align: center; }
 
+.text-right, section.week-wrapper main aside.weekly-manager ul.task-priorities h2 {
+  text-align: right; }
+
+.text-left {
+  text-align: left; }
+
+.text-justify {
+  text-align: justify; }
+
 .lighten-font, aside.user-panel nav ul a {
   font-weight: lighter; }
 
-.bold-font, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
+.bold-font, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span, section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span {
   font-weight: bold; }
 
 .text-white, aside.user-panel nav ul a.active, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
   color: #f1faf6; }
 
-.text-green, aside.user-panel nav ul a {
+.text-green, aside.user-panel nav ul a, section.week-wrapper main aside.weekly-manager ul.task-priorities h2, section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span {
   color: #87d5b2; }
 
-.uppercase, aside.user-panel nav ul a, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
+.uppercase, aside.user-panel nav ul a, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span, section.week-wrapper main aside.weekly-manager ul.task-priorities h2, section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span {
   text-transform: uppercase; }
 
 .btn {
@@ -350,6 +359,18 @@ form ul {
 .below-header {
   padding-top: 80px !important; }
 
+::-webkit-scrollbar {
+  width: 12px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 10px rgba(241, 250, 246, 0.6);
+  background-color: rgba(135, 213, 178, 0.6); }
+
+.hour-space {
+  width: auto;
+  height: 180px; }
+
 header.main-header {
   height: 80px;
   z-index: 1;
@@ -492,5 +513,58 @@ section.dashboard-wrapper main dialog.dashboard-modal {
           background-color: #245c4d; }
   section.dashboard-wrapper main dialog.dashboard-modal section.dashboard-modal-content {
     height: 400px; }
+
+section.week-wrapper main section.weekly-events {
+  overflow: auto;
+  padding: 80px 20px 50px 20px; }
+  section.week-wrapper main section.weekly-events div.day-timeline {
+    min-height: -webkit-min-content;
+    -ms-flex-preferred-size: 60px;
+        flex-basis: 60px;
+    border-right: 1px solid #87d5b2; }
+    section.week-wrapper main section.weekly-events div.day-timeline div.day-hour {
+      padding-top: 60px; }
+  section.week-wrapper main section.weekly-events div.week-timeline {
+    position: relative;
+    top: -34px;
+    min-height: -webkit-min-content; }
+    section.week-wrapper main section.weekly-events div.week-timeline div.day-heading {
+      font-size: 1.5em;
+      padding: 5px; }
+    section.week-wrapper main section.weekly-events div.week-timeline div.day-schedule div.week-day[data-weekend=true] {
+      background-color: #d7f9e9;
+      border-right: 1px solid #87d5b2; }
+    section.week-wrapper main section.weekly-events div.week-timeline div.day-schedule div.week-day div.day-hour {
+      border-bottom: 1px solid #87d5b2;
+      border-right: 1px solid #d7f9e9; }
+
+section.week-wrapper main aside.weekly-manager {
+  background-color: #f1faf6;
+  box-shadow: 0 2px 12px rgba(135, 213, 178, 0.6);
+  -ms-flex-preferred-size: 15%;
+      flex-basis: 15%;
+  margin-left: 10px; }
+  section.week-wrapper main aside.weekly-manager ul.task-priorities {
+    padding: 30px; }
+    section.week-wrapper main aside.weekly-manager ul.task-priorities h2 {
+      font-size: 1.4em;
+      line-height: 1.6em;
+      padding: 5px; }
+    section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span {
+      font-size: 1em; }
+      section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span:before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        left: 20px; }
+      section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span.priority-none:before {
+        background-color: #87d5b2; }
+      section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span.priority-high:before {
+        background-color: #a92118; }
+      section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span.priority-medium:before {
+        background-color: #ffc55f; }
+      section.week-wrapper main aside.weekly-manager ul.task-priorities li.task-priority span.priority-low:before {
+        background-color: #245c4d; }
 
 /*# sourceMappingURL=app.bundle.css.map*/
