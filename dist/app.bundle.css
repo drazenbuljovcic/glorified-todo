@@ -528,15 +528,23 @@ section.week-wrapper main section.weekly-events {
     position: relative;
     top: -34px;
     min-height: -webkit-min-content; }
-    section.week-wrapper main section.weekly-events div.week-timeline div.day-heading {
+    section.week-wrapper main section.weekly-events div.week-timeline div.week-day div.day-heading {
       font-size: 1.5em;
       padding: 5px; }
-    section.week-wrapper main section.weekly-events div.week-timeline div.day-schedule div.week-day[data-weekend=true] {
-      background-color: #d7f9e9;
-      border-right: 1px solid #87d5b2; }
-    section.week-wrapper main section.weekly-events div.week-timeline div.day-schedule div.week-day div.day-hour {
+    section.week-wrapper main section.weekly-events div.week-timeline div.week-day div.day-hour {
       border-bottom: 1px solid #87d5b2;
       border-right: 1px solid #d7f9e9; }
+    section.week-wrapper main section.weekly-events div.week-timeline div.day-schedule[data-weekend=true] {
+      background-color: #d7f9e9;
+      border-right: 1px solid #87d5b2; }
+    section.week-wrapper main section.weekly-events div.week-timeline div.day-schedule div.day-event[data-priority=high] {
+      background-color: #a92118; }
+    section.week-wrapper main section.weekly-events div.week-timeline div.day-schedule div.day-event[data-priority=medium] {
+      background-color: #ffc55f; }
+    section.week-wrapper main section.weekly-events div.week-timeline div.day-schedule div.day-event[data-priority=low] {
+      background-color: #245c4d; }
+    section.week-wrapper main section.weekly-events div.week-timeline div.day-schedule div.day-event[data-priority=none] {
+      background-color: #87d5b2; }
 
 section.week-wrapper main aside.weekly-manager {
   background-color: #f1faf6;

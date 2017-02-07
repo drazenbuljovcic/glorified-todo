@@ -16,11 +16,25 @@ export default class MyWeek extends React.Component {
     this.props.events.map((event) => {
       let child = document.createElement('div');
       child.setAttribute('id', event.eventId);
-      child.style.top = '120px';
-      child.style.height = '50px';
-      child.style.backgroundColor = 'green';
-      child.style.position = 'absolute';
-      child.style.width = '100%';
+      child.setAttribute('class', 'day-event absolute width-100');
+      
+      //set child top position
+      child.style.top = 33;
+      
+      if(event.timeOfDay === 'AM' && event.hour >= 8) {
+        child.style.top = parseInt(child.style.top, 10) - 1440 + event.startInMin * this.props.minuteInPixels;
+      } else if(event.timeOfDay === 'AM' && event.hour <= 7) {
+        child.style.top = parseInt(child.style.top, 10) + 2880 + event.startInMin * this.props.minuteInPixels;
+      }
+      if(event.timeOfDay === 'PM') {
+        child.style.top = parseInt(child.style.top, 10) + 720 + event.startInMin * this.props.minuteInPixels;
+      }
+      
+      //set height based on duration
+      child.style.height = event.durationInMin * this.props.minuteInPixels;
+      
+      //set event priority
+      child.setAttribute('data-priority', event.priority);
       
       document.getElementById(event.day)
         .appendChild(child)
@@ -48,12 +62,10 @@ export default class MyWeek extends React.Component {
     return this.props.weekByDays.map((day, i) => {
       let weekend = true ? day === 'Sat' || day === 'Sun' : false;
       return (
-        <div key={i} id={day} className="week-day flexible text-green relative">
+        <div key={i} className="week-day flexible text-green relative">
           <div className="day-heading center-text">{day}</div>
-          <div className="day-schedule">
-            <div key={i} data-weekend={weekend} data-day={day} className="week-day">
-              {this.getDayByHours(false, day)}
-            </div>
+          <div id={day} className="day-schedule" data-weekend={weekend} data-day={day}>
+            {this.getDayByHours(false, day)}
           </div>
         </div>
     )});

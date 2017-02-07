@@ -15,17 +15,27 @@ section.week-wrapper
         position: relative
         top: -34px
         min-height: -webkit-min-content
-        div.day-heading
-          font-size: 1.5em
-          padding: 5px
+        div.week-day
+          div.day-heading
+            font-size: 1.5em
+            padding: 5px
+          div.day-hour
+            border-bottom: 1px solid $satori-pallete-light-green
+            border-right: 1px solid $satori-pallete-light-semi
         div.day-schedule
-          div.week-day
-            &[data-weekend=true]
-              background-color: $satori-pallete-light-semi
-              border-right: 1px solid $satori-pallete-light-green
-            div.day-hour
-              border-bottom: 1px solid $satori-pallete-light-green
-              border-right: 1px solid $satori-pallete-light-semi
+          &[data-weekend=true]
+            background-color: $satori-pallete-light-semi
+            border-right: 1px solid $satori-pallete-light-green
+          div.day-event
+            &[data-priority=high]
+              background-color: $satori-pallete-strong-red
+            &[data-priority=medium]
+              background-color: $satori-pallete-strong-yellow
+            &[data-priority=low]
+              background-color: $satori-pallete-strong-green
+            &[data-priority=none]
+              background-color: $satori-pallete-light-green
+
     aside.weekly-manager
       background-color: $satori-pallete-light-white
       box-shadow: $lighter-shadow-green
