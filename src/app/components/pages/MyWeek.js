@@ -36,17 +36,22 @@ export default class MyWeek extends React.Component {
       //set event priority
       child.setAttribute('data-priority', event.priority);
       
-      document.getElementById(event.day)
+      document.querySelector(`#${event.day}`)
         .appendChild(child)
-    })
-    // document.querySelector()
+    });
   }
 
-  getDayByHours(displayHour, day) {
+  getDayByHours(displayHour, day, event) {
     return this.props.dayByHours
       .map((hour, i) => {
-        let day = day ? day : '';
-        let time = displayHour ? hour : '';
+        let day, time, content;
+
+        day = day ? day : '';
+        time = displayHour ? hour : '';
+        content = time 
+          ? time
+          : '';
+
         return (
           <div 
             key={i}
@@ -65,7 +70,7 @@ export default class MyWeek extends React.Component {
         <div key={i} className="week-day flexible text-green relative">
           <div className="day-heading center-text">{day}</div>
           <div id={day} className="day-schedule" data-weekend={weekend} data-day={day}>
-            {this.getDayByHours(false, day)}
+            {this.getDayByHours(false, day, this.props.events)}
           </div>
         </div>
     )});

@@ -82,6 +82,20 @@ export default function configStore(initialState = {
       durationInMin: 255,
       priority: 'none'
     },
+    {
+      eventId: 'jylruti',
+      eventHeadline: 'Fifth ToDo',
+      eventDesc: 'Fifth Mock Todo For Testing',
+      day: 'Mon',
+      fullStartTime: '05:00 PM',
+      hour: '5',
+      startInMin: 300,
+      timeOfDay: 'PM',
+      end: '07:00 PM',
+      endInMin: 420,
+      durationInMin: 120,
+      priority: 'none'
+    },
   ]
 }) {
   return reduxCreateStore(reducer, initialState);

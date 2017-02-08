@@ -615,6 +615,8 @@ webpackJsonp([1],{
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(2);
@@ -630,6 +632,10 @@ webpackJsonp([1],{
 	var _AsideNav = __webpack_require__(29);
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
+	
+	var _DashboardEvent = __webpack_require__(289);
+	
+	var _DashboardEvent2 = _interopRequireDefault(_DashboardEvent);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -648,7 +654,8 @@ webpackJsonp([1],{
 	    var _this = _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this, props, context));
 	
 	    _this.state = {
-	      tabActive: 'none'
+	      tabActive: 'none',
+	      eventContent: ''
 	    };
 	    return _this;
 	  }
@@ -665,6 +672,26 @@ webpackJsonp([1],{
 	        return obj.style = "";
 	      });
 	      document.querySelector('li[data-priority=' + nextState.tabActive + ']').style.boxShadow = 'none';
+	
+	      // Get content
+	      // this.state.eventContent = 
+	      //   this.props.events
+	      //     .filter(event => event.priority === this.state.tabActive)
+	      //     .map(event => {
+	      //       return <DashboardEvent key={event.eventId} {...event}/>;
+	      //       // let eventDiv = document.createElement('div');
+	      //       // eventDiv.style.height = '60px';
+	      //       // eventDiv.style.backgroundColor = 'orange';
+	
+	      //       // document.querySelector('.dashboard-modal-content')
+	      //       //   .appendChild(eventDiv);
+	      //     });
+	      // console.log(this.state.eventContent);
+	    }
+	  }, {
+	    key: 'renderEvent',
+	    value: function renderEvent(event) {
+	      return _react2.default.createElement(_DashboardEvent2.default, _extends({ key: event.eventId }, event));
 	    }
 	  }, {
 	    key: 'switchTab',
@@ -746,7 +773,15 @@ webpackJsonp([1],{
 	                )
 	              )
 	            ),
-	            _react2.default.createElement('section', { className: 'dashboard-modal-content flexible' })
+	            _react2.default.createElement(
+	              'section',
+	              { className: 'dashboard-modal-content flexible' },
+	              this.props.events.filter(function (event) {
+	                return event.priority === _this2.state.tabActive;
+	              }).map(function (event) {
+	                return _this2.renderEvent(event);
+	              })
+	            )
 	          )
 	        )
 	      );
@@ -961,16 +996,21 @@ webpackJsonp([1],{
 	        //set event priority
 	        child.setAttribute('data-priority', event.priority);
 	
-	        document.getElementById(event.day).appendChild(child);
+	        document.querySelector('#' + event.day).appendChild(child);
 	      });
-	      // document.querySelector()
 	    }
 	  }, {
 	    key: 'getDayByHours',
-	    value: function getDayByHours(displayHour, day) {
+	    value: function getDayByHours(displayHour, day, event) {
 	      return this.props.dayByHours.map(function (hour, i) {
-	        var day = day ? day : '';
-	        var time = displayHour ? hour : '';
+	        var day = void 0,
+	            time = void 0,
+	            content = void 0;
+	
+	        day = day ? day : '';
+	        time = displayHour ? hour : '';
+	        content = time ? time : '';
+	
 	        return _react2.default.createElement(
 	          'div',
 	          {
@@ -999,7 +1039,7 @@ webpackJsonp([1],{
 	          _react2.default.createElement(
 	            'div',
 	            { id: day, className: 'day-schedule', 'data-weekend': weekend, 'data-day': day },
-	            _this3.getDayByHours(false, day)
+	            _this3.getDayByHours(false, day, _this3.props.events)
 	          )
 	        );
 	      });
@@ -1587,6 +1627,19 @@ webpackJsonp([1],{
 	      end: '11:00 AM',
 	      endInMin: 660,
 	      durationInMin: 255,
+	      priority: 'none'
+	    }, {
+	      eventId: 'jylruti',
+	      eventHeadline: 'Fifth ToDo',
+	      eventDesc: 'Fifth Mock Todo For Testing',
+	      day: 'Mon',
+	      fullStartTime: '05:00 PM',
+	      hour: '5',
+	      startInMin: 300,
+	      timeOfDay: 'PM',
+	      end: '07:00 PM',
+	      endInMin: 420,
+	      durationInMin: 120,
 	      priority: 'none'
 	    }]
 	  };
@@ -2282,6 +2335,60 @@ webpackJsonp([1],{
 	exports.setImmediate = setImmediate;
 	exports.clearImmediate = clearImmediate;
 
+
+/***/ },
+
+/***/ 289:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var DashboardEvent = function (_React$Component) {
+	  _inherits(DashboardEvent, _React$Component);
+	
+	  function DashboardEvent(props, context) {
+	    _classCallCheck(this, DashboardEvent);
+	
+	    return _possibleConstructorReturn(this, (DashboardEvent.__proto__ || Object.getPrototypeOf(DashboardEvent)).call(this, props, context));
+	  }
+	
+	  _createClass(DashboardEvent, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "dashboard-event" },
+	        _react2.default.createElement(
+	          "h1",
+	          null,
+	          this.props.eventHeadline
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return DashboardEvent;
+	}(_react2.default.Component);
+	
+	exports.default = DashboardEvent;
 
 /***/ }
 

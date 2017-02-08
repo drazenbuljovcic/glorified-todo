@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 import actions from '../../actions/actions';
 
 import AsideNav from '../modules/AsideNav.js';
+import DashboardEvent from '../modules/DashboardEvent';
 
 export default class Dashboard extends React.Component {
+
   constructor(props, context) {
     super(props, context);
     this.state = {
-      tabActive: 'none'
+      tabActive: 'none',
+      eventContent: ''
     }
   }
 
@@ -22,6 +25,25 @@ export default class Dashboard extends React.Component {
       .call(document.querySelectorAll(`li[data-priority]`), obj => obj.style = "");
     document.querySelector(`li[data-priority=${nextState.tabActive}]`)
       .style.boxShadow = 'none';
+    
+    // Get content
+    // this.state.eventContent = 
+    //   this.props.events
+    //     .filter(event => event.priority === this.state.tabActive)
+    //     .map(event => {
+    //       return <DashboardEvent key={event.eventId} {...event}/>;
+    //       // let eventDiv = document.createElement('div');
+    //       // eventDiv.style.height = '60px';
+    //       // eventDiv.style.backgroundColor = 'orange';
+
+    //       // document.querySelector('.dashboard-modal-content')
+    //       //   .appendChild(eventDiv);
+    //     });
+    // console.log(this.state.eventContent);
+  }
+
+  renderEvent(event) {
+    return <DashboardEvent key={event.eventId} {...event} />;
   }
 
   switchTab(priority) {
@@ -59,6 +81,11 @@ export default class Dashboard extends React.Component {
               </ul>
             </header>
             <section className="dashboard-modal-content flexible">
+              {
+                this.props.events
+                  .filter(event => event.priority === this.state.tabActive)
+                  .map(event => this.renderEvent(event))
+              }
             </section>
           </dialog>
         </main>
