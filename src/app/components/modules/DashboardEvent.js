@@ -6,9 +6,12 @@ export default class DashboardEvent extends React.Component {
   }
   render() {
     return (
-      <div className="dashboard-event">
-        <h1>{this.props.eventHeadline}</h1>
-      </div>  
+      <section
+        className="dashboard-event flex flex--column"
+        data-priority={this.props.priority}>
+        <header><h2>{this.props.eventHeadline}</h2></header>
+        <div className={'event-details flexible'}>{this.props.eventDesc}</div>
+      </section>
     )
   }
 }

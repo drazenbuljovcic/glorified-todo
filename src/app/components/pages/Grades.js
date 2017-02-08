@@ -1,7 +1,7 @@
 import React from 'react';
 import AsideNav from '../modules/AsideNav.js';
 
-import actions from '../../actions/actions';
+import helperActions from '../../actions/helperActions.js';
 
 export default class Deadlines extends React.Component {
   constructor(props, context) {
@@ -9,7 +9,7 @@ export default class Deadlines extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(actions.changeRoute('Grades'));
+    this.props.dispatch(helperActions.changeRoute('Grades'));
   }
 
   render() {

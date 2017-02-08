@@ -194,6 +194,46 @@
           background-color: darken($gplus-red, .2)
           color: $satori-pallete-light-white
 
+aside.weekly-manager
+  background-color: $satori-pallete-light-white
+  box-shadow: $lighter-shadow-green
+  flex-basis: 15%
+  ul.task-priorities 
+    @extend .relative
+    padding: 30px
+    h2
+      @extend .text-green
+      @extend .text-right
+      @extend .uppercase
+      font-size: 1.4em
+      line-height: 1.6em
+      padding: 5px
+    li.task-priority
+      span
+        @extend .text-green
+        @extend .uppercase
+        @extend .bold-font
+        font-size: 1em
+        &:before
+          content: ''
+          @extend .block
+          @extend .absolute
+          @include size(8px, 8px)
+          border-radius: 50%
+          left: 20px
+        &.priority-none
+          &:before 
+            background-color: $satori-pallete-light-green
+        &.priority-high
+          &:before 
+            background-color: $satori-pallete-strong-red
+        &.priority-medium
+          &:before 
+            background-color: $satori-pallete-strong-yellow
+        &.priority-low
+          &:before 
+            background-color: $satori-pallete-strong-green
+
 @media screen and (max-width: $mobile-breakpoint)
     div.basic-modal
       @include flex--dir(column)

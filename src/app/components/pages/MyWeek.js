@@ -1,7 +1,9 @@
 import React from 'react';
-import AsideNav from '../modules/AsideNav.js';
 
-import actions from '../../actions/actions';
+import AsideNav from '../modules/AsideNav.js';
+import MyWeekEvent from '../modules/MyWeekEvent.js';
+
+import helperActions from '../../actions/helperActions.js';
 
 export default class MyWeek extends React.Component {
   constructor(props, context) {
@@ -9,55 +11,26 @@ export default class MyWeek extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(actions.changeRoute('My Week'));
+    this.props.dispatch(helperActions.changeRoute('My Week'));
   }
 
-  componentDidMount() {
-    this.props.events.map((event) => {
-      let child = document.createElement('div');
-      child.setAttribute('id', event.eventId);
-      child.setAttribute('class', 'day-event absolute width-100');
-      
-      //set child top position
-      child.style.top = 33;
-      
-      if(event.timeOfDay === 'AM' && event.hour >= 8) {
-        child.style.top = parseInt(child.style.top, 10) - 1440 + event.startInMin * this.props.minuteInPixels;
-      } else if(event.timeOfDay === 'AM' && event.hour <= 7) {
-        child.style.top = parseInt(child.style.top, 10) + 2880 + event.startInMin * this.props.minuteInPixels;
-      }
-      if(event.timeOfDay === 'PM') {
-        child.style.top = parseInt(child.style.top, 10) + 720 + event.startInMin * this.props.minuteInPixels;
-      }
-      
-      //set height based on duration
-      child.style.height = event.durationInMin * this.props.minuteInPixels;
-      
-      //set event priority
-      child.setAttribute('data-priority', event.priority);
-      
-      document.querySelector(`#${event.day}`)
-        .appendChild(child)
-    });
-  }
-
-  getDayByHours(displayHour, day, event) {
+  getDayByHours(displayHour, day) {
     return this.props.dayByHours
       .map((hour, i) => {
         let day, time, content;
 
         day = day ? day : '';
-        time = displayHour ? hour : '';
-        content = time 
-          ? time
-          : '';
+        content = time = displayHour ? hour : '';
+        
+        let hourHeight = this.props.hourInMinutes * this.props.minuteInPixels;
 
         return (
           <div 
             key={i}
             data-time={hour}
-            className="day-hour hour-space center-text text-green">
-            {time}
+            className="day-hour center-text text-green"
+            style={{'height': hourHeight}}>
+            {content}
           </div>
         )
       });
@@ -69,13 +42,26 @@ export default class MyWeek extends React.Component {
       return (
         <div key={i} className="week-day flexible text-green relative">
           <div className="day-heading center-text">{day}</div>
-          <div id={day} className="day-schedule" data-weekend={weekend} data-day={day}>
-            {this.getDayByHours(false, day, this.props.events)}
+          <div className="day-schedule" data-weekend={weekend} data-day={day}>
+            {this.getDayByHours(false, day)}
+            {this.renderEvents(this.props.events.filter(event => event.day === day))}
           </div>
         </div>
     )});
   }
 
+  renderEvents(events) {
+    return events.map((event) => {
+      return (
+        <MyWeekEvent 
+          key={event.eventId}
+          minuteInPixels={this.props.minuteInPixels}
+          hourInMinutes={this.props.hourInMinutes}
+          {...event} />
+      );
+    });
+  }
+  
   render() {
     return (
       <section className="week-wrapper wrapper user-wrapper">

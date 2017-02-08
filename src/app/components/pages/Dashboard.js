@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import actions from '../../actions/actions';
+import helperActions from '../../actions/helperActions.js';
 
 import AsideNav from '../modules/AsideNav.js';
 import DashboardEvent from '../modules/DashboardEvent';
@@ -17,29 +17,22 @@ export default class Dashboard extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(actions.changeRoute('Dashboard'));
+    this.props.dispatch(helperActions.changeRoute('Dashboard'));
   }
 
   componentWillUpdate(nextProps, nextState) {
+    //in a component re-render remove box shadow from all tabs
+    //and add it just to the active one
     Array.prototype.map
       .call(document.querySelectorAll(`li[data-priority]`), obj => obj.style = "");
     document.querySelector(`li[data-priority=${nextState.tabActive}]`)
       .style.boxShadow = 'none';
-    
-    // Get content
-    // this.state.eventContent = 
-    //   this.props.events
-    //     .filter(event => event.priority === this.state.tabActive)
-    //     .map(event => {
-    //       return <DashboardEvent key={event.eventId} {...event}/>;
-    //       // let eventDiv = document.createElement('div');
-    //       // eventDiv.style.height = '60px';
-    //       // eventDiv.style.backgroundColor = 'orange';
+  }
 
-    //       // document.querySelector('.dashboard-modal-content')
-    //       //   .appendChild(eventDiv);
-    //     });
-    // console.log(this.state.eventContent);
+  FilterByPriorityAndRenderEvents(events, priority) {
+    return events
+      .filter(event => event.priority === priority)
+      .map(event => this.renderEvent(event))
   }
 
   renderEvent(event) {
@@ -47,6 +40,7 @@ export default class Dashboard extends React.Component {
   }
 
   switchTab(priority) {
+    //set state which triggers component re-render
     this.setState({tabActive: priority});
   }
 
@@ -82,9 +76,7 @@ export default class Dashboard extends React.Component {
             </header>
             <section className="dashboard-modal-content flexible">
               {
-                this.props.events
-                  .filter(event => event.priority === this.state.tabActive)
-                  .map(event => this.renderEvent(event))
+                this.FilterByPriorityAndRenderEvents(this.props.events, this.state.tabActive)
               }
             </section>
           </dialog>

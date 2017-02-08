@@ -5,7 +5,7 @@ webpackJsonp([1],{
 
 	'use strict';
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -17,17 +17,17 @@ webpackJsonp([1],{
 	
 	var _reactRedux = __webpack_require__(39);
 	
-	var _store = __webpack_require__(151);
+	var _store = __webpack_require__(153);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _routes = __webpack_require__(150);
+	var _routes = __webpack_require__(152);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(156);
+	__webpack_require__(158);
 	__webpack_require__(80);
 	
 	console.clear();
@@ -77,7 +77,7 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -201,7 +201,7 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -251,7 +251,7 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -312,7 +312,7 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -324,11 +324,11 @@ webpackJsonp([1],{
 	
 	var _reactRedux = __webpack_require__(39);
 	
-	var _promisePolyfill = __webpack_require__(184);
+	var _promisePolyfill = __webpack_require__(186);
 	
 	var _promisePolyfill2 = _interopRequireDefault(_promisePolyfill);
 	
-	var _Header = __webpack_require__(140);
+	var _Header = __webpack_require__(141);
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
@@ -453,7 +453,72 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var DashboardEvent = function (_React$Component) {
+	  _inherits(DashboardEvent, _React$Component);
+	
+	  function DashboardEvent(props, context) {
+	    _classCallCheck(this, DashboardEvent);
+	
+	    return _possibleConstructorReturn(this, (DashboardEvent.__proto__ || Object.getPrototypeOf(DashboardEvent)).call(this, props, context));
+	  }
+	
+	  _createClass(DashboardEvent, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        {
+	          className: 'dashboard-event flex flex--column',
+	          'data-priority': this.props.priority },
+	        _react2.default.createElement(
+	          'header',
+	          null,
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            this.props.eventHeadline
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'event-details flexible' },
+	          this.props.eventDesc
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return DashboardEvent;
+	}(_react2.default.Component);
+	
+	exports.default = DashboardEvent;
+
+/***/ },
+
+/***/ 141:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -606,7 +671,107 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 141:
+/***/ 142:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var MyWeekEvent = function (_React$Component) {
+	  _inherits(MyWeekEvent, _React$Component);
+	
+	  function MyWeekEvent(props, context) {
+	    _classCallCheck(this, MyWeekEvent);
+	
+	    return _possibleConstructorReturn(this, (MyWeekEvent.__proto__ || Object.getPrototypeOf(MyWeekEvent)).call(this, props, context));
+	  }
+	
+	  _createClass(MyWeekEvent, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      Object.assign(this.eventDiv.style, {
+	        'height': this.props.durationInMin * this.props.minuteInPixels,
+	        'top': this.calculateStartPoint(this.props.timeOfDay, this.props.hour, this.props.startInMin)
+	      });
+	    }
+	  }, {
+	    key: 'calculateStartPoint',
+	    value: function calculateStartPoint(timeOfDay, hour, startInMin) {
+	      //set child top position
+	      var top = 54; //default starting point
+	
+	      if (timeOfDay === 'PM') {
+	        // 720
+	        return top += this.props.hourInMinutes * this.props.minuteInPixels * 4 + startInMin * this.props.minuteInPixels;
+	      }
+	      if (timeOfDay === 'AM' && hour >= 8) {
+	        // - 1440
+	        return top += -this.props.hourInMinutes * this.props.minuteInPixels * 8 + startInMin * this.props.minuteInPixels;
+	      }
+	      if (timeOfDay === 'AM' && hour <= 7) {
+	        // 2880
+	        return top += this.props.hourInMinutes * this.props.minuteInPixels * 16 + startInMin * this.props.minuteInPixels;
+	      }
+	
+	      return top;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'section',
+	        {
+	          ref: function ref(eventDiv) {
+	            return _this2.eventDiv = eventDiv;
+	          },
+	          id: 'event-' + this.props.eventId,
+	          className: 'day-event absolute width-100 flex flex--column',
+	          'data-priority': this.props.priority },
+	        _react2.default.createElement(
+	          'header',
+	          null,
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            this.props.eventHeadline
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'event-details flexible' },
+	          this.props.eventDesc
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return MyWeekEvent;
+	}(_react2.default.Component);
+	
+	exports.default = MyWeekEvent;
+
+/***/ },
+
+/***/ 143:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -619,21 +784,21 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
 	var _reactRedux = __webpack_require__(39);
 	
-	var _actions = __webpack_require__(28);
+	var _helperActions = __webpack_require__(28);
 	
-	var _actions2 = _interopRequireDefault(_actions);
+	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
 	var _AsideNav = __webpack_require__(29);
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _DashboardEvent = __webpack_require__(289);
+	var _DashboardEvent = __webpack_require__(140);
 	
 	var _DashboardEvent2 = _interopRequireDefault(_DashboardEvent);
 	
@@ -663,30 +828,28 @@ webpackJsonp([1],{
 	  _createClass(Dashboard, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.dispatch(_actions2.default.changeRoute('Dashboard'));
+	      this.props.dispatch(_helperActions2.default.changeRoute('Dashboard'));
 	    }
 	  }, {
 	    key: 'componentWillUpdate',
 	    value: function componentWillUpdate(nextProps, nextState) {
+	      //in a component re-render remove box shadow from all tabs
+	      //and add it just to the active one
 	      Array.prototype.map.call(document.querySelectorAll('li[data-priority]'), function (obj) {
 	        return obj.style = "";
 	      });
 	      document.querySelector('li[data-priority=' + nextState.tabActive + ']').style.boxShadow = 'none';
+	    }
+	  }, {
+	    key: 'FilterByPriorityAndRenderEvents',
+	    value: function FilterByPriorityAndRenderEvents(events, priority) {
+	      var _this2 = this;
 	
-	      // Get content
-	      // this.state.eventContent = 
-	      //   this.props.events
-	      //     .filter(event => event.priority === this.state.tabActive)
-	      //     .map(event => {
-	      //       return <DashboardEvent key={event.eventId} {...event}/>;
-	      //       // let eventDiv = document.createElement('div');
-	      //       // eventDiv.style.height = '60px';
-	      //       // eventDiv.style.backgroundColor = 'orange';
-	
-	      //       // document.querySelector('.dashboard-modal-content')
-	      //       //   .appendChild(eventDiv);
-	      //     });
-	      // console.log(this.state.eventContent);
+	      return events.filter(function (event) {
+	        return event.priority === priority;
+	      }).map(function (event) {
+	        return _this2.renderEvent(event);
+	      });
 	    }
 	  }, {
 	    key: 'renderEvent',
@@ -696,12 +859,13 @@ webpackJsonp([1],{
 	  }, {
 	    key: 'switchTab',
 	    value: function switchTab(priority) {
+	      //set state which triggers component re-render
 	      this.setState({ tabActive: priority });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
 	      return _react2.default.createElement(
 	        'section',
@@ -723,7 +887,7 @@ webpackJsonp([1],{
 	                  'li',
 	                  { 'data-priority': 'none',
 	                    onClick: function onClick() {
-	                      return _this2.switchTab('none');
+	                      return _this3.switchTab('none');
 	                    },
 	                    className: 'task-priority flexible' },
 	                  _react2.default.createElement(
@@ -736,7 +900,7 @@ webpackJsonp([1],{
 	                  'li',
 	                  { 'data-priority': 'high',
 	                    onClick: function onClick() {
-	                      return _this2.switchTab('high');
+	                      return _this3.switchTab('high');
 	                    },
 	                    className: 'task-priority flexible' },
 	                  _react2.default.createElement(
@@ -749,7 +913,7 @@ webpackJsonp([1],{
 	                  'li',
 	                  { 'data-priority': 'medium',
 	                    onClick: function onClick() {
-	                      return _this2.switchTab('medium');
+	                      return _this3.switchTab('medium');
 	                    },
 	                    className: 'task-priority flexible' },
 	                  _react2.default.createElement(
@@ -762,7 +926,7 @@ webpackJsonp([1],{
 	                  'li',
 	                  { 'data-priority': 'low',
 	                    onClick: function onClick() {
-	                      return _this2.switchTab('low');
+	                      return _this3.switchTab('low');
 	                    },
 	                    className: 'task-priority flexible' },
 	                  _react2.default.createElement(
@@ -776,11 +940,7 @@ webpackJsonp([1],{
 	            _react2.default.createElement(
 	              'section',
 	              { className: 'dashboard-modal-content flexible' },
-	              this.props.events.filter(function (event) {
-	                return event.priority === _this2.state.tabActive;
-	              }).map(function (event) {
-	                return _this2.renderEvent(event);
-	              })
+	              this.FilterByPriorityAndRenderEvents(this.props.events, this.state.tabActive)
 	            )
 	          )
 	        )
@@ -795,7 +955,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 142:
+/***/ 144:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -806,7 +966,7 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -814,9 +974,13 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _actions = __webpack_require__(28);
+	var _helperActions = __webpack_require__(28);
 	
-	var _actions2 = _interopRequireDefault(_actions);
+	var _helperActions2 = _interopRequireDefault(_helperActions);
+	
+	var _helpers = __webpack_require__(291);
+	
+	var _helpers2 = _interopRequireDefault(_helpers);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -838,8 +1002,50 @@ webpackJsonp([1],{
 	  _createClass(Deadlines, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.dispatch(_actions2.default.changeRoute('Deadlines'));
+	      this.props.dispatch(_helperActions2.default.changeRoute('Deadlines'));
 	    }
+	  }, {
+	    key: 'printCalendar',
+	    value: function printCalendar(numOfDaysInMonth, firstDay, monthName) {
+	      var content = [];
+	
+	      //prepend empty divs
+	      for (var i = 1; i <= firstDay - 1; i++) {
+	        content.push(_react2.default.createElement('div', {
+	          key: 'emptyPrepend-' + i,
+	          className: 'calendar-day-block flexible flex' }));
+	      }
+	
+	      //render calendar divs
+	      for (var _i = 1; _i <= numOfDaysInMonth; _i++) {
+	        content.push(_react2.default.createElement(
+	          'div',
+	          {
+	            key: monthName + '-' + _i,
+	            className: 'calendar-day-block flexible flex' },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'day-indicator flex flex--center text-green' },
+	            _i
+	          )
+	        ));
+	      }
+	
+	      //append empty divs
+	      for (var _i2 = 0; _i2 < 35 - (numOfDaysInMonth + firstDay - 1); _i2++) {
+	        content.push(_react2.default.createElement('div', {
+	          key: 'emptyAppend-' + _i2,
+	          className: 'calendar-day-block flexible flex' }));
+	      }
+	
+	      return content;
+	    }
+	    // {
+	    //   i >= firstDay && i <= numOfDaysInMonth
+	    //   ? <span className="day-indicator flex flex--center text-green">{i}</span>
+	    //   : ''
+	    // }
+	
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -847,7 +1053,100 @@ webpackJsonp([1],{
 	        'section',
 	        { className: 'deadlines-wrapper wrapper user-wrapper' },
 	        _react2.default.createElement(_AsideNav2.default, { userFirstName: this.props.user.userFirstName }),
-	        _react2.default.createElement('main', { className: 'flexible flex flex--column' })
+	        _react2.default.createElement(
+	          'main',
+	          { className: 'flexible flex flex--row' },
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'deadlines-calendar flexible flex flex--column' },
+	            _react2.default.createElement(
+	              'h2',
+	              { className: 'text-green' },
+	              _helpers2.default.normalizeMonth(this.props.date.month).full
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'calendar flex flexible flex--column' },
+	              _react2.default.createElement(
+	                'header',
+	                { className: 'calendar-days flex flex--row' },
+	                this.props.weekByDays.map(function (day) {
+	                  return _react2.default.createElement(
+	                    'div',
+	                    {
+	                      key: day,
+	                      'data-day': day,
+	                      'data-weekend': true ? day === 'Sat' || day === 'Sun' : false,
+	                      className: 'calendar-day flexible center-text text-green' },
+	                    _react2.default.createElement(
+	                      'h3',
+	                      null,
+	                      day
+	                    )
+	                  );
+	                })
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'calendar-content flexible flex' },
+	                this.printCalendar(this.props.date.numOfDaysInMonth, this.props.date.firstDay, _helpers2.default.normalizeMonth(this.props.date.month).full)
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'aside',
+	            { className: 'weekly-manager flex flex--column' },
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'task-priorities flex flex--column' },
+	              _react2.default.createElement(
+	                'h2',
+	                { className: 'text-green' },
+	                'Priority list'
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { 'data-priority': 'none',
+	                  className: 'task-priority flexible self--end' },
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'priority-none' },
+	                  'None'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { 'data-priority': 'high',
+	                  className: 'task-priority flexible self--end' },
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'priority-high' },
+	                  'High'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { 'data-priority': 'medium',
+	                  className: 'task-priority flexible self--end' },
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'priority-medium' },
+	                  'Medium'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { 'data-priority': 'low',
+	                  className: 'task-priority flexible self--end' },
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'priority-low' },
+	                  'Low'
+	                )
+	              )
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -859,7 +1158,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 143:
+/***/ 145:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -870,7 +1169,7 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -878,9 +1177,9 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _actions = __webpack_require__(28);
+	var _helperActions = __webpack_require__(28);
 	
-	var _actions2 = _interopRequireDefault(_actions);
+	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -902,7 +1201,7 @@ webpackJsonp([1],{
 	  _createClass(Deadlines, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.dispatch(_actions2.default.changeRoute('Grades'));
+	      this.props.dispatch(_helperActions2.default.changeRoute('Grades'));
 	    }
 	  }, {
 	    key: 'render',
@@ -923,7 +1222,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 144:
+/***/ 146:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -932,9 +1231,11 @@ webpackJsonp([1],{
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -942,9 +1243,13 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _actions = __webpack_require__(28);
+	var _MyWeekEvent = __webpack_require__(142);
 	
-	var _actions2 = _interopRequireDefault(_actions);
+	var _MyWeekEvent2 = _interopRequireDefault(_MyWeekEvent);
+	
+	var _helperActions = __webpack_require__(28);
+	
+	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -966,58 +1271,31 @@ webpackJsonp([1],{
 	  _createClass(MyWeek, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.dispatch(_actions2.default.changeRoute('My Week'));
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _this2 = this;
-	
-	      this.props.events.map(function (event) {
-	        var child = document.createElement('div');
-	        child.setAttribute('id', event.eventId);
-	        child.setAttribute('class', 'day-event absolute width-100');
-	
-	        //set child top position
-	        child.style.top = 33;
-	
-	        if (event.timeOfDay === 'AM' && event.hour >= 8) {
-	          child.style.top = parseInt(child.style.top, 10) - 1440 + event.startInMin * _this2.props.minuteInPixels;
-	        } else if (event.timeOfDay === 'AM' && event.hour <= 7) {
-	          child.style.top = parseInt(child.style.top, 10) + 2880 + event.startInMin * _this2.props.minuteInPixels;
-	        }
-	        if (event.timeOfDay === 'PM') {
-	          child.style.top = parseInt(child.style.top, 10) + 720 + event.startInMin * _this2.props.minuteInPixels;
-	        }
-	
-	        //set height based on duration
-	        child.style.height = event.durationInMin * _this2.props.minuteInPixels;
-	
-	        //set event priority
-	        child.setAttribute('data-priority', event.priority);
-	
-	        document.querySelector('#' + event.day).appendChild(child);
-	      });
+	      this.props.dispatch(_helperActions2.default.changeRoute('My Week'));
 	    }
 	  }, {
 	    key: 'getDayByHours',
-	    value: function getDayByHours(displayHour, day, event) {
+	    value: function getDayByHours(displayHour, day) {
+	      var _this2 = this;
+	
 	      return this.props.dayByHours.map(function (hour, i) {
 	        var day = void 0,
 	            time = void 0,
 	            content = void 0;
 	
 	        day = day ? day : '';
-	        time = displayHour ? hour : '';
-	        content = time ? time : '';
+	        content = time = displayHour ? hour : '';
+	
+	        var hourHeight = _this2.props.hourInMinutes * _this2.props.minuteInPixels;
 	
 	        return _react2.default.createElement(
 	          'div',
 	          {
 	            key: i,
 	            'data-time': hour,
-	            className: 'day-hour hour-space center-text text-green' },
-	          time
+	            className: 'day-hour center-text text-green',
+	            style: { 'height': hourHeight } },
+	          content
 	        );
 	      });
 	    }
@@ -1038,10 +1316,26 @@ webpackJsonp([1],{
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { id: day, className: 'day-schedule', 'data-weekend': weekend, 'data-day': day },
-	            _this3.getDayByHours(false, day, _this3.props.events)
+	            { className: 'day-schedule', 'data-weekend': weekend, 'data-day': day },
+	            _this3.getDayByHours(false, day),
+	            _this3.renderEvents(_this3.props.events.filter(function (event) {
+	              return event.day === day;
+	            }))
 	          )
 	        );
+	      });
+	    }
+	  }, {
+	    key: 'renderEvents',
+	    value: function renderEvents(events) {
+	      var _this4 = this;
+	
+	      return events.map(function (event) {
+	        return _react2.default.createElement(_MyWeekEvent2.default, _extends({
+	          key: event.eventId,
+	          minuteInPixels: _this4.props.minuteInPixels,
+	          hourInMinutes: _this4.props.hourInMinutes
+	        }, event));
 	      });
 	    }
 	  }, {
@@ -1133,7 +1427,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 145:
+/***/ 147:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1144,7 +1438,7 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -1183,7 +1477,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 146:
+/***/ 148:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1194,7 +1488,7 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -1202,9 +1496,9 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _actions = __webpack_require__(28);
+	var _helperActions = __webpack_require__(28);
 	
-	var _actions2 = _interopRequireDefault(_actions);
+	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -1226,7 +1520,7 @@ webpackJsonp([1],{
 	  _createClass(Notes, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.dispatch(_actions2.default.changeRoute('Notes'));
+	      this.props.dispatch(_helperActions2.default.changeRoute('Notes'));
 	    }
 	  }, {
 	    key: 'render',
@@ -1247,7 +1541,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 147:
+/***/ 149:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1258,7 +1552,7 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -1330,7 +1624,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 148:
+/***/ 150:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1341,7 +1635,7 @@ webpackJsonp([1],{
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -1415,7 +1709,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 149:
+/***/ 151:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1440,7 +1734,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 150:
+/***/ 152:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1449,7 +1743,7 @@ webpackJsonp([1],{
 	  value: true
 	});
 	
-	var _react = __webpack_require__(2);
+	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -1463,35 +1757,35 @@ webpackJsonp([1],{
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _Signup = __webpack_require__(148);
+	var _Signup = __webpack_require__(150);
 	
 	var _Signup2 = _interopRequireDefault(_Signup);
 	
-	var _Signin = __webpack_require__(147);
+	var _Signin = __webpack_require__(149);
 	
 	var _Signin2 = _interopRequireDefault(_Signin);
 	
-	var _Dashboard = __webpack_require__(141);
+	var _Dashboard = __webpack_require__(143);
 	
 	var _Dashboard2 = _interopRequireDefault(_Dashboard);
 	
-	var _MyWeek = __webpack_require__(144);
+	var _MyWeek = __webpack_require__(146);
 	
 	var _MyWeek2 = _interopRequireDefault(_MyWeek);
 	
-	var _Deadlines = __webpack_require__(142);
+	var _Deadlines = __webpack_require__(144);
 	
 	var _Deadlines2 = _interopRequireDefault(_Deadlines);
 	
-	var _Grades = __webpack_require__(143);
+	var _Grades = __webpack_require__(145);
 	
 	var _Grades2 = _interopRequireDefault(_Grades);
 	
-	var _Notes = __webpack_require__(146);
+	var _Notes = __webpack_require__(148);
 	
 	var _Notes2 = _interopRequireDefault(_Notes);
 	
-	var _NotFound = __webpack_require__(145);
+	var _NotFound = __webpack_require__(147);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
@@ -1540,7 +1834,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 151:
+/***/ 153:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1556,13 +1850,15 @@ webpackJsonp([1],{
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
-	var _reducer = __webpack_require__(149);
+	var _reducer = __webpack_require__(151);
 	
 	var _reducer2 = _interopRequireDefault(_reducer);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var reduxCreateStore = (0, _redux.compose)((0, _redux.applyMiddleware)((0, _reduxLogger2.default)()))(_redux.createStore);
+	
+	var date = new Date();
 	
 	function configStore() {
 	  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
@@ -1572,6 +1868,19 @@ webpackJsonp([1],{
 	      userFirstName: 'Nebojsa'
 	    },
 	    route: '',
+	    date: {
+	      // current month
+	      month: date.getMonth() + 1,
+	      numOfDaysInMonth: new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(),
+	      firstDay: new Date(date.getFullYear(), date.getMonth(), 1).getDay()
+	    },
+	    // date: {
+	    //   // next month
+	    //   month: date.getMonth() + 2,
+	    //   numOfDaysInMonth: new Date(new Date().getFullYear(), new Date().getMonth() + 2, 0).getDate(),
+	    //   firstDay: new Date(date.getFullYear(), date.getMonth() + 1, 1).getDay()    
+	    // },
+	    hourInMinutes: 60,
 	    minuteInPixels: 3,
 	    dayByHours: ['08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM', '12:00 AM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM', '07:00 PM', '08:00 PM', '09:00 PM', '10:00 PM', '11:00 PM', '12:00 PM', '01:00 AM', '02:00 AM', '03:00 AM', '04:00 AM', '05:00 AM', '06:00 AM', '07:00 AM'],
 	    weekByDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -1641,6 +1950,19 @@ webpackJsonp([1],{
 	      endInMin: 420,
 	      durationInMin: 120,
 	      priority: 'none'
+	    }, {
+	      eventId: 'e4ryuio78',
+	      eventHeadline: 'Sixth ToDo',
+	      eventDesc: 'Sixth Mock Todo For Testing',
+	      day: 'Fri',
+	      fullStartTime: '01:00 AM',
+	      hour: '1',
+	      startInMin: 60,
+	      timeOfDay: 'AM',
+	      end: '03:15 AM',
+	      endInMin: 195,
+	      durationInMin: 135,
+	      priority: 'medium'
 	    }]
 	  };
 	
@@ -1649,14 +1971,14 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 156:
+/***/ 158:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
 
-/***/ 183:
+/***/ 185:
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -1843,7 +2165,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 184:
+/***/ 186:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate) {(function (root) {
@@ -2080,11 +2402,11 @@ webpackJsonp([1],{
 	
 	})(this);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(283).setImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(285).setImmediate))
 
 /***/ },
 
-/***/ 278:
+/***/ 280:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -2274,11 +2596,11 @@ webpackJsonp([1],{
 	    attachTo.clearImmediate = clearImmediate;
 	}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(183)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(185)))
 
 /***/ },
 
-/***/ 283:
+/***/ 285:
 /***/ function(module, exports, __webpack_require__) {
 
 	var apply = Function.prototype.apply;
@@ -2331,64 +2653,41 @@ webpackJsonp([1],{
 	};
 	
 	// setimmediate attaches itself to the global object
-	__webpack_require__(278);
+	__webpack_require__(280);
 	exports.setImmediate = setImmediate;
 	exports.clearImmediate = clearImmediate;
 
 
 /***/ },
 
-/***/ 289:
-/***/ function(module, exports, __webpack_require__) {
+/***/ 291:
+/***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.default = function () {
+	  var months = void 0,
+	      days = void 0;
 	
-	var _react = __webpack_require__(2);
+	  months = [{ 'slug': 'Jan', 'full': 'January' }, { 'slug': 'Feb', 'full': 'February' }, { 'slug': 'Mar', 'full': 'March' }, { 'slug': 'Apr', 'full': 'April' }, { 'slug': 'May', 'full': 'May' }, { 'slug': 'Jun', 'full': 'June' }, { 'slug': 'Jul', 'full': 'July' }, { 'slug': 'Aug', 'full': 'August' }, { 'slug': 'Sep', 'full': 'September' }, { 'slug': 'Oct', 'full': 'October' }, { 'slug': 'Nov', 'full': 'November' }, { 'slug': 'Dec', 'full': 'December' }];
 	
-	var _react2 = _interopRequireDefault(_react);
+	  days = [{ 'slug': 'Mon', 'full': 'Monday' }, { 'slug': 'Tue', 'full': 'Tuesday' }, { 'slug': 'Wed', 'full': 'Wednesday' }, { 'slug': 'Thu', 'full': 'Thursday' }, { 'slug': 'Fri', 'full': 'Friday' }, { 'slug': 'Sat', 'full': 'Saturday' }, { 'slug': 'Sun', 'full': 'Sunday' }];
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var DashboardEvent = function (_React$Component) {
-	  _inherits(DashboardEvent, _React$Component);
-	
-	  function DashboardEvent(props, context) {
-	    _classCallCheck(this, DashboardEvent);
-	
-	    return _possibleConstructorReturn(this, (DashboardEvent.__proto__ || Object.getPrototypeOf(DashboardEvent)).call(this, props, context));
-	  }
-	
-	  _createClass(DashboardEvent, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "dashboard-event" },
-	        _react2.default.createElement(
-	          "h1",
-	          null,
-	          this.props.eventHeadline
-	        )
-	      );
+	  return {
+	    normalizeMonth: function normalizeMonth(monthNum) {
+	      //expecting numbers from 1 to 12
+	      return months[--monthNum];
+	    },
+	    normalizeDay: function normalizeDay(dayNum) {
+	      //expecting numbers from 1 to 7
+	      return days[--dayNum];
 	    }
-	  }]);
-	
-	  return DashboardEvent;
-	}(_react2.default.Component);
-	
-	exports.default = DashboardEvent;
+	  };
+	}();
 
 /***/ }
 

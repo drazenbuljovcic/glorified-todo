@@ -9,8 +9,9 @@ section.week-wrapper
         min-height: -webkit-min-content
         flex-basis: 60px
         border-right: 1px solid $satori-pallete-light-green
+        margin-top: 20px
         div.day-hour
-          padding-top: 60px
+          padding-top: 30px
       div.week-timeline
         position: relative
         top: -34px
@@ -23,56 +24,9 @@ section.week-wrapper
             border-bottom: 1px solid $satori-pallete-light-green
             border-right: 1px solid $satori-pallete-light-semi
         div.day-schedule
+          margin-top: 20px
           &[data-weekend=true]
             background-color: $satori-pallete-light-semi
             border-right: 1px solid $satori-pallete-light-green
-          div.day-event
-            &[data-priority=high]
-              background-color: $satori-pallete-strong-red
-            &[data-priority=medium]
-              background-color: $satori-pallete-strong-yellow
-            &[data-priority=low]
-              background-color: $satori-pallete-strong-green
-            &[data-priority=none]
-              background-color: $satori-pallete-light-green
-
     aside.weekly-manager
-      background-color: $satori-pallete-light-white
-      box-shadow: $lighter-shadow-green
-      flex-basis: 15%
       margin-left: 10px
-      ul.task-priorities 
-        @extend .relative
-        padding: 30px
-        h2
-          @extend .text-green
-          @extend .text-right
-          @extend .uppercase
-          font-size: 1.4em
-          line-height: 1.6em
-          padding: 5px
-        li.task-priority
-          span
-            @extend .text-green
-            @extend .uppercase
-            @extend .bold-font
-            font-size: 1em
-            &:before
-              content: ''
-              @extend .block
-              @extend .absolute
-              @include size(8px, 8px)
-              border-radius: 50%
-              left: 20px
-            &.priority-none
-              &:before 
-                background-color: $satori-pallete-light-green
-            &.priority-high
-              &:before 
-                background-color: $satori-pallete-strong-red
-            &.priority-medium
-              &:before 
-                background-color: $satori-pallete-strong-yellow
-            &.priority-low
-              &:before 
-                background-color: $satori-pallete-strong-green

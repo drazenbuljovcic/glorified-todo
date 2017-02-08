@@ -1,0 +1,28 @@
+@import '../_variables.sass';
+
+section.day-event
+  color: $satori-pallete-light-white
+  cursor: pointer
+  &[data-priority=high]
+    background-color: transparentize($satori-pallete-strong-red, .5);
+    header
+      background-color: $satori-pallete-strong-red;
+  &[data-priority=medium]
+    background-color: transparentize($satori-pallete-strong-yellow, .5);
+    header
+      background-color: $satori-pallete-strong-yellow;
+  &[data-priority=low]
+    background-color: transparentize($satori-pallete-strong-green, .5);
+    header
+      background-color: $satori-pallete-strong-green;
+  &[data-priority=none]
+    background-color: transparentize($satori-pallete-light-green, .5);
+    header
+      background-color: $satori-pallete-light-green;
+  header h2
+    font-size: 1.1em
+    line-height: 1.3em
+    padding: 5px
+  div.event-details
+    padding: 5px
+    

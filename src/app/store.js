@@ -7,6 +7,8 @@ let reduxCreateStore = compose(
   applyMiddleware(logger())
 )(createStore);
 
+let date = new Date();
+
 export default function configStore(initialState = {
   env: process.env.env,
   user: {
@@ -14,6 +16,19 @@ export default function configStore(initialState = {
     userFirstName: 'Nebojsa'
   },
   route: '',
+  date: {
+    // current month
+    month: date.getMonth() + 1,
+    numOfDaysInMonth: new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(),
+    firstDay: new Date(date.getFullYear(), date.getMonth(), 1).getDay()
+  },
+  // date: {
+  //   // next month
+  //   month: date.getMonth() + 2,
+  //   numOfDaysInMonth: new Date(new Date().getFullYear(), new Date().getMonth() + 2, 0).getDate(),
+  //   firstDay: new Date(date.getFullYear(), date.getMonth() + 1, 1).getDay()    
+  // },
+  hourInMinutes: 60,
   minuteInPixels: 3,
   dayByHours: [
     '08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM', '12:00 AM',
@@ -95,6 +110,20 @@ export default function configStore(initialState = {
       endInMin: 420,
       durationInMin: 120,
       priority: 'none'
+    },
+    {
+      eventId: 'e4ryuio78',
+      eventHeadline: 'Sixth ToDo',
+      eventDesc: 'Sixth Mock Todo For Testing',
+      day: 'Fri',
+      fullStartTime: '01:00 AM',
+      hour: '1',
+      startInMin: 60,
+      timeOfDay: 'AM',
+      end: '03:15 AM',
+      endInMin: 195,
+      durationInMin: 135,
+      priority: 'medium'
     },
   ]
 }) {
