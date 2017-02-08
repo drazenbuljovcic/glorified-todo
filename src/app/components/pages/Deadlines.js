@@ -50,11 +50,6 @@ export default class Deadlines extends React.Component {
 
     return content;
   }
-          // {
-          //   i >= firstDay && i <= numOfDaysInMonth
-          //   ? <span className="day-indicator flex flex--center text-green">{i}</span>
-          //   : ''
-          // }
 
   render() {
     return (

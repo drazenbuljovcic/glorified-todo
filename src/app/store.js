@@ -4,8 +4,8 @@ import logger from 'redux-logger';
 import reducer from './reducers/reducer';
 
 let reduxCreateStore = compose(
-  applyMiddleware(logger())
-)(createStore);
+    applyMiddleware(logger())
+  )(createStore);
 
 let date = new Date();
 

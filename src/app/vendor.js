@@ -6,3 +6,5 @@ import 'redux';
 import 'react-redux';
 
 import logger from 'redux-logger';
+
+import Promise from 'promise-polyfill';

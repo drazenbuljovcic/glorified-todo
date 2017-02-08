@@ -11,8 +11,7 @@ export default class Dashboard extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      tabActive: 'none',
-      eventContent: ''
+      tabActive: 'none'
     }
   }
 
