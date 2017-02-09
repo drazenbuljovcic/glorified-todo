@@ -626,6 +626,8 @@ main section.deadlines-calendar {
         border: 1px solid #d7f9e9;
         -ms-flex-preferred-size: 14.28%;
             flex-basis: 14.28%; }
+        main section.deadlines-calendar div.calendar div.calendar-content div.calendar-day-block[data-weekend=true] {
+          background-color: #d7f9e9; }
         main section.deadlines-calendar div.calendar div.calendar-content div.calendar-day-block span.day-indicator {
           -ms-flex-preferred-size: 30%;
               flex-basis: 30%;

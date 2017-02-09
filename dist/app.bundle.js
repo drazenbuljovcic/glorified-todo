@@ -17,17 +17,17 @@ webpackJsonp([1],{
 	
 	var _reactRedux = __webpack_require__(39);
 	
-	var _store = __webpack_require__(154);
+	var _store = __webpack_require__(155);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _routes = __webpack_require__(153);
+	var _routes = __webpack_require__(154);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(159);
+	__webpack_require__(160);
 	__webpack_require__(80);
 	
 	console.clear();
@@ -299,7 +299,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 139:
+/***/ 140:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -324,11 +324,11 @@ webpackJsonp([1],{
 	
 	var _reactRedux = __webpack_require__(39);
 	
-	var _promisePolyfill = __webpack_require__(187);
+	var _promisePolyfill = __webpack_require__(94);
 	
 	var _promisePolyfill2 = _interopRequireDefault(_promisePolyfill);
 	
-	var _Header = __webpack_require__(141);
+	var _Header = __webpack_require__(142);
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
@@ -353,7 +353,8 @@ webpackJsonp([1],{
 	    var _this = _possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).call(this, props, context));
 	
 	    _this.state = {
-	      devReload: false
+	      devReload: false,
+	      devScriptInjected: false
 	    };
 	    return _this;
 	  }
@@ -377,21 +378,24 @@ webpackJsonp([1],{
 	  }, {
 	    key: 'maybeInjectDevelopmentReloadScript',
 	    value: function maybeInjectDevelopmentReloadScript() {
-	      if (this.state.devReload && !document.querySelector('#reload-script')) {
+	      var _this2 = this;
+	
+	      if (this.state.devReload && !this.state.devScriptInjected) {
+	        // return <script src='/reload/reload.js' />;
 	        var s = document.createElement('script');
 	        s.setAttribute('src', '/reload/reload.js');
-	        s.setAttribute('id', 'reload-script');
 	        document.body.appendChild(s);
 	
 	        s.onload = function () {
-	          return console.log('Development mode with autoreload.');
+	          _this2.setState({ devScriptInjected: true });
+	          console.log('Development mode with autoreload.');
 	        };
 	      };
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
 	      return _react2.default.createElement(
 	        'html',
@@ -411,7 +415,7 @@ webpackJsonp([1],{
 	        _react2.default.createElement(
 	          'body',
 	          { ref: function ref(body) {
-	              return _this2.bodyDOM = body;
+	              return _this3.bodyDOM = body;
 	            } },
 	          _react2.default.createElement(
 	            'div',
@@ -442,7 +446,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 140:
+/***/ 141:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -507,7 +511,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 141:
+/***/ 142:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -671,7 +675,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 142:
+/***/ 143:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -771,7 +775,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 143:
+/***/ 144:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -798,7 +802,7 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _DashboardEvent = __webpack_require__(140);
+	var _DashboardEvent = __webpack_require__(141);
 	
 	var _DashboardEvent2 = _interopRequireDefault(_DashboardEvent);
 	
@@ -954,7 +958,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 144:
+/***/ 145:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -973,11 +977,15 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
+	var _CalendarDayBlock = __webpack_require__(292);
+	
+	var _CalendarDayBlock2 = _interopRequireDefault(_CalendarDayBlock);
+	
 	var _helperActions = __webpack_require__(28);
 	
 	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
-	var _helpers = __webpack_require__(151);
+	var _helpers = __webpack_require__(152);
 	
 	var _helpers2 = _interopRequireDefault(_helpers);
 	
@@ -1016,24 +1024,31 @@ webpackJsonp([1],{
 	      }
 	
 	      //render calendar divs
-	      for (var _i = 1; _i <= numOfDaysInMonth; _i++) {
-	        content.push(_react2.default.createElement(
-	          'div',
-	          {
-	            key: monthName + '-' + _i,
-	            className: 'calendar-day-block flexible flex' },
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'day-indicator flex flex--center text-green' },
-	            _i
-	          )
-	        ));
+	      var monthCalendarDay = firstDay;
+	      for (var day = 1; day <= numOfDaysInMonth; day++) {
+	        var today = void 0;
+	        if (monthCalendarDay > 7) monthCalendarDay = 1;
+	
+	        today = {
+	          numOfDay: monthCalendarDay,
+	          slug: _helpers2.default.normalizeDay(monthCalendarDay).slug
+	        };
+	
+	        content.push(_react2.default.createElement(_CalendarDayBlock2.default, {
+	          monthName: monthName,
+	          key: monthName + '-' + day + '-' + today.slug,
+	          day: today.slug,
+	          dayNum: day,
+	          weekend: true ? today.slug === 'Sat' || today.slug === 'Sun' : ''
+	        }));
+	
+	        monthCalendarDay++;
 	      }
 	
 	      //append empty divs
-	      for (var _i2 = 0; _i2 < 35 - (numOfDaysInMonth + firstDay - 1); _i2++) {
+	      for (var _i = 0; _i < 35 - (numOfDaysInMonth + firstDay - 1); _i++) {
 	        content.push(_react2.default.createElement('div', {
-	          key: 'emptyAppend-' + _i2,
+	          key: 'emptyAppend-' + _i,
 	          className: 'calendar-day-block flexible flex' }));
 	      }
 	
@@ -1151,7 +1166,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 145:
+/***/ 146:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1215,7 +1230,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 146:
+/***/ 147:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1236,7 +1251,7 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _MyWeekEvent = __webpack_require__(142);
+	var _MyWeekEvent = __webpack_require__(143);
 	
 	var _MyWeekEvent2 = _interopRequireDefault(_MyWeekEvent);
 	
@@ -1420,7 +1435,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 147:
+/***/ 148:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1470,7 +1485,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 148:
+/***/ 149:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1534,7 +1549,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 149:
+/***/ 150:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1617,7 +1632,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 150:
+/***/ 151:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1702,7 +1717,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 151:
+/***/ 152:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1733,7 +1748,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 152:
+/***/ 153:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1758,7 +1773,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 153:
+/***/ 154:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1773,7 +1788,7 @@ webpackJsonp([1],{
 	
 	var _reactRouter = __webpack_require__(26);
 	
-	var _Page = __webpack_require__(139);
+	var _Page = __webpack_require__(140);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
@@ -1781,35 +1796,35 @@ webpackJsonp([1],{
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _Signup = __webpack_require__(150);
+	var _Signup = __webpack_require__(151);
 	
 	var _Signup2 = _interopRequireDefault(_Signup);
 	
-	var _Signin = __webpack_require__(149);
+	var _Signin = __webpack_require__(150);
 	
 	var _Signin2 = _interopRequireDefault(_Signin);
 	
-	var _Dashboard = __webpack_require__(143);
+	var _Dashboard = __webpack_require__(144);
 	
 	var _Dashboard2 = _interopRequireDefault(_Dashboard);
 	
-	var _MyWeek = __webpack_require__(146);
+	var _MyWeek = __webpack_require__(147);
 	
 	var _MyWeek2 = _interopRequireDefault(_MyWeek);
 	
-	var _Deadlines = __webpack_require__(144);
+	var _Deadlines = __webpack_require__(145);
 	
 	var _Deadlines2 = _interopRequireDefault(_Deadlines);
 	
-	var _Grades = __webpack_require__(145);
+	var _Grades = __webpack_require__(146);
 	
 	var _Grades2 = _interopRequireDefault(_Grades);
 	
-	var _Notes = __webpack_require__(148);
+	var _Notes = __webpack_require__(149);
 	
 	var _Notes2 = _interopRequireDefault(_Notes);
 	
-	var _NotFound = __webpack_require__(147);
+	var _NotFound = __webpack_require__(148);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
@@ -1858,7 +1873,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 154:
+/***/ 155:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1870,11 +1885,11 @@ webpackJsonp([1],{
 	
 	var _redux = __webpack_require__(77);
 	
-	var _reduxLogger = __webpack_require__(135);
+	var _reduxLogger = __webpack_require__(136);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
-	var _reducer = __webpack_require__(152);
+	var _reducer = __webpack_require__(153);
 	
 	var _reducer2 = _interopRequireDefault(_reducer);
 	
@@ -1995,10 +2010,68 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 159:
+/***/ 160:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 292:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CalendarDayBlock = function (_React$Component) {
+	  _inherits(CalendarDayBlock, _React$Component);
+	
+	  function CalendarDayBlock(props, context) {
+	    _classCallCheck(this, CalendarDayBlock);
+	
+	    return _possibleConstructorReturn(this, (CalendarDayBlock.__proto__ || Object.getPrototypeOf(CalendarDayBlock)).call(this, props, context));
+	  }
+	
+	  _createClass(CalendarDayBlock, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        {
+	          "data-month": this.props.monthName,
+	          "data-day": this.props.day,
+	          "data-weekend": this.props.weekend,
+	          className: "calendar-day-block flexible flex" },
+	        _react2.default.createElement(
+	          "span",
+	          { className: "day-indicator flex flex--center text-green" },
+	          this.props.dayNum
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return CalendarDayBlock;
+	}(_react2.default.Component);
+	
+	exports.default = CalendarDayBlock;
 
 /***/ }
 

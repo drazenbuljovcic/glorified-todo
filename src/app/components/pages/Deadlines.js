@@ -1,9 +1,10 @@
 import React from 'react';
-import AsideNav from '../modules/AsideNav.js';
 
-import helperActions from '../../actions/helperActions.js';
+import AsideNav from '../modules/AsideNav';
+import CalendarDayBlock from '../modules/CalendarDayBlock';
+import helperActions from '../../actions/helperActions';
 
-import helpers from '../../helpers.js';
+import helpers from '../../helpers';
 
 export default class Deadlines extends React.Component {
   constructor(props, context) {
@@ -28,14 +29,27 @@ export default class Deadlines extends React.Component {
     }
     
     //render calendar divs
-    for(let i = 1; i <= numOfDaysInMonth; i++) {
+    let monthCalendarDay = firstDay
+    for(let day = 1; day <= numOfDaysInMonth; day++) {
+      let today;
+      if(monthCalendarDay > 7) monthCalendarDay = 1;
+
+      today = {
+        numOfDay: monthCalendarDay,
+        slug: helpers.normalizeDay(monthCalendarDay).slug
+      }
+
       content.push(
-        <div
-          key={`${monthName}-${i}`}
-          className="calendar-day-block flexible flex">
-          <span className="day-indicator flex flex--center text-green">{i}</span>
-        </div>
+        <CalendarDayBlock 
+          monthName={monthName}
+          key={`${monthName}-${day}-${today.slug}`}
+          day={today.slug}
+          dayNum={day}
+          weekend={true ? today.slug === 'Sat' || today.slug === 'Sun' : ''}
+        />
       )
+
+      monthCalendarDay++;
     }
 
     //append empty divs

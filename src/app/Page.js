@@ -13,7 +13,8 @@ class Page extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      devReload: false
+      devReload: false,
+      devScriptInjected: false
     }
   }
 
@@ -35,13 +36,16 @@ class Page extends React.Component {
   
 
   maybeInjectDevelopmentReloadScript() {
-    if (this.state.devReload && !document.querySelector('#reload-script')) {
+    if (this.state.devReload && !this.state.devScriptInjected) {
+      // return <script src='/reload/reload.js' />;
       let s = document.createElement('script');
       s.setAttribute('src','/reload/reload.js');
-      s.setAttribute('id','reload-script');
       document.body.appendChild(s);
 
-      s.onload = () => console.log('Development mode with autoreload.');
+      s.onload = () => {
+        this.setState({devScriptInjected: true});
+        console.log('Development mode with autoreload.')
+      };
     };
   }
 
