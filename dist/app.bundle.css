@@ -41,17 +41,17 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.flex, .wrapper.user-wrapper, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority {
+.flex, .wrapper.user-wrapper, section.event-details div.event-duration div, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
 
-.flexible {
+.flexible, section.event-details div.event-duration div {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1; }
 
-.flex-30 {
+.flex-30, section.dashboard-event div.event-duration {
   -ms-flex-preferred-size: 30%;
       flex-basis: 30%; }
 
@@ -59,7 +59,7 @@ table {
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%; }
 
-.flex--column {
+.flex--column, section.event-details div.event-duration div {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -92,6 +92,21 @@ table {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end; }
+
+.items--start {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
+
+.items--end, section.event-details div.event-duration div {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end; }
+
+.items--baseline {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline; }
 
 .self--start {
   -ms-flex-item-align: start;
@@ -136,7 +151,7 @@ table {
 .center-text, aside.user-panel nav ul a li {
   text-align: center; }
 
-.text-right, aside.weekly-manager ul.task-priorities h2 {
+.text-right, aside.weekly-manager ul.task-priorities h2, section.dashboard-event div.event-duration h4, section.event-details span {
   text-align: right; }
 
 .text-left {
@@ -154,10 +169,10 @@ table {
 .text-white, aside.user-panel nav ul a.active, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
   color: #f1faf6; }
 
-.text-green, aside.weekly-manager ul.task-priorities h2, aside.weekly-manager ul.task-priorities li.task-priority span, aside.user-panel nav ul a {
+.text-green, aside.weekly-manager ul.task-priorities h2, aside.weekly-manager ul.task-priorities li.task-priority span, aside.user-panel nav ul a, section.dashboard-event div header h2, section.dashboard-event div.event-duration h4, section.event-details h3, section.event-details h4 {
   color: #87d5b2; }
 
-.uppercase, aside.weekly-manager ul.task-priorities h2, aside.weekly-manager ul.task-priorities li.task-priority span, aside.user-panel nav ul a, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
+.uppercase, aside.weekly-manager ul.task-priorities h2, aside.weekly-manager ul.task-priorities li.task-priority span, aside.user-panel nav ul a, section.event-details h3, section.event-details h4, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
   text-transform: uppercase; }
 
 .btn {
@@ -500,6 +515,15 @@ aside.user-panel {
         margin: 15px 0;
         padding: 10px; }
 
+section.dashboard-event {
+  padding: 20px; }
+  section.dashboard-event div header h2 {
+    line-height: 1.5em; }
+  section.dashboard-event div.event-duration h4 {
+    font-size: .8em;
+    line-height: 1.1em;
+    padding: 10px; }
+
 section.day-event {
   color: #f1faf6;
   cursor: pointer; }
@@ -526,6 +550,54 @@ section.day-event {
   section.day-event div.event-details {
     padding: 5px; }
 
+figure.calendar-day-block {
+  background-color: #f1faf6;
+  border: 1px solid #d7f9e9;
+  -ms-flex-preferred-size: 14.28%;
+      flex-basis: 14.28%; }
+  figure.calendar-day-block[data-weekend=true] {
+    background-color: #d7f9e9; }
+  figure.calendar-day-block figcaption.day-indicator {
+    -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+    font-size: 2.5em; }
+  figure.calendar-day-block section.day-events h3 {
+    padding: 7px; }
+  figure.calendar-day-block section.day-events > div {
+    padding: 0 10px; }
+    figure.calendar-day-block section.day-events > div div.event-indicator {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #d7f9e9;
+      margin: 5px;
+      float: right;
+      cursor: pointer; }
+      figure.calendar-day-block section.day-events > div div.event-indicator[data-priority=high] {
+        background-color: rgba(169, 33, 24, 0.5); }
+      figure.calendar-day-block section.day-events > div div.event-indicator[data-priority=medium] {
+        background-color: rgba(255, 197, 95, 0.5); }
+      figure.calendar-day-block section.day-events > div div.event-indicator[data-priority=low] {
+        background-color: rgba(36, 92, 77, 0.5); }
+      figure.calendar-day-block section.day-events > div div.event-indicator[data-priority=none] {
+        background-color: rgba(135, 213, 178, 0.5); }
+
+section.event-details {
+  padding: 30px; }
+  section.event-details h3 {
+    font-size: 1.4em;
+    line-height: 1.6em;
+    padding: 5px; }
+  section.event-details h4 {
+    font-size: .8em;
+    line-height: 1.1em; }
+  section.event-details span {
+    font-size: 1.1em;
+    line-height: 1.3em;
+    padding: 10px; }
+  section.event-details div.event-duration span {
+    font-size: 1em; }
+
 @media screen and (max-width: 660px) {
   div.signin-wrapper div.signin-modal {
     height: 550px; } }
@@ -543,7 +615,8 @@ section.dashboard-wrapper main dialog.dashboard-modal {
   border-radius: 0;
   max-width: 800px;
   box-shadow: 0 2px 12px rgba(34, 49, 63, 0.2);
-  height: 500px; }
+  height: 500px;
+  overflow: auto; }
   section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header {
     background-color: #87d5b2;
     height: 60px; }
@@ -621,16 +694,5 @@ main section.deadlines-calendar {
     main section.deadlines-calendar div.calendar div.calendar-content {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap; }
-      main section.deadlines-calendar div.calendar div.calendar-content div.calendar-day-block {
-        background-color: #f1faf6;
-        border: 1px solid #d7f9e9;
-        -ms-flex-preferred-size: 14.28%;
-            flex-basis: 14.28%; }
-        main section.deadlines-calendar div.calendar div.calendar-content div.calendar-day-block[data-weekend=true] {
-          background-color: #d7f9e9; }
-        main section.deadlines-calendar div.calendar div.calendar-content div.calendar-day-block span.day-indicator {
-          -ms-flex-preferred-size: 30%;
-              flex-basis: 30%;
-          font-size: 2.5em; }
 
 /*# sourceMappingURL=app.bundle.css.map*/

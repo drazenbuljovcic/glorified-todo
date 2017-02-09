@@ -1,9 +1,10 @@
 import React from 'react';
 
-import AsideNav from '../modules/AsideNav.js';
-import MyWeekEvent from '../modules/MyWeekEvent.js';
+import AsideNav from '../modules/AsideNav';
+import MyWeekEvent from '../modules/MyWeekEvent';
+import EventDetails from '../modules/EventDetails'
 
-import helperActions from '../../actions/helperActions.js';
+import helperActions from '../../actions/helperActions';
 
 export default class MyWeek extends React.Component {
   constructor(props, context) {
@@ -55,6 +56,7 @@ export default class MyWeek extends React.Component {
       return (
         <MyWeekEvent 
           key={event.eventId}
+          dispatch={this.props.dispatch}
           minuteInPixels={this.props.minuteInPixels}
           hourInMinutes={this.props.hourInMinutes}
           {...event} />
@@ -91,6 +93,16 @@ export default class MyWeek extends React.Component {
                 <span className="priority-low">Low</span>
               </li>
             </ul>
+            {
+              this.props.eventDetails
+              ?
+                <EventDetails 
+                  dispatch={this.props.dispatch}
+                  event={this.props.events.find(event => event.eventId === this.props.eventDetails)} 
+                />
+              : 
+                ''
+            }
           </aside>
         </main>
       </section>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import eventActions from '../../actions/eventActions';
+
 export default class MyWeekEvent extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -39,10 +41,16 @@ export default class MyWeekEvent extends React.Component {
     return top;
   }
 
+  eventDetails(dispatch, eventId) {
+    console.log(eventId);
+    dispatch(eventActions.eventDetails(eventId));
+  }
+
   render() {
     return (
       <section 
         ref={eventDiv => this.eventDiv = eventDiv}
+        onClick={() => this.eventDetails(this.props.dispatch, this.props.eventId)}
         id={`event-${this.props.eventId}`}
         className={'day-event absolute width-100 flex flex--column'}
         data-priority={this.props.priority}>

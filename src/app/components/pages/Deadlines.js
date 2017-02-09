@@ -2,6 +2,8 @@ import React from 'react';
 
 import AsideNav from '../modules/AsideNav';
 import CalendarDayBlock from '../modules/CalendarDayBlock';
+import EventDetails from '../modules/EventDetails';
+
 import helperActions from '../../actions/helperActions';
 
 import helpers from '../../helpers';
@@ -15,16 +17,16 @@ export default class Deadlines extends React.Component {
     this.props.dispatch(helperActions.changeRoute('Deadlines'));
   }
 
-  printCalendar(numOfDaysInMonth, firstDay, monthName) {
+  printCalendar(numOfDaysInMonth, firstDay, monthName, allEvents) {
     let content = [];
 
     //prepend empty divs
     for(let i = 1; i <= firstDay - 1; i ++) {
       content.push(
-        <div 
+        <figure 
           key={`emptyPrepend-${i}`}
           className="calendar-day-block flexible flex">
-        </div>
+        </figure>
       )
     }
     
@@ -35,9 +37,12 @@ export default class Deadlines extends React.Component {
       if(monthCalendarDay > 7) monthCalendarDay = 1;
 
       today = {
-        numOfDay: monthCalendarDay,
+        numOfDayInWeek: monthCalendarDay,
+        numOfDayInMonth: day,
         slug: helpers.normalizeDay(monthCalendarDay).slug
       }
+
+      let daySpecificEvents = this.gatherEvents(allEvents, today.numOfDayInMonth);
 
       content.push(
         <CalendarDayBlock 
@@ -45,6 +50,8 @@ export default class Deadlines extends React.Component {
           key={`${monthName}-${day}-${today.slug}`}
           day={today.slug}
           dayNum={day}
+          events={daySpecificEvents}
+          dispatch={this.props.dispatch}
           weekend={true ? today.slug === 'Sat' || today.slug === 'Sun' : ''}
         />
       )
@@ -55,14 +62,18 @@ export default class Deadlines extends React.Component {
     //append empty divs
     for(let i = 0; i < 35 - (numOfDaysInMonth + firstDay - 1); i ++) {
       content.push(
-        <div 
+        <figure 
           key={`emptyAppend-${i}`}
           className="calendar-day-block flexible flex">
-        </div>
+        </figure>
       )
     }
 
     return content;
+  }
+
+  gatherEvents(allEvents, dayNum) {
+    return allEvents.filter(event => event.dayNum === dayNum);
   }
 
   render() {
@@ -95,7 +106,8 @@ export default class Deadlines extends React.Component {
                   this.printCalendar(
                     this.props.date.numOfDaysInMonth,
                     this.props.date.firstDay,
-                    helpers.normalizeMonth(this.props.date.month).full
+                    helpers.normalizeMonth(this.props.date.month).full,
+                    this.props.events
                   )
                 }
               </div>
@@ -121,6 +133,16 @@ export default class Deadlines extends React.Component {
                 <span className="priority-low">Low</span>
               </li>
             </ul>
+            {
+              this.props.eventDetails
+              ?
+                <EventDetails 
+                  dispatch={this.props.dispatch}
+                  event={this.props.events.find(event => event.eventId === this.props.eventDetails)} 
+                />
+              : 
+                ''
+            }
           </aside>
         </main>
       </section>

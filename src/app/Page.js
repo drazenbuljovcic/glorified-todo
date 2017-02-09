@@ -19,7 +19,6 @@ class Page extends React.Component {
   }
 
   componentWillMount() {
-    console.log(`Initializing page render in ${this.props.env} mode!`);
     if(this.props.env === 'dev-hmr')
       console.log("Hot Module Reload enabled.");
   }

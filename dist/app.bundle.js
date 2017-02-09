@@ -17,17 +17,17 @@ webpackJsonp([1],{
 	
 	var _reactRedux = __webpack_require__(39);
 	
-	var _store = __webpack_require__(155);
+	var _store = __webpack_require__(158);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _routes = __webpack_require__(154);
+	var _routes = __webpack_require__(157);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(160);
+	__webpack_require__(163);
 	__webpack_require__(80);
 	
 	console.clear();
@@ -328,7 +328,7 @@ webpackJsonp([1],{
 	
 	var _promisePolyfill2 = _interopRequireDefault(_promisePolyfill);
 	
-	var _Header = __webpack_require__(142);
+	var _Header = __webpack_require__(145);
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
@@ -362,7 +362,6 @@ webpackJsonp([1],{
 	  _createClass(Page, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      console.log('Initializing page render in ' + this.props.env + ' mode!');
 	      if (this.props.env === 'dev-hmr') console.log("Hot Module Reload enabled.");
 	    }
 	  }, {
@@ -447,9 +446,127 @@ webpackJsonp([1],{
 /***/ },
 
 /***/ 141:
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var ACTIONS = {
+	  'EVENT_DETAILS': 'EVENT_DETAILS'
+	};
+	
+	exports.default = {
+	  eventDetails: function eventDetails(event) {
+	    return {
+	      type: ACTIONS.EVENT_DETAILS,
+	      payload: event
+	    };
+	  },
+	  resetEventDetails: function resetEventDetails() {
+	    var reset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+	
+	    return {
+	      type: ACTIONS.EVENT_DETAILS,
+	      payload: reset
+	    };
+	  }
+	};
+
+/***/ },
+
+/***/ 142:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _eventActions = __webpack_require__(141);
+	
+	var _eventActions2 = _interopRequireDefault(_eventActions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CalendarDayBlock = function (_React$Component) {
+	  _inherits(CalendarDayBlock, _React$Component);
+	
+	  function CalendarDayBlock(props, context) {
+	    _classCallCheck(this, CalendarDayBlock);
+	
+	    return _possibleConstructorReturn(this, (CalendarDayBlock.__proto__ || Object.getPrototypeOf(CalendarDayBlock)).call(this, props, context));
+	  }
+	
+	  _createClass(CalendarDayBlock, [{
+	    key: 'eventDetails',
+	    value: function eventDetails(eventId) {
+	      this.props.dispatch(_eventActions2.default.eventDetails(eventId));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'figure',
+	        {
+	          'data-month': this.props.monthName,
+	          'data-day': this.props.day,
+	          'data-weekend': this.props.weekend,
+	          className: 'calendar-day-block flexible flex' },
+	        _react2.default.createElement(
+	          'figcaption',
+	          { className: 'day-indicator flex flex--center text-green' },
+	          this.props.dayNum
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'day-events flexible flex flex--column items--end' },
+	          '          ',
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'flexible width-100' },
+	            this.props.events.map(function (event) {
+	              return _react2.default.createElement('div', {
+	                key: 'event-' + event.eventId,
+	                'data-priority': event.priority,
+	                className: 'event-indicator inline',
+	                onClick: function onClick() {
+	                  return _this2.eventDetails(event.eventId);
+	                } });
+	            })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return CalendarDayBlock;
+	}(_react2.default.Component);
+	
+	exports.default = CalendarDayBlock;
+
+/***/ },
+
+/***/ 143:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -479,26 +596,67 @@ webpackJsonp([1],{
 	  }
 	
 	  _createClass(DashboardEvent, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'section',
+	        "section",
 	        {
-	          className: 'dashboard-event flex flex--column',
-	          'data-priority': this.props.priority },
+	          className: "dashboard-event flex",
+	          "data-priority": this.props.priority },
 	        _react2.default.createElement(
-	          'header',
-	          null,
+	          "div",
+	          { className: "flexible" },
 	          _react2.default.createElement(
-	            'h2',
+	            "header",
 	            null,
-	            this.props.eventHeadline
+	            _react2.default.createElement(
+	              "h2",
+	              null,
+	              this.props.eventHeadline
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: 'event-details flexible' },
+	            this.props.eventDesc
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'event-details flexible' },
-	          this.props.eventDesc
+	          "div",
+	          { className: "event-duration flex flex--around self--center" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "event-start" },
+	            _react2.default.createElement(
+	              "span",
+	              null,
+	              this.props.fullStartTime
+	            ),
+	            _react2.default.createElement(
+	              "h4",
+	              null,
+	              "Start"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "span",
+	            null,
+	            "-"
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "event-end" },
+	            _react2.default.createElement(
+	              "span",
+	              null,
+	              this.props.end
+	            ),
+	            _react2.default.createElement(
+	              "h4",
+	              null,
+	              "End"
+	            )
+	          )
 	        )
 	      );
 	    }
@@ -511,7 +669,127 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 142:
+/***/ 144:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _eventActions = __webpack_require__(141);
+	
+	var _eventActions2 = _interopRequireDefault(_eventActions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var EventDetails = function (_React$Component) {
+	  _inherits(EventDetails, _React$Component);
+	
+	  function EventDetails(props, context) {
+	    _classCallCheck(this, EventDetails);
+	
+	    return _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this, props, context));
+	  }
+	
+	  _createClass(EventDetails, [{
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.props.dispatch(_eventActions2.default.resetEventDetails());
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'event-details flex flex--column items--end' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Event details'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          this.props.event.eventHeadline
+	        ),
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'Name'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          this.props.event.eventDesc
+	        ),
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'Description'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'event-duration flex' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'event-start' },
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              this.props.event.fullStartTime
+	            ),
+	            _react2.default.createElement(
+	              'h4',
+	              null,
+	              'Start'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            '-'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'event-end' },
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              this.props.event.end
+	            ),
+	            _react2.default.createElement(
+	              'h4',
+	              null,
+	              'End'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return EventDetails;
+	}(_react2.default.Component);
+	
+	exports.default = EventDetails;
+
+/***/ },
+
+/***/ 145:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -675,7 +953,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 143:
+/***/ 146:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -689,6 +967,10 @@ webpackJsonp([1],{
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _eventActions = __webpack_require__(141);
+	
+	var _eventActions2 = _interopRequireDefault(_eventActions);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -737,6 +1019,12 @@ webpackJsonp([1],{
 	      return top;
 	    }
 	  }, {
+	    key: 'eventDetails',
+	    value: function eventDetails(dispatch, eventId) {
+	      console.log(eventId);
+	      dispatch(_eventActions2.default.eventDetails(eventId));
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -746,6 +1034,9 @@ webpackJsonp([1],{
 	        {
 	          ref: function ref(eventDiv) {
 	            return _this2.eventDiv = eventDiv;
+	          },
+	          onClick: function onClick() {
+	            return _this2.eventDetails(_this2.props.dispatch, _this2.props.eventId);
 	          },
 	          id: 'event-' + this.props.eventId,
 	          className: 'day-event absolute width-100 flex flex--column',
@@ -775,7 +1066,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 144:
+/***/ 147:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -802,7 +1093,7 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _DashboardEvent = __webpack_require__(141);
+	var _DashboardEvent = __webpack_require__(143);
 	
 	var _DashboardEvent2 = _interopRequireDefault(_DashboardEvent);
 	
@@ -958,7 +1249,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 145:
+/***/ 148:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -977,15 +1268,19 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _CalendarDayBlock = __webpack_require__(292);
+	var _CalendarDayBlock = __webpack_require__(142);
 	
 	var _CalendarDayBlock2 = _interopRequireDefault(_CalendarDayBlock);
+	
+	var _EventDetails = __webpack_require__(144);
+	
+	var _EventDetails2 = _interopRequireDefault(_EventDetails);
 	
 	var _helperActions = __webpack_require__(28);
 	
 	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
-	var _helpers = __webpack_require__(152);
+	var _helpers = __webpack_require__(155);
 	
 	var _helpers2 = _interopRequireDefault(_helpers);
 	
@@ -1013,12 +1308,12 @@ webpackJsonp([1],{
 	    }
 	  }, {
 	    key: 'printCalendar',
-	    value: function printCalendar(numOfDaysInMonth, firstDay, monthName) {
+	    value: function printCalendar(numOfDaysInMonth, firstDay, monthName, allEvents) {
 	      var content = [];
 	
 	      //prepend empty divs
 	      for (var i = 1; i <= firstDay - 1; i++) {
-	        content.push(_react2.default.createElement('div', {
+	        content.push(_react2.default.createElement('figure', {
 	          key: 'emptyPrepend-' + i,
 	          className: 'calendar-day-block flexible flex' }));
 	      }
@@ -1030,15 +1325,20 @@ webpackJsonp([1],{
 	        if (monthCalendarDay > 7) monthCalendarDay = 1;
 	
 	        today = {
-	          numOfDay: monthCalendarDay,
+	          numOfDayInWeek: monthCalendarDay,
+	          numOfDayInMonth: day,
 	          slug: _helpers2.default.normalizeDay(monthCalendarDay).slug
 	        };
+	
+	        var daySpecificEvents = this.gatherEvents(allEvents, today.numOfDayInMonth);
 	
 	        content.push(_react2.default.createElement(_CalendarDayBlock2.default, {
 	          monthName: monthName,
 	          key: monthName + '-' + day + '-' + today.slug,
 	          day: today.slug,
 	          dayNum: day,
+	          events: daySpecificEvents,
+	          dispatch: this.props.dispatch,
 	          weekend: true ? today.slug === 'Sat' || today.slug === 'Sun' : ''
 	        }));
 	
@@ -1047,7 +1347,7 @@ webpackJsonp([1],{
 	
 	      //append empty divs
 	      for (var _i = 0; _i < 35 - (numOfDaysInMonth + firstDay - 1); _i++) {
-	        content.push(_react2.default.createElement('div', {
+	        content.push(_react2.default.createElement('figure', {
 	          key: 'emptyAppend-' + _i,
 	          className: 'calendar-day-block flexible flex' }));
 	      }
@@ -1055,8 +1355,17 @@ webpackJsonp([1],{
 	      return content;
 	    }
 	  }, {
+	    key: 'gatherEvents',
+	    value: function gatherEvents(allEvents, dayNum) {
+	      return allEvents.filter(function (event) {
+	        return event.dayNum === dayNum;
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react2.default.createElement(
 	        'section',
 	        { className: 'deadlines-wrapper wrapper user-wrapper' },
@@ -1097,7 +1406,7 @@ webpackJsonp([1],{
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'calendar-content flexible flex' },
-	                this.printCalendar(this.props.date.numOfDaysInMonth, this.props.date.firstDay, _helpers2.default.normalizeMonth(this.props.date.month).full)
+	                this.printCalendar(this.props.date.numOfDaysInMonth, this.props.date.firstDay, _helpers2.default.normalizeMonth(this.props.date.month).full, this.props.events)
 	              )
 	            )
 	          ),
@@ -1152,7 +1461,13 @@ webpackJsonp([1],{
 	                  'Low'
 	                )
 	              )
-	            )
+	            ),
+	            this.props.eventDetails ? _react2.default.createElement(_EventDetails2.default, {
+	              dispatch: this.props.dispatch,
+	              event: this.props.events.find(function (event) {
+	                return event.eventId === _this2.props.eventDetails;
+	              })
+	            }) : ''
 	          )
 	        )
 	      );
@@ -1166,7 +1481,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 146:
+/***/ 149:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1230,7 +1545,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 147:
+/***/ 150:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1251,9 +1566,13 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _MyWeekEvent = __webpack_require__(143);
+	var _MyWeekEvent = __webpack_require__(146);
 	
 	var _MyWeekEvent2 = _interopRequireDefault(_MyWeekEvent);
+	
+	var _EventDetails = __webpack_require__(144);
+	
+	var _EventDetails2 = _interopRequireDefault(_EventDetails);
 	
 	var _helperActions = __webpack_require__(28);
 	
@@ -1341,6 +1660,7 @@ webpackJsonp([1],{
 	      return events.map(function (event) {
 	        return _react2.default.createElement(_MyWeekEvent2.default, _extends({
 	          key: event.eventId,
+	          dispatch: _this4.props.dispatch,
 	          minuteInPixels: _this4.props.minuteInPixels,
 	          hourInMinutes: _this4.props.hourInMinutes
 	        }, event));
@@ -1349,6 +1669,8 @@ webpackJsonp([1],{
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this5 = this;
+	
 	      return _react2.default.createElement(
 	        'section',
 	        { className: 'week-wrapper wrapper user-wrapper' },
@@ -1421,7 +1743,13 @@ webpackJsonp([1],{
 	                  'Low'
 	                )
 	              )
-	            )
+	            ),
+	            this.props.eventDetails ? _react2.default.createElement(_EventDetails2.default, {
+	              dispatch: this.props.dispatch,
+	              event: this.props.events.find(function (event) {
+	                return event.eventId === _this5.props.eventDetails;
+	              })
+	            }) : ''
 	          )
 	        )
 	      );
@@ -1435,7 +1763,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 148:
+/***/ 151:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1485,7 +1813,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 149:
+/***/ 152:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1549,7 +1877,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 150:
+/***/ 153:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1632,7 +1960,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 151:
+/***/ 154:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1717,7 +2045,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 152:
+/***/ 155:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1748,7 +2076,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 153:
+/***/ 156:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1762,9 +2090,15 @@ webpackJsonp([1],{
 	
 	function reducer(state, action) {
 	  switch (action.type) {
+	    //helper reducer
 	    case 'CHANGE_ROUTE':
 	      return Object.assign.apply(Object, [{}, state, {
 	        route: action.payload
+	      }].concat(_toConsumableArray(state)));
+	    //event reducer
+	    case 'EVENT_DETAILS':
+	      return Object.assign.apply(Object, [{}, state, {
+	        eventDetails: action.payload
 	      }].concat(_toConsumableArray(state)));
 	    default:
 	      return state;
@@ -1773,7 +2107,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 154:
+/***/ 157:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1796,35 +2130,35 @@ webpackJsonp([1],{
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _Signup = __webpack_require__(151);
+	var _Signup = __webpack_require__(154);
 	
 	var _Signup2 = _interopRequireDefault(_Signup);
 	
-	var _Signin = __webpack_require__(150);
+	var _Signin = __webpack_require__(153);
 	
 	var _Signin2 = _interopRequireDefault(_Signin);
 	
-	var _Dashboard = __webpack_require__(144);
+	var _Dashboard = __webpack_require__(147);
 	
 	var _Dashboard2 = _interopRequireDefault(_Dashboard);
 	
-	var _MyWeek = __webpack_require__(147);
+	var _MyWeek = __webpack_require__(150);
 	
 	var _MyWeek2 = _interopRequireDefault(_MyWeek);
 	
-	var _Deadlines = __webpack_require__(145);
+	var _Deadlines = __webpack_require__(148);
 	
 	var _Deadlines2 = _interopRequireDefault(_Deadlines);
 	
-	var _Grades = __webpack_require__(146);
+	var _Grades = __webpack_require__(149);
 	
 	var _Grades2 = _interopRequireDefault(_Grades);
 	
-	var _Notes = __webpack_require__(149);
+	var _Notes = __webpack_require__(152);
 	
 	var _Notes2 = _interopRequireDefault(_Notes);
 	
-	var _NotFound = __webpack_require__(148);
+	var _NotFound = __webpack_require__(151);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
@@ -1873,7 +2207,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 155:
+/***/ 158:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1889,11 +2223,22 @@ webpackJsonp([1],{
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
-	var _reducer = __webpack_require__(153);
+	var _reducer = __webpack_require__(156);
 	
 	var _reducer2 = _interopRequireDefault(_reducer);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// let reducers = combineReducers({
+	//   helperReducer,
+	//   toDoReducer
+	// });
+	
+	var reducers = _reducer2.default;
+	
+	// import initialState from './config';
+	// import helperReducer from './reducers/helperReducer';
+	// import toDoReducer from './reducers/toDoReducer';
 	
 	var reduxCreateStore = (0, _redux.compose)((0, _redux.applyMiddleware)((0, _reduxLogger2.default)()))(_redux.createStore);
 	
@@ -1924,11 +2269,111 @@ webpackJsonp([1],{
 	    dayByHours: ['08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM', '12:00 AM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM', '07:00 PM', '08:00 PM', '09:00 PM', '10:00 PM', '11:00 PM', '12:00 PM', '01:00 AM', '02:00 AM', '03:00 AM', '04:00 AM', '05:00 AM', '06:00 AM', '07:00 AM'],
 	    weekByDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 	    dayInMinutes: 1440,
+	    eventDetails: 'e4ryuio78',
 	    events: [{
 	      eventId: 'sadgkagsdhl',
 	      eventHeadline: 'First ToDo',
 	      eventDesc: 'First Mock Todo For Testing',
 	      day: 'Mon',
+	      dayNum: 13,
+	      fullStartTime: '08:00 AM',
+	      hour: '8',
+	      startInMin: 480,
+	      timeOfDay: 'AM',
+	      end: '09:00 AM',
+	      endInMin: 540,
+	      durationInMin: 60,
+	      priority: 'high'
+	    }, {
+	      eventId: '26265257',
+	      eventHeadline: 'First ToDo',
+	      eventDesc: 'First Mock Todo For Testing',
+	      day: 'Mon',
+	      dayNum: 13,
+	      fullStartTime: '08:00 AM',
+	      hour: '8',
+	      startInMin: 480,
+	      timeOfDay: 'AM',
+	      end: '09:00 AM',
+	      endInMin: 540,
+	      durationInMin: 60,
+	      priority: 'high'
+	    }, {
+	      eventId: '265i562i',
+	      eventHeadline: 'First ToDo',
+	      eventDesc: 'First Mock Todo For Testing',
+	      day: 'Mon',
+	      dayNum: 13,
+	      fullStartTime: '08:00 AM',
+	      hour: '8',
+	      startInMin: 480,
+	      timeOfDay: 'AM',
+	      end: '09:00 AM',
+	      endInMin: 540,
+	      durationInMin: 60,
+	      priority: 'high'
+	    }, {
+	      eventId: 'rhsth42',
+	      eventHeadline: 'First ToDo',
+	      eventDesc: 'First Mock Todo For Testing',
+	      day: 'Mon',
+	      dayNum: 13,
+	      fullStartTime: '08:00 AM',
+	      hour: '8',
+	      startInMin: 480,
+	      timeOfDay: 'AM',
+	      end: '09:00 AM',
+	      endInMin: 540,
+	      durationInMin: 60,
+	      priority: 'high'
+	    }, {
+	      eventId: '367jyetj65',
+	      eventHeadline: 'First ToDo',
+	      eventDesc: 'First Mock Todo For Testing',
+	      day: 'Mon',
+	      dayNum: 13,
+	      fullStartTime: '08:00 AM',
+	      hour: '8',
+	      startInMin: 480,
+	      timeOfDay: 'AM',
+	      end: '09:00 AM',
+	      endInMin: 540,
+	      durationInMin: 60,
+	      priority: 'high'
+	    }, {
+	      eventId: '25j6ej653w5',
+	      eventHeadline: 'First ToDo',
+	      eventDesc: 'First Mock Todo For Testing',
+	      day: 'Mon',
+	      dayNum: 13,
+	      fullStartTime: '08:00 AM',
+	      hour: '8',
+	      startInMin: 480,
+	      timeOfDay: 'AM',
+	      end: '09:00 AM',
+	      endInMin: 540,
+	      durationInMin: 60,
+	      priority: 'high'
+	    }, {
+	      eventId: '235i76etdy',
+	      eventHeadline: 'First ToDo',
+	      eventDesc: 'First Mock Todo For Testing',
+	      day: 'Mon',
+	      dayNum: 13,
+	      fullStartTime: '08:00 AM',
+	      hour: '8',
+	      startInMin: 480,
+	      timeOfDay: 'AM',
+	      end: '09:00 AM',
+	      endInMin: 540,
+	      durationInMin: 60,
+	      priority: 'high'
+	    }, {
+	      eventId: '6jdfsxjfs',
+	      eventHeadline: 'First ToDo',
+	      eventDesc: 'First Mock Todo For Testing',
+	      day: 'Mon',
+	      dayNum: 13,
 	      fullStartTime: '08:00 AM',
 	      hour: '8',
 	      startInMin: 480,
@@ -1942,6 +2387,7 @@ webpackJsonp([1],{
 	      eventHeadline: 'Second ToDo',
 	      eventDesc: 'Second Mock Todo For Testing',
 	      day: 'Tue',
+	      dayNum: 14,
 	      fullStartTime: '09:15 AM',
 	      hour: '9',
 	      startInMin: 555,
@@ -1955,6 +2401,7 @@ webpackJsonp([1],{
 	      eventHeadline: 'Third ToDo',
 	      eventDesc: 'Third Mock Todo For Testing',
 	      day: 'Thu',
+	      dayNum: 16,
 	      fullStartTime: '12:00 AM',
 	      hour: '12',
 	      startInMin: 720,
@@ -1968,6 +2415,7 @@ webpackJsonp([1],{
 	      eventHeadline: 'Fourth ToDo',
 	      eventDesc: 'Fourth Mock Todo For Testing',
 	      day: 'Sat',
+	      dayNum: 18,
 	      fullStartTime: '08:45 AM',
 	      hour: '8',
 	      startInMin: 525,
@@ -1981,6 +2429,7 @@ webpackJsonp([1],{
 	      eventHeadline: 'Fifth ToDo',
 	      eventDesc: 'Fifth Mock Todo For Testing',
 	      day: 'Mon',
+	      dayNum: 13,
 	      fullStartTime: '05:00 PM',
 	      hour: '5',
 	      startInMin: 300,
@@ -1994,6 +2443,7 @@ webpackJsonp([1],{
 	      eventHeadline: 'Sixth ToDo',
 	      eventDesc: 'Sixth Mock Todo For Testing',
 	      day: 'Fri',
+	      dayNum: 17,
 	      fullStartTime: '01:00 AM',
 	      hour: '1',
 	      startInMin: 60,
@@ -2005,73 +2455,15 @@ webpackJsonp([1],{
 	    }]
 	  };
 	
-	  return reduxCreateStore(_reducer2.default, initialState);
+	  return reduxCreateStore(reducers, initialState);
 	}
 
 /***/ },
 
-/***/ 160:
+/***/ 163:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-
-/***/ },
-
-/***/ 292:
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var CalendarDayBlock = function (_React$Component) {
-	  _inherits(CalendarDayBlock, _React$Component);
-	
-	  function CalendarDayBlock(props, context) {
-	    _classCallCheck(this, CalendarDayBlock);
-	
-	    return _possibleConstructorReturn(this, (CalendarDayBlock.__proto__ || Object.getPrototypeOf(CalendarDayBlock)).call(this, props, context));
-	  }
-	
-	  _createClass(CalendarDayBlock, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        {
-	          "data-month": this.props.monthName,
-	          "data-day": this.props.day,
-	          "data-weekend": this.props.weekend,
-	          className: "calendar-day-block flexible flex" },
-	        _react2.default.createElement(
-	          "span",
-	          { className: "day-indicator flex flex--center text-green" },
-	          this.props.dayNum
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return CalendarDayBlock;
-	}(_react2.default.Component);
-	
-	exports.default = CalendarDayBlock;
 
 /***/ }
 

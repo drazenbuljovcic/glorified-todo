@@ -1,31 +1,6 @@
-import {
-  applyMiddleware,
-  compose,
-  createStore,
-  combineReducers
-} from 'redux';
-import logger from 'redux-logger';
-
-// import initialState from './config';
-// import helperReducer from './reducers/helperReducer';
-// import toDoReducer from './reducers/toDoReducer';
-
-import reducer from './reducers/reducer';
-
-// let reducers = combineReducers({
-//   helperReducer,
-//   toDoReducer
-// });
-
-let reducers = reducer;
-
-let reduxCreateStore = compose(
-  applyMiddleware(logger())
-)(createStore);
-
 let date = new Date();
 
-export default function configStore(initialState = {
+export default {
   env: process.env.env,
   user: {
     userLoggedIn: true,
@@ -56,7 +31,6 @@ export default function configStore(initialState = {
     'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
   ],
   dayInMinutes: 1440,
-  eventDetails: 'e4ryuio78',
   events: [
     {
       eventId: 'sadgkagsdhl',
@@ -73,111 +47,6 @@ export default function configStore(initialState = {
       durationInMin: 60,
       priority: 'high'
     },
-    {
-      eventId: '26265257',
-      eventHeadline: 'First ToDo',
-      eventDesc: 'First Mock Todo For Testing',
-      day: 'Mon',
-      dayNum: 13,
-      fullStartTime: '08:00 AM',
-      hour: '8',
-      startInMin: 480,
-      timeOfDay: 'AM',
-      end: '09:00 AM',
-      endInMin: 540,
-      durationInMin: 60,
-      priority: 'high'
-    },
-    {
-      eventId: '265i562i',
-      eventHeadline: 'First ToDo',
-      eventDesc: 'First Mock Todo For Testing',
-      day: 'Mon',
-      dayNum: 13,
-      fullStartTime: '08:00 AM',
-      hour: '8',
-      startInMin: 480,
-      timeOfDay: 'AM',
-      end: '09:00 AM',
-      endInMin: 540,
-      durationInMin: 60,
-      priority: 'high'
-    },
-    {
-      eventId: 'rhsth42',
-      eventHeadline: 'First ToDo',
-      eventDesc: 'First Mock Todo For Testing',
-      day: 'Mon',
-      dayNum: 13,
-      fullStartTime: '08:00 AM',
-      hour: '8',
-      startInMin: 480,
-      timeOfDay: 'AM',
-      end: '09:00 AM',
-      endInMin: 540,
-      durationInMin: 60,
-      priority: 'high'
-    },
-    {
-      eventId: '367jyetj65',
-      eventHeadline: 'First ToDo',
-      eventDesc: 'First Mock Todo For Testing',
-      day: 'Mon',
-      dayNum: 13,
-      fullStartTime: '08:00 AM',
-      hour: '8',
-      startInMin: 480,
-      timeOfDay: 'AM',
-      end: '09:00 AM',
-      endInMin: 540,
-      durationInMin: 60,
-      priority: 'high'
-    },
-    {
-      eventId: '25j6ej653w5',
-      eventHeadline: 'First ToDo',
-      eventDesc: 'First Mock Todo For Testing',
-      day: 'Mon',
-      dayNum: 13,
-      fullStartTime: '08:00 AM',
-      hour: '8',
-      startInMin: 480,
-      timeOfDay: 'AM',
-      end: '09:00 AM',
-      endInMin: 540,
-      durationInMin: 60,
-      priority: 'high'
-    },
-    {
-      eventId: '235i76etdy',
-      eventHeadline: 'First ToDo',
-      eventDesc: 'First Mock Todo For Testing',
-      day: 'Mon',
-      dayNum: 13,
-      fullStartTime: '08:00 AM',
-      hour: '8',
-      startInMin: 480,
-      timeOfDay: 'AM',
-      end: '09:00 AM',
-      endInMin: 540,
-      durationInMin: 60,
-      priority: 'high'
-    },
-    {
-      eventId: '6jdfsxjfs',
-      eventHeadline: 'First ToDo',
-      eventDesc: 'First Mock Todo For Testing',
-      day: 'Mon',
-      dayNum: 13,
-      fullStartTime: '08:00 AM',
-      hour: '8',
-      startInMin: 480,
-      timeOfDay: 'AM',
-      end: '09:00 AM',
-      endInMin: 540,
-      durationInMin: 60,
-      priority: 'high'
-    },    
     {
       eventId: 'dghdrhjtj',
       eventHeadline: 'Second ToDo',
@@ -254,6 +123,4 @@ export default function configStore(initialState = {
       priority: 'medium'
     },
   ]
-}) {
-  return reduxCreateStore(reducers, initialState);
 }
