@@ -7,10 +7,6 @@ export default class EventDetails extends React.Component {
     super(props, context);
   }
   
-  componentWillUnmount() {
-    this.props.dispatch(eventActions.resetEventDetails());
-  }
-  
   render() {
     return (
       <section className="event-details flex flex--column items--end">

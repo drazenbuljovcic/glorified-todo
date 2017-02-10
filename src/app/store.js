@@ -27,11 +27,18 @@ let date = new Date();
 
 export default function configStore(initialState = {
   env: process.env.env,
+  indicators: {
+    addEventIndicator: false,
+    dashboardDeleteIndicator: false
+  },
+  eventIdentifiers: {
+    eventDetails: null
+  },
   user: {
     userLoggedIn: true,
     userFirstName: 'Nebojsa'
   },
-  route: '',
+  route: null,
   date: {
     // current month
     month: date.getMonth() + 1,
@@ -56,7 +63,7 @@ export default function configStore(initialState = {
     'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
   ],
   dayInMinutes: 1440,
-  eventDetails: 'e4ryuio78',
+  eventDetails: '',
   events: [
     {
       eventId: 'sadgkagsdhl',

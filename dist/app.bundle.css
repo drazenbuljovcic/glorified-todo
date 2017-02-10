@@ -127,7 +127,7 @@ table {
 .block, .basic-modal div.divider:before, .basic-modal div.divider:after, .basic-modal aside.social-auth button:before, aside.weekly-manager ul.task-priorities li.task-priority span:before, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span:before {
   display: block; }
 
-.hide, header.main-header div i.mobile-nav-toggle {
+.hide, header.main-header div nav i.mobile-nav-toggle {
   display: none; }
 
 .fixed {
@@ -136,7 +136,7 @@ table {
 .relative, .basic-modal div.divider:before, .basic-modal div.divider:after, .basic-modal aside.social-auth button, aside.weekly-manager ul.task-priorities, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
   position: relative; }
 
-.absolute, .basic-modal aside.social-auth button:before, aside.weekly-manager ul.task-priorities li.task-priority span:before, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span:before {
+.absolute, .basic-modal aside.social-auth button:before, aside.weekly-manager ul.task-priorities li.task-priority span:before, .overlay, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span:before {
   position: absolute; }
 
 .center-block {
@@ -166,10 +166,10 @@ table {
 .bold-font, aside.weekly-manager ul.task-priorities li.task-priority span, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
   font-weight: bold; }
 
-.text-white, aside.user-panel nav ul a.active, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
+.text-white, header.main-header div h1.logo, aside.user-panel nav ul a.active, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
   color: #f1faf6; }
 
-.text-green, aside.weekly-manager ul.task-priorities h2, aside.weekly-manager ul.task-priorities li.task-priority span, aside.user-panel nav ul a, section.dashboard-event div header h2, section.dashboard-event div.event-duration h4, section.event-details h3, section.event-details h4 {
+.text-green, aside.weekly-manager ul.task-priorities h2, aside.weekly-manager ul.task-priorities li.task-priority span, header.main-header div nav ul.signing-links li.signing-link a.active button, aside.user-panel nav ul a, section.dashboard-event div header h2, section.dashboard-event div.event-duration h4, section.event-details h3, section.event-details h4 {
   color: #87d5b2; }
 
 .uppercase, aside.weekly-manager ul.task-priorities h2, aside.weekly-manager ul.task-priorities li.task-priority span, aside.user-panel nav ul a, section.event-details h3, section.event-details h4, section.dashboard-wrapper main dialog.dashboard-modal header.dashboard-modal-header ul.task-priorities li.task-priority span {
@@ -410,9 +410,11 @@ form ul {
   -webkit-box-shadow: inset 0 0 10px rgba(241, 250, 246, 0.6);
   background-color: rgba(135, 213, 178, 0.6); }
 
-.hour-space {
-  width: auto;
-  height: calc(60 * 2px); }
+.overlay {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; }
 
 header.main-header {
   height: 80px;
@@ -421,6 +423,8 @@ header.main-header {
   box-shadow: 0 5px 15px rgba(34, 49, 63, 0.4); }
   header.main-header div {
     padding: 0 20px; }
+    header.main-header div h1.logo {
+      text-decoration: none; }
     header.main-header div nav ul.signing-links li.signing-link {
       padding: 10px; }
       header.main-header div nav ul.signing-links li.signing-link a {
@@ -428,11 +432,14 @@ header.main-header {
         header.main-header div nav ul.signing-links li.signing-link a button {
           width: 150px; }
         header.main-header div nav ul.signing-links li.signing-link a.active button {
-          background-color: #f1faf6;
-          color: #87d5b2; }
-    header.main-header div i.mobile-nav-toggle {
+          background-color: #f1faf6; }
+    header.main-header div nav i.mobile-nav-toggle {
       width: 0px;
       height: 0px; }
+    header.main-header div div i.new-event {
+      cursor: pointer; }
+      header.main-header div div i.new-event::before {
+        font-size: 2.5em; }
 
 @media screen and (max-width: 660px) {
   header.main-header div nav ul.signing-links {
@@ -597,6 +604,22 @@ section.event-details {
     padding: 10px; }
   section.event-details div.event-duration span {
     font-size: 1em; }
+
+div.overlay {
+  background-color: rgba(36, 92, 77, 0.5);
+  cursor: pointer; }
+  div.overlay div {
+    cursor: default;
+    width: 500px;
+    height: 500px;
+    background-color: #f1faf6; }
+
+div.delete-dashboard-event i {
+  padding: 10px;
+  cursor: pointer; }
+  div.delete-dashboard-event i:before {
+    font-size: 2em;
+    color: rgba(169, 33, 24, 0.6); }
 
 @media screen and (max-width: 660px) {
   div.signin-wrapper div.signin-modal {

@@ -3,6 +3,7 @@ import React from 'react';
 import AsideNav from '../modules/AsideNav';
 import MyWeekEvent from '../modules/MyWeekEvent';
 import EventDetails from '../modules/EventDetails'
+import AddEvent from '../modules/AddEvent';
 
 import helperActions from '../../actions/helperActions';
 
@@ -68,7 +69,7 @@ export default class MyWeek extends React.Component {
     return (
       <section className="week-wrapper wrapper user-wrapper">
         <AsideNav userFirstName={this.props.user.userFirstName} />
-        <main className="flexible flex flex--row">
+        <main className="flexible flex flex--row relative">
           <section className="weekly-events flexible flex flex--row height-100">
             <div className="day-timeline flex flex--column">{this.getDayByHours(true)}</div>
             <div className="week-timeline flexible flex flex--row">{this.getWeekByDays()}</div>
@@ -94,16 +95,23 @@ export default class MyWeek extends React.Component {
               </li>
             </ul>
             {
-              this.props.eventDetails
+              this.props.eventIdentifiers.eventDetails
               ?
                 <EventDetails 
                   dispatch={this.props.dispatch}
-                  event={this.props.events.find(event => event.eventId === this.props.eventDetails)} 
+                  event={this.props.events.find(event => event.eventId === this.props.eventIdentifiers.eventDetails)} 
                 />
               : 
-                ''
+                null
             }
           </aside>
+          {
+            this.props.indicators.addEventIndicator
+              ? 
+                <AddEvent dispatch={this.props.dispatch}/>
+              : 
+                null
+          }
         </main>
       </section>
     )

@@ -62,6 +62,8 @@ class Page extends React.Component {
             <Header 
               user={this.props.user}
               route={this.props.route}
+              dispatch={this.props.dispatch}
+              addEventIndicator={this.props.indicators.addEventIndicator}
               />
             <Main 
               children={this.props.children}

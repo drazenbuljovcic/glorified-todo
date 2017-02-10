@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import helperActions from '../../actions/helperActions.js';
+import helperActions from '../../actions/helperActions';
 
-import AsideNav from '../modules/AsideNav.js';
+import AsideNav from '../modules/AsideNav';
 import DashboardEvent from '../modules/DashboardEvent';
+import AddEvent from '../modules/AddEvent';
 
 export default class Dashboard extends React.Component {
 
@@ -35,7 +36,7 @@ export default class Dashboard extends React.Component {
   }
 
   renderEvent(event) {
-    return <DashboardEvent key={event.eventId} {...event} />;
+    return <DashboardEvent dispatch={this.props.dispatch} key={event.eventId} {...event} />;
   }
 
   switchTab(priority) {
@@ -47,7 +48,7 @@ export default class Dashboard extends React.Component {
     return (
       <section className="dashboard-wrapper wrapper user-wrapper">
         <AsideNav userFirstName={this.props.user.userFirstName} />
-        <main className="flexible flex flex--column flex--center">
+        <main className="flexible flex flex--column flex--center relative">
           <dialog className="dashboard-modal flex flex--column relative">
             <header className="dashboard-modal-header">
               <ul className="task-priorities flex flexible height-100">
@@ -79,6 +80,11 @@ export default class Dashboard extends React.Component {
               }
             </section>
           </dialog>
+          {
+            this.props.indicators.addEventIndicator
+              ? <AddEvent dispatch={this.props.dispatch}/>
+              : ''
+          }
         </main>
       </section>
     )

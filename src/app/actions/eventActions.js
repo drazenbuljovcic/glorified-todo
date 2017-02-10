@@ -8,11 +8,5 @@ export default {
       type: ACTIONS.EVENT_DETAILS,
       payload: event
     }
-  },
-  resetEventDetails(reset = '') {
-    return {
-      type: ACTIONS.EVENT_DETAILS,
-      payload: reset
-    }
   }
 }

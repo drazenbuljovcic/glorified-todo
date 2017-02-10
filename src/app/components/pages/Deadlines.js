@@ -3,6 +3,7 @@ import React from 'react';
 import AsideNav from '../modules/AsideNav';
 import CalendarDayBlock from '../modules/CalendarDayBlock';
 import EventDetails from '../modules/EventDetails';
+import AddEvent from '../modules/AddEvent';
 
 import helperActions from '../../actions/helperActions';
 
@@ -80,7 +81,7 @@ export default class Deadlines extends React.Component {
     return (
       <section className="deadlines-wrapper wrapper user-wrapper">
         <AsideNav userFirstName={this.props.user.userFirstName} />
-        <main className="flexible flex flex--row">
+        <main className="flexible flex flex--row relative">
           <section className="deadlines-calendar flexible flex flex--column">
             <h2 className="text-green">
               {helpers.normalizeMonth(this.props.date.month).full}
@@ -134,16 +135,23 @@ export default class Deadlines extends React.Component {
               </li>
             </ul>
             {
-              this.props.eventDetails
+              this.props.eventIdentifiers.eventDetails
               ?
                 <EventDetails 
                   dispatch={this.props.dispatch}
-                  event={this.props.events.find(event => event.eventId === this.props.eventDetails)} 
+                  event={this.props.events.find(event => event.eventId === this.props.eventIdentifiers.eventDetails)} 
                 />
               : 
-                ''
+                null
             }
           </aside>
+          {
+            this.props.indicators.addEventIndicator
+              ? 
+                <AddEvent dispatch={this.props.dispatch}/>
+              : 
+                null
+          }
         </main>
       </section>
     )

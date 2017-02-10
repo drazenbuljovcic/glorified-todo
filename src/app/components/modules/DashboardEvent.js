@@ -1,5 +1,7 @@
 import React from 'react';
 
+import DeleteDashboardEvent from './DeleteDashboardEvent';
+
 export default class DashboardEvent extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -7,7 +9,7 @@ export default class DashboardEvent extends React.Component {
   render() {
     return (
       <section
-        className="dashboard-event flex"
+        className="dashboard-event flex relative"
         data-priority={this.props.priority}>
         <div className="flexible">
           <header><h2>{this.props.eventHeadline}</h2></header>
@@ -24,6 +26,9 @@ export default class DashboardEvent extends React.Component {
             <h4>End</h4>
           </div>
         </div>
+        <DeleteDashboardEvent 
+          dispatch={this.props.dispatch}
+        />
       </section>
     )
   }

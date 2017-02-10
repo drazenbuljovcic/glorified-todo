@@ -12,7 +12,7 @@ export default class MyWeekEvent extends React.Component {
       this.eventDiv.style,
       {
         'height': this.props.durationInMin * this.props.minuteInPixels,
-        'top': this.calculateStartPoint(
+        'top': this.calculateStartingPoint(
             this.props.timeOfDay, 
             this.props.hour,
             this.props.startInMin
@@ -21,7 +21,7 @@ export default class MyWeekEvent extends React.Component {
     )
   }
 
-  calculateStartPoint(timeOfDay, hour, startInMin) {
+  calculateStartingPoint(timeOfDay, hour, startInMin) {
     //set child top position
     let top = 54; //default starting point
     
@@ -42,7 +42,6 @@ export default class MyWeekEvent extends React.Component {
   }
 
   eventDetails(dispatch, eventId) {
-    console.log(eventId);
     dispatch(eventActions.eventDetails(eventId));
   }
 

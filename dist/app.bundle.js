@@ -9,26 +9,26 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(38);
+	var _reactDom = __webpack_require__(39);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _reactRouter = __webpack_require__(26);
+	var _reactRouter = __webpack_require__(27);
 	
-	var _reactRedux = __webpack_require__(39);
+	var _reactRedux = __webpack_require__(40);
 	
-	var _store = __webpack_require__(158);
+	var _store = __webpack_require__(160);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _routes = __webpack_require__(157);
+	var _routes = __webpack_require__(159);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(163);
-	__webpack_require__(80);
+	__webpack_require__(165);
+	__webpack_require__(83);
 	
 	console.clear();
 	_reactDom2.default.render(_react2.default.createElement(
@@ -43,7 +43,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 28:
+/***/ 16:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52,7 +52,9 @@ webpackJsonp([1],{
 	  value: true
 	});
 	var ACTIONS = {
-	  CHANGE_ROUTE: 'CHANGE_ROUTE'
+	  CHANGE_ROUTE: 'CHANGE_ROUTE',
+	  SET_ADD_EVENT_INDICATOR: 'SET_ADD_EVENT_INDICATOR',
+	  SET_DASHBOARD_DELETE_INDICATOR: 'SET_DASHBOARD_DELETE_INDICATOR'
 	};
 	
 	exports.default = {
@@ -60,6 +62,18 @@ webpackJsonp([1],{
 	    return {
 	      type: ACTIONS.CHANGE_ROUTE,
 	      payload: route
+	    };
+	  },
+	  setAddEventIndicator: function setAddEventIndicator(indicator) {
+	    return {
+	      type: ACTIONS.SET_ADD_EVENT_INDICATOR,
+	      payload: indicator
+	    };
+	  },
+	  setDashboardDeleteIndicator: function setDashboardDeleteIndicator(indicator) {
+	    return {
+	      type: ACTIONS.SET_DASHBOARD_DELETE_INDICATOR,
+	      payload: indicator
 	    };
 	  }
 	};
@@ -81,7 +95,87 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(26);
+	var _helperActions = __webpack_require__(16);
+	
+	var _helperActions2 = _interopRequireDefault(_helperActions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var AddEvent = function (_React$Component) {
+	  _inherits(AddEvent, _React$Component);
+	
+	  function AddEvent(props, context) {
+	    _classCallCheck(this, AddEvent);
+	
+	    return _possibleConstructorReturn(this, (AddEvent.__proto__ || Object.getPrototypeOf(AddEvent)).call(this, props, context));
+	  }
+	
+	  _createClass(AddEvent, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      console.log('Mounting AddEvent component');
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      console.log('Unmounting AddEvent component');
+	    }
+	  }, {
+	    key: 'setAddEventIndicator',
+	    value: function setAddEventIndicator(e, indicator) {
+	      if (this.overlayDiv === e.target) {
+	        this.props.dispatch(_helperActions2.default.setAddEventIndicator(indicator));
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          ref: function ref(overlayDiv) {
+	            return _this2.overlayDiv = overlayDiv;
+	          },
+	          onClick: function onClick(e) {
+	            return _this2.setAddEventIndicator(e, false);
+	          },
+	          className: 'overlay wrapper flex flex--center' },
+	        _react2.default.createElement('div', null)
+	      );
+	    }
+	  }]);
+	
+	  return AddEvent;
+	}(_react2.default.Component);
+	
+	exports.default = AddEvent;
+
+/***/ },
+
+/***/ 30:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(27);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -190,7 +284,145 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 78:
+/***/ 51:
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var ACTIONS = {
+	  'EVENT_DETAILS': 'EVENT_DETAILS'
+	};
+	
+	exports.default = {
+	  eventDetails: function eventDetails(event) {
+	    return {
+	      type: ACTIONS.EVENT_DETAILS,
+	      payload: event
+	    };
+	  }
+	};
+
+/***/ },
+
+/***/ 80:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _eventActions = __webpack_require__(51);
+	
+	var _eventActions2 = _interopRequireDefault(_eventActions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var EventDetails = function (_React$Component) {
+	  _inherits(EventDetails, _React$Component);
+	
+	  function EventDetails(props, context) {
+	    _classCallCheck(this, EventDetails);
+	
+	    return _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this, props, context));
+	  }
+	
+	  _createClass(EventDetails, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'event-details flex flex--column items--end' },
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Event details'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          this.props.event.eventHeadline
+	        ),
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'Name'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          null,
+	          this.props.event.eventDesc
+	        ),
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'Description'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'event-duration flex' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'event-start' },
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              this.props.event.fullStartTime
+	            ),
+	            _react2.default.createElement(
+	              'h4',
+	              null,
+	              'Start'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            '-'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'event-end' },
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              this.props.event.end
+	            ),
+	            _react2.default.createElement(
+	              'h4',
+	              null,
+	              'End'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return EventDetails;
+	}(_react2.default.Component);
+	
+	exports.default = EventDetails;
+
+/***/ },
+
+/***/ 81:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -240,7 +472,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 79:
+/***/ 82:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -299,7 +531,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 140:
+/***/ 143:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -316,23 +548,23 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(38);
+	var _reactDom = __webpack_require__(39);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _reactRouter = __webpack_require__(26);
+	var _reactRouter = __webpack_require__(27);
 	
-	var _reactRedux = __webpack_require__(39);
+	var _reactRedux = __webpack_require__(40);
 	
-	var _promisePolyfill = __webpack_require__(94);
+	var _promisePolyfill = __webpack_require__(97);
 	
 	var _promisePolyfill2 = _interopRequireDefault(_promisePolyfill);
 	
-	var _Header = __webpack_require__(145);
+	var _Header = __webpack_require__(147);
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
-	var _Main = __webpack_require__(78);
+	var _Main = __webpack_require__(81);
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
@@ -421,7 +653,9 @@ webpackJsonp([1],{
 	            { className: 'wrapper' },
 	            _react2.default.createElement(_Header2.default, {
 	              user: this.props.user,
-	              route: this.props.route
+	              route: this.props.route,
+	              dispatch: this.props.dispatch,
+	              addEventIndicator: this.props.indicators.addEventIndicator
 	            }),
 	            _react2.default.createElement(_Main2.default, _extends({
 	              children: this.props.children
@@ -445,38 +679,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 141:
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var ACTIONS = {
-	  'EVENT_DETAILS': 'EVENT_DETAILS'
-	};
-	
-	exports.default = {
-	  eventDetails: function eventDetails(event) {
-	    return {
-	      type: ACTIONS.EVENT_DETAILS,
-	      payload: event
-	    };
-	  },
-	  resetEventDetails: function resetEventDetails() {
-	    var reset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-	
-	    return {
-	      type: ACTIONS.EVENT_DETAILS,
-	      payload: reset
-	    };
-	  }
-	};
-
-/***/ },
-
-/***/ 142:
+/***/ 144:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -491,7 +694,7 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _eventActions = __webpack_require__(141);
+	var _eventActions = __webpack_require__(51);
 	
 	var _eventActions2 = _interopRequireDefault(_eventActions);
 	
@@ -563,10 +766,10 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 143:
+/***/ 145:
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -577,6 +780,10 @@ webpackJsonp([1],{
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _DeleteDashboardEvent = __webpack_require__(146);
+	
+	var _DeleteDashboardEvent2 = _interopRequireDefault(_DeleteDashboardEvent);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -596,161 +803,41 @@ webpackJsonp([1],{
 	  }
 	
 	  _createClass(DashboardEvent, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "section",
+	        'section',
 	        {
-	          className: "dashboard-event flex",
-	          "data-priority": this.props.priority },
+	          className: 'dashboard-event flex relative',
+	          'data-priority': this.props.priority },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "flexible" },
+	          'div',
+	          { className: 'flexible' },
 	          _react2.default.createElement(
-	            "header",
+	            'header',
 	            null,
 	            _react2.default.createElement(
-	              "h2",
+	              'h2',
 	              null,
 	              this.props.eventHeadline
 	            )
 	          ),
 	          _react2.default.createElement(
-	            "div",
+	            'div',
 	            { className: 'event-details flexible' },
 	            this.props.eventDesc
 	          )
 	        ),
 	        _react2.default.createElement(
-	          "div",
-	          { className: "event-duration flex flex--around self--center" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "event-start" },
-	            _react2.default.createElement(
-	              "span",
-	              null,
-	              this.props.fullStartTime
-	            ),
-	            _react2.default.createElement(
-	              "h4",
-	              null,
-	              "Start"
-	            )
-	          ),
-	          _react2.default.createElement(
-	            "span",
-	            null,
-	            "-"
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "event-end" },
-	            _react2.default.createElement(
-	              "span",
-	              null,
-	              this.props.end
-	            ),
-	            _react2.default.createElement(
-	              "h4",
-	              null,
-	              "End"
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return DashboardEvent;
-	}(_react2.default.Component);
-	
-	exports.default = DashboardEvent;
-
-/***/ },
-
-/***/ 144:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _eventActions = __webpack_require__(141);
-	
-	var _eventActions2 = _interopRequireDefault(_eventActions);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var EventDetails = function (_React$Component) {
-	  _inherits(EventDetails, _React$Component);
-	
-	  function EventDetails(props, context) {
-	    _classCallCheck(this, EventDetails);
-	
-	    return _possibleConstructorReturn(this, (EventDetails.__proto__ || Object.getPrototypeOf(EventDetails)).call(this, props, context));
-	  }
-	
-	  _createClass(EventDetails, [{
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      this.props.dispatch(_eventActions2.default.resetEventDetails());
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'section',
-	        { className: 'event-details flex flex--column items--end' },
-	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          'Event details'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          this.props.event.eventHeadline
-	        ),
-	        _react2.default.createElement(
-	          'h4',
-	          null,
-	          'Name'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          null,
-	          this.props.event.eventDesc
-	        ),
-	        _react2.default.createElement(
-	          'h4',
-	          null,
-	          'Description'
-	        ),
-	        _react2.default.createElement(
 	          'div',
-	          { className: 'event-duration flex' },
+	          { className: 'event-duration flex flex--around self--center' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'event-start' },
 	            _react2.default.createElement(
 	              'span',
 	              null,
-	              this.props.event.fullStartTime
+	              this.props.fullStartTime
 	            ),
 	            _react2.default.createElement(
 	              'h4',
@@ -769,7 +856,7 @@ webpackJsonp([1],{
 	            _react2.default.createElement(
 	              'span',
 	              null,
-	              this.props.event.end
+	              this.props.end
 	            ),
 	            _react2.default.createElement(
 	              'h4',
@@ -777,19 +864,22 @@ webpackJsonp([1],{
 	              'End'
 	            )
 	          )
-	        )
+	        ),
+	        _react2.default.createElement(_DeleteDashboardEvent2.default, {
+	          dispatch: this.props.dispatch
+	        })
 	      );
 	    }
 	  }]);
 	
-	  return EventDetails;
+	  return DashboardEvent;
 	}(_react2.default.Component);
 	
-	exports.default = EventDetails;
+	exports.default = DashboardEvent;
 
 /***/ },
 
-/***/ 145:
+/***/ 146:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -804,11 +894,83 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(38);
+	var _helperActions = __webpack_require__(16);
+	
+	var _helperActions2 = _interopRequireDefault(_helperActions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var DeleteDashboardEvent = function (_React$Component) {
+	  _inherits(DeleteDashboardEvent, _React$Component);
+	
+	  function DeleteDashboardEvent(props, context) {
+	    _classCallCheck(this, DeleteDashboardEvent);
+	
+	    return _possibleConstructorReturn(this, (DeleteDashboardEvent.__proto__ || Object.getPrototypeOf(DeleteDashboardEvent)).call(this, props, context));
+	  }
+	
+	  _createClass(DeleteDashboardEvent, [{
+	    key: 'setDashboardDeleteIndicator',
+	    value: function setDashboardDeleteIndicator(e, indicator) {
+	      this.props.dispatch(_helperActions2.default.setDashboardDeleteIndicator(indicator));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'delete-dashboard-event' },
+	        _react2.default.createElement('i', {
+	          ref: function ref(deleteIndicator) {
+	            return _this2.deleteIndicator = deleteIndicator;
+	          },
+	          onClick: function onClick(e) {
+	            return _this2.setDashboardDeleteIndicator(e, true);
+	          },
+	          className: 'fa fa-times', 'aria-hidden': 'true', title: 'Delete Event' })
+	      );
+	    }
+	  }]);
+	
+	  return DeleteDashboardEvent;
+	}(_react2.default.Component);
+	
+	exports.default = DeleteDashboardEvent;
+
+/***/ },
+
+/***/ 147:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(39);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _reactRouter = __webpack_require__(26);
+	var _helperActions = __webpack_require__(16);
+	
+	var _helperActions2 = _interopRequireDefault(_helperActions);
+	
+	var _reactRouter = __webpack_require__(27);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -831,23 +993,6 @@ webpackJsonp([1],{
 	    };
 	    return _this;
 	  }
-	
-	  // componentWillMount() {
-	  // }
-	
-	  // componentDidMount() {
-	  // }
-	
-	  // shouldComponentUpdate() {
-	  //   console.log('Should header update')
-	  //   return true
-	  // }
-	  // componentWillUpdate() {
-	  //   console.log('header will update');
-	  // }
-	  // componentDidUpdate() {
-	  //   console.log('header did update');
-	  // }
 	
 	  _createClass(Header, [{
 	    key: 'hideMobileNav',
@@ -873,6 +1018,11 @@ webpackJsonp([1],{
 	          _this3.nav.classList.add('active');
 	        }
 	      });
+	    }
+	  }, {
+	    key: 'setAddEventIndicator',
+	    value: function setAddEventIndicator(indicator) {
+	      if (this.props.addEventIndicator !== indicator) this.props.dispatch(_helperActions2.default.setAddEventIndicator(indicator));
 	    }
 	  }, {
 	    key: 'render',
@@ -937,9 +1087,18 @@ webpackJsonp([1],{
 	                return _this4.toggleMobileNav();
 	              }, className: 'fa fa-bars mobile-nav-toggle', 'aria-hidden': 'true' })
 	          ) : _react2.default.createElement(
-	            'h2',
-	            { className: 'route-name flexible self--center text-white lighten-font center-text uppercase' },
-	            this.props.route
+	            'div',
+	            { className: 'flexible flex' },
+	            _react2.default.createElement(
+	              'h2',
+	              { className: 'route-name flexible self--center text-white lighten-font center-text uppercase' },
+	              this.props.route
+	            ),
+	            _react2.default.createElement('i', {
+	              onClick: function onClick() {
+	                return _this4.setAddEventIndicator(true);
+	              },
+	              className: 'new-event self--center text-white fa fa-calendar-plus-o', 'aria-hidden': 'true' })
 	          )
 	        )
 	      );
@@ -953,7 +1112,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 146:
+/***/ 148:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -968,7 +1127,7 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _eventActions = __webpack_require__(141);
+	var _eventActions = __webpack_require__(51);
 	
 	var _eventActions2 = _interopRequireDefault(_eventActions);
 	
@@ -994,12 +1153,12 @@ webpackJsonp([1],{
 	    value: function componentDidMount() {
 	      Object.assign(this.eventDiv.style, {
 	        'height': this.props.durationInMin * this.props.minuteInPixels,
-	        'top': this.calculateStartPoint(this.props.timeOfDay, this.props.hour, this.props.startInMin)
+	        'top': this.calculateStartingPoint(this.props.timeOfDay, this.props.hour, this.props.startInMin)
 	      });
 	    }
 	  }, {
-	    key: 'calculateStartPoint',
-	    value: function calculateStartPoint(timeOfDay, hour, startInMin) {
+	    key: 'calculateStartingPoint',
+	    value: function calculateStartingPoint(timeOfDay, hour, startInMin) {
 	      //set child top position
 	      var top = 54; //default starting point
 	
@@ -1021,7 +1180,6 @@ webpackJsonp([1],{
 	  }, {
 	    key: 'eventDetails',
 	    value: function eventDetails(dispatch, eventId) {
-	      console.log(eventId);
 	      dispatch(_eventActions2.default.eventDetails(eventId));
 	    }
 	  }, {
@@ -1066,7 +1224,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 147:
+/***/ 149:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1083,19 +1241,23 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(39);
+	var _reactRedux = __webpack_require__(40);
 	
-	var _helperActions = __webpack_require__(28);
+	var _helperActions = __webpack_require__(16);
 	
 	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
-	var _AsideNav = __webpack_require__(29);
+	var _AsideNav = __webpack_require__(30);
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _DashboardEvent = __webpack_require__(143);
+	var _DashboardEvent = __webpack_require__(145);
 	
 	var _DashboardEvent2 = _interopRequireDefault(_DashboardEvent);
+	
+	var _AddEvent = __webpack_require__(29);
+	
+	var _AddEvent2 = _interopRequireDefault(_AddEvent);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -1148,7 +1310,7 @@ webpackJsonp([1],{
 	  }, {
 	    key: 'renderEvent',
 	    value: function renderEvent(event) {
-	      return _react2.default.createElement(_DashboardEvent2.default, _extends({ key: event.eventId }, event));
+	      return _react2.default.createElement(_DashboardEvent2.default, _extends({ dispatch: this.props.dispatch, key: event.eventId }, event));
 	    }
 	  }, {
 	    key: 'switchTab',
@@ -1167,7 +1329,7 @@ webpackJsonp([1],{
 	        _react2.default.createElement(_AsideNav2.default, { userFirstName: this.props.user.userFirstName }),
 	        _react2.default.createElement(
 	          'main',
-	          { className: 'flexible flex flex--column flex--center' },
+	          { className: 'flexible flex flex--column flex--center relative' },
 	          _react2.default.createElement(
 	            'dialog',
 	            { className: 'dashboard-modal flex flex--column relative' },
@@ -1236,7 +1398,8 @@ webpackJsonp([1],{
 	              { className: 'dashboard-modal-content flexible' },
 	              this.FilterByPriorityAndRenderEvents(this.props.events, this.state.tabActive)
 	            )
-	          )
+	          ),
+	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : ''
 	        )
 	      );
 	    }
@@ -1249,7 +1412,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 148:
+/***/ 150:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1264,23 +1427,27 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _AsideNav = __webpack_require__(29);
+	var _AsideNav = __webpack_require__(30);
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _CalendarDayBlock = __webpack_require__(142);
+	var _CalendarDayBlock = __webpack_require__(144);
 	
 	var _CalendarDayBlock2 = _interopRequireDefault(_CalendarDayBlock);
 	
-	var _EventDetails = __webpack_require__(144);
+	var _EventDetails = __webpack_require__(80);
 	
 	var _EventDetails2 = _interopRequireDefault(_EventDetails);
 	
-	var _helperActions = __webpack_require__(28);
+	var _AddEvent = __webpack_require__(29);
+	
+	var _AddEvent2 = _interopRequireDefault(_AddEvent);
+	
+	var _helperActions = __webpack_require__(16);
 	
 	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
-	var _helpers = __webpack_require__(155);
+	var _helpers = __webpack_require__(157);
 	
 	var _helpers2 = _interopRequireDefault(_helpers);
 	
@@ -1372,7 +1539,7 @@ webpackJsonp([1],{
 	        _react2.default.createElement(_AsideNav2.default, { userFirstName: this.props.user.userFirstName }),
 	        _react2.default.createElement(
 	          'main',
-	          { className: 'flexible flex flex--row' },
+	          { className: 'flexible flex flex--row relative' },
 	          _react2.default.createElement(
 	            'section',
 	            { className: 'deadlines-calendar flexible flex flex--column' },
@@ -1462,13 +1629,14 @@ webpackJsonp([1],{
 	                )
 	              )
 	            ),
-	            this.props.eventDetails ? _react2.default.createElement(_EventDetails2.default, {
+	            this.props.eventIdentifiers.eventDetails ? _react2.default.createElement(_EventDetails2.default, {
 	              dispatch: this.props.dispatch,
 	              event: this.props.events.find(function (event) {
-	                return event.eventId === _this2.props.eventDetails;
+	                return event.eventId === _this2.props.eventIdentifiers.eventDetails;
 	              })
-	            }) : ''
-	          )
+	            }) : null
+	          ),
+	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : null
 	        )
 	      );
 	    }
@@ -1481,7 +1649,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 149:
+/***/ 151:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1496,11 +1664,15 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _AsideNav = __webpack_require__(29);
+	var _AsideNav = __webpack_require__(30);
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _helperActions = __webpack_require__(28);
+	var _AddEvent = __webpack_require__(29);
+	
+	var _AddEvent2 = _interopRequireDefault(_AddEvent);
+	
+	var _helperActions = __webpack_require__(16);
 	
 	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
@@ -1533,7 +1705,11 @@ webpackJsonp([1],{
 	        'section',
 	        { className: 'grades-wrapper wrapper user-wrapper' },
 	        _react2.default.createElement(_AsideNav2.default, { userFirstName: this.props.user.userFirstName }),
-	        _react2.default.createElement('main', { className: 'flexible flex flex--column' })
+	        _react2.default.createElement(
+	          'main',
+	          { className: 'flexible flex flex--column relative' },
+	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : ''
+	        )
 	      );
 	    }
 	  }]);
@@ -1545,7 +1721,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 150:
+/***/ 152:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1562,19 +1738,23 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _AsideNav = __webpack_require__(29);
+	var _AsideNav = __webpack_require__(30);
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _MyWeekEvent = __webpack_require__(146);
+	var _MyWeekEvent = __webpack_require__(148);
 	
 	var _MyWeekEvent2 = _interopRequireDefault(_MyWeekEvent);
 	
-	var _EventDetails = __webpack_require__(144);
+	var _EventDetails = __webpack_require__(80);
 	
 	var _EventDetails2 = _interopRequireDefault(_EventDetails);
 	
-	var _helperActions = __webpack_require__(28);
+	var _AddEvent = __webpack_require__(29);
+	
+	var _AddEvent2 = _interopRequireDefault(_AddEvent);
+	
+	var _helperActions = __webpack_require__(16);
 	
 	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
@@ -1677,7 +1857,7 @@ webpackJsonp([1],{
 	        _react2.default.createElement(_AsideNav2.default, { userFirstName: this.props.user.userFirstName }),
 	        _react2.default.createElement(
 	          'main',
-	          { className: 'flexible flex flex--row' },
+	          { className: 'flexible flex flex--row relative' },
 	          _react2.default.createElement(
 	            'section',
 	            { className: 'weekly-events flexible flex flex--row height-100' },
@@ -1744,13 +1924,14 @@ webpackJsonp([1],{
 	                )
 	              )
 	            ),
-	            this.props.eventDetails ? _react2.default.createElement(_EventDetails2.default, {
+	            this.props.eventIdentifiers.eventDetails ? _react2.default.createElement(_EventDetails2.default, {
 	              dispatch: this.props.dispatch,
 	              event: this.props.events.find(function (event) {
-	                return event.eventId === _this5.props.eventDetails;
+	                return event.eventId === _this5.props.eventIdentifiers.eventDetails;
 	              })
-	            }) : ''
-	          )
+	            }) : null
+	          ),
+	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : null
 	        )
 	      );
 	    }
@@ -1763,7 +1944,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 151:
+/***/ 153:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1813,7 +1994,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 152:
+/***/ 154:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1828,11 +2009,15 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _AsideNav = __webpack_require__(29);
+	var _AsideNav = __webpack_require__(30);
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _helperActions = __webpack_require__(28);
+	var _AddEvent = __webpack_require__(29);
+	
+	var _AddEvent2 = _interopRequireDefault(_AddEvent);
+	
+	var _helperActions = __webpack_require__(16);
 	
 	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
@@ -1865,7 +2050,11 @@ webpackJsonp([1],{
 	        'section',
 	        { className: 'notes-wrapper wrapper user-wrapper' },
 	        _react2.default.createElement(_AsideNav2.default, { userFirstName: this.props.user.userFirstName }),
-	        _react2.default.createElement('main', { className: 'flexible flex flex--column' })
+	        _react2.default.createElement(
+	          'main',
+	          { className: 'flexible flex flex--column relative' },
+	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : ''
+	        )
 	      );
 	    }
 	  }]);
@@ -1877,7 +2066,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 153:
+/***/ 155:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1892,7 +2081,7 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SocialAuth = __webpack_require__(79);
+	var _SocialAuth = __webpack_require__(82);
 	
 	var _SocialAuth2 = _interopRequireDefault(_SocialAuth);
 	
@@ -1960,7 +2149,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 154:
+/***/ 156:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1975,7 +2164,7 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SocialAuth = __webpack_require__(79);
+	var _SocialAuth = __webpack_require__(82);
 	
 	var _SocialAuth2 = _interopRequireDefault(_SocialAuth);
 	
@@ -2045,7 +2234,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 155:
+/***/ 157:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2076,7 +2265,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 156:
+/***/ 158:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2092,13 +2281,38 @@ webpackJsonp([1],{
 	  switch (action.type) {
 	    //helper reducer
 	    case 'CHANGE_ROUTE':
+	      console.log(action.payload);
+	      console.log(state.eventDetails);
+	      console.log(state.indicators);
+	      console.log(state.eventIdentifiers);
 	      return Object.assign.apply(Object, [{}, state, {
-	        route: action.payload
+	        route: action.payload,
+	        indicators: {
+	          addEventIndicator: false,
+	          dashboardDeleteIndicator: false
+	        },
+	        eventIdentifiers: {
+	          eventDetails: null
+	        }
+	      }].concat(_toConsumableArray(state)));
+	    case 'SET_ADD_EVENT_INDICATOR':
+	      return Object.assign.apply(Object, [{}, state, {
+	        indicators: Object.assign.apply(Object, [{}, {
+	          addEventIndicator: action.payload
+	        }].concat(_toConsumableArray(state.indicators)))
+	      }].concat(_toConsumableArray(state)));
+	    case 'SET_DASHBOARD_DELETE_INDICATOR':
+	      return Object.assign.apply(Object, [{}, state, {
+	        indicators: Object.assign.apply(Object, [{}, {
+	          dashboardDeleteIndicator: action.payload
+	        }].concat(_toConsumableArray(state.indicators)))
 	      }].concat(_toConsumableArray(state)));
 	    //event reducer
 	    case 'EVENT_DETAILS':
 	      return Object.assign.apply(Object, [{}, state, {
-	        eventDetails: action.payload
+	        eventIdentifiers: Object.assign.apply(Object, [{}, {
+	          eventDetails: action.payload
+	        }].concat(_toConsumableArray(state.eventIdentifiers)))
 	      }].concat(_toConsumableArray(state)));
 	    default:
 	      return state;
@@ -2107,7 +2321,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 157:
+/***/ 159:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2120,45 +2334,45 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(26);
+	var _reactRouter = __webpack_require__(27);
 	
-	var _Page = __webpack_require__(140);
+	var _Page = __webpack_require__(143);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
-	var _Main = __webpack_require__(78);
+	var _Main = __webpack_require__(81);
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _Signup = __webpack_require__(154);
+	var _Signup = __webpack_require__(156);
 	
 	var _Signup2 = _interopRequireDefault(_Signup);
 	
-	var _Signin = __webpack_require__(153);
+	var _Signin = __webpack_require__(155);
 	
 	var _Signin2 = _interopRequireDefault(_Signin);
 	
-	var _Dashboard = __webpack_require__(147);
+	var _Dashboard = __webpack_require__(149);
 	
 	var _Dashboard2 = _interopRequireDefault(_Dashboard);
 	
-	var _MyWeek = __webpack_require__(150);
+	var _MyWeek = __webpack_require__(152);
 	
 	var _MyWeek2 = _interopRequireDefault(_MyWeek);
 	
-	var _Deadlines = __webpack_require__(148);
+	var _Deadlines = __webpack_require__(150);
 	
 	var _Deadlines2 = _interopRequireDefault(_Deadlines);
 	
-	var _Grades = __webpack_require__(149);
+	var _Grades = __webpack_require__(151);
 	
 	var _Grades2 = _interopRequireDefault(_Grades);
 	
-	var _Notes = __webpack_require__(152);
+	var _Notes = __webpack_require__(154);
 	
 	var _Notes2 = _interopRequireDefault(_Notes);
 	
-	var _NotFound = __webpack_require__(151);
+	var _NotFound = __webpack_require__(153);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
@@ -2207,7 +2421,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 158:
+/***/ 160:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2217,13 +2431,13 @@ webpackJsonp([1],{
 	});
 	exports.default = configStore;
 	
-	var _redux = __webpack_require__(77);
+	var _redux = __webpack_require__(79);
 	
-	var _reduxLogger = __webpack_require__(136);
+	var _reduxLogger = __webpack_require__(139);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
-	var _reducer = __webpack_require__(156);
+	var _reducer = __webpack_require__(158);
 	
 	var _reducer2 = _interopRequireDefault(_reducer);
 	
@@ -2247,11 +2461,18 @@ webpackJsonp([1],{
 	function configStore() {
 	  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 	    env: ({"env":"development"}).env,
+	    indicators: {
+	      addEventIndicator: false,
+	      dashboardDeleteIndicator: false
+	    },
+	    eventIdentifiers: {
+	      eventDetails: null
+	    },
 	    user: {
 	      userLoggedIn: true,
 	      userFirstName: 'Nebojsa'
 	    },
-	    route: '',
+	    route: null,
 	    date: {
 	      // current month
 	      month: date.getMonth() + 1,
@@ -2269,7 +2490,7 @@ webpackJsonp([1],{
 	    dayByHours: ['08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM', '12:00 AM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM', '07:00 PM', '08:00 PM', '09:00 PM', '10:00 PM', '11:00 PM', '12:00 PM', '01:00 AM', '02:00 AM', '03:00 AM', '04:00 AM', '05:00 AM', '06:00 AM', '07:00 AM'],
 	    weekByDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 	    dayInMinutes: 1440,
-	    eventDetails: 'e4ryuio78',
+	    eventDetails: '',
 	    events: [{
 	      eventId: 'sadgkagsdhl',
 	      eventHeadline: 'First ToDo',
@@ -2460,7 +2681,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 163:
+/***/ 165:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

@@ -8,21 +8,30 @@ header.main-header
   box-shadow: $standard-shadow
   div
     padding: 0 20px
-    nav ul.signing-links
-      li.signing-link
-        padding: 10px
-        a
-          text-decoration: none
-          button
-            width: 150px
-          &.active
+    h1.logo
+      @extend .text-white
+      text-decoration: none      
+    nav 
+      ul.signing-links
+        li.signing-link
+          padding: 10px
+          a
+            text-decoration: none
             button
-              background: 
-                color: $satori-pallete-light-white
-              color: $satori-pallete-light-green
-    i.mobile-nav-toggle
-      @extend .hide
-      @include size(0px, 0px)
+              width: 150px
+            &.active
+              button
+                @extend .text-green
+                background: 
+                  color: $satori-pallete-light-white
+      i.mobile-nav-toggle
+        @extend .hide
+        @include size(0px, 0px)
+    div
+      i.new-event
+        cursor: pointer
+        &::before          
+          font-size: 2.5em
 
 @media screen and (max-width: $mobile-breakpoint)
   header.main-header
