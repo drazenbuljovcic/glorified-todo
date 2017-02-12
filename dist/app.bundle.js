@@ -9,26 +9,26 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(39);
+	var _reactDom = __webpack_require__(40);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
 	var _reactRouter = __webpack_require__(27);
 	
-	var _reactRedux = __webpack_require__(40);
+	var _reactRedux = __webpack_require__(41);
 	
-	var _store = __webpack_require__(160);
+	var _store = __webpack_require__(162);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _routes = __webpack_require__(159);
+	var _routes = __webpack_require__(161);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(165);
-	__webpack_require__(83);
+	__webpack_require__(167);
+	__webpack_require__(84);
 	
 	console.clear();
 	_reactDom2.default.render(_react2.default.createElement(
@@ -54,7 +54,7 @@ webpackJsonp([1],{
 	var ACTIONS = {
 	  CHANGE_ROUTE: 'CHANGE_ROUTE',
 	  SET_ADD_EVENT_INDICATOR: 'SET_ADD_EVENT_INDICATOR',
-	  SET_DASHBOARD_DELETE_INDICATOR: 'SET_DASHBOARD_DELETE_INDICATOR'
+	  SET_DELETE_EVENT: 'SET_DELETE_EVENT'
 	};
 	
 	exports.default = {
@@ -70,10 +70,13 @@ webpackJsonp([1],{
 	      payload: indicator
 	    };
 	  },
-	  setDashboardDeleteIndicator: function setDashboardDeleteIndicator(indicator) {
+	  setDeleteEvent: function setDeleteEvent(indicator, eventId) {
 	    return {
-	      type: ACTIONS.SET_DASHBOARD_DELETE_INDICATOR,
-	      payload: indicator
+	      type: ACTIONS.SET_DELETE_EVENT,
+	      payload: {
+	        indicator: indicator,
+	        eventId: eventId
+	      }
 	    };
 	  }
 	};
@@ -117,21 +120,17 @@ webpackJsonp([1],{
 	  }
 	
 	  _createClass(AddEvent, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      console.log('Mounting AddEvent component');
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      console.log('Unmounting AddEvent component');
-	    }
-	  }, {
 	    key: 'setAddEventIndicator',
 	    value: function setAddEventIndicator(e, indicator) {
 	      if (this.overlayDiv === e.target) {
 	        this.props.dispatch(_helperActions2.default.setAddEventIndicator(indicator));
 	      }
+	    }
+	  }, {
+	    key: 'addEvent',
+	    value: function addEvent(e) {
+	      e.preventDefault();
+	      console.log('add');
 	    }
 	  }, {
 	    key: 'render',
@@ -148,7 +147,42 @@ webpackJsonp([1],{
 	            return _this2.setAddEventIndicator(e, false);
 	          },
 	          className: 'overlay wrapper flex flex--center' },
-	        _react2.default.createElement('div', null)
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'add-form' },
+	          _react2.default.createElement(
+	            'form',
+	            {
+	              onSubmit: function onSubmit(e) {
+	                return _this2.addEvent(e);
+	              },
+	              className: 'flex flex--column items-stretch' },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              'Add New Event'
+	            ),
+	            _react2.default.createElement(
+	              'label',
+	              { 'for': 'eventHeadline' },
+	              'eventHeadline'
+	            ),
+	            _react2.default.createElement('input', { type: 'text', placeholder: 'Event Headline',
+	              id: 'eventHeadline',
+	              ref: function ref(eventHeadline) {
+	                return _this2.eventHeadline = eventHeadline;
+	              }, required: true }),
+	            _react2.default.createElement('textarea', { placeholder: 'Event Description',
+	              ref: function ref(eventDescription) {
+	                return _this2.eventDescription = eventDescription;
+	              }, required: true }),
+	            _react2.default.createElement(
+	              'button',
+	              { type: 'submit' },
+	              'ADD'
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -284,7 +318,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 51:
+/***/ 36:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -293,14 +327,21 @@ webpackJsonp([1],{
 	  value: true
 	});
 	var ACTIONS = {
-	  'EVENT_DETAILS': 'EVENT_DETAILS'
+	  'SHOW_EVENT_DETAILS': 'SHOW_EVENT_DETAILS',
+	  'DELETE_EVENT_ANSWER': 'DELETE_EVENT_ANSWER'
 	};
 	
 	exports.default = {
-	  eventDetails: function eventDetails(event) {
+	  showEventDetails: function showEventDetails(event) {
 	    return {
-	      type: ACTIONS.EVENT_DETAILS,
+	      type: ACTIONS.SHOW_EVENT_DETAILS,
 	      payload: event
+	    };
+	  },
+	  deleteEventAnswer: function deleteEventAnswer(answer) {
+	    return {
+	      type: ACTIONS.DELETE_EVENT_ANSWER,
+	      payload: answer
 	    };
 	  }
 	};
@@ -322,7 +363,7 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _eventActions = __webpack_require__(51);
+	var _eventActions = __webpack_require__(36);
 	
 	var _eventActions2 = _interopRequireDefault(_eventActions);
 	
@@ -531,7 +572,44 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 143:
+/***/ 83:
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	exports.default = function () {
+	  var months = void 0,
+	      days = void 0;
+	
+	  months = [{ 'slug': 'Jan', 'full': 'January' }, { 'slug': 'Feb', 'full': 'February' }, { 'slug': 'Mar', 'full': 'March' }, { 'slug': 'Apr', 'full': 'April' }, { 'slug': 'May', 'full': 'May' }, { 'slug': 'Jun', 'full': 'June' }, { 'slug': 'Jul', 'full': 'July' }, { 'slug': 'Aug', 'full': 'August' }, { 'slug': 'Sep', 'full': 'September' }, { 'slug': 'Oct', 'full': 'October' }, { 'slug': 'Nov', 'full': 'November' }, { 'slug': 'Dec', 'full': 'December' }];
+	
+	  days = [{ 'slug': 'Mon', 'full': 'Monday' }, { 'slug': 'Tue', 'full': 'Tuesday' }, { 'slug': 'Wed', 'full': 'Wednesday' }, { 'slug': 'Thu', 'full': 'Thursday' }, { 'slug': 'Fri', 'full': 'Friday' }, { 'slug': 'Sat', 'full': 'Saturday' }, { 'slug': 'Sun', 'full': 'Sunday' }];
+	
+	  return {
+	    normalizeMonth: function normalizeMonth(monthNum) {
+	      //expecting numbers from 1 to 12
+	      return months[--monthNum];
+	    },
+	    normalizeDay: function normalizeDay(dayNum) {
+	      //expecting numbers from 1 to 7
+	      return days[--dayNum];
+	    },
+	    sliceObjectFromArrayByIdFilter: function sliceObjectFromArrayByIdFilter(arr, objId, filter) {
+	      var objIndex = arr.findIndex(function (obj) {
+	        return obj[objId] === filter;
+	      });
+	      return arr.slice(0, objIndex).concat(arr.slice(objIndex + 1));
+	    }
+	  };
+	}();
+
+/***/ },
+
+/***/ 145:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -548,19 +626,23 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(39);
+	var _reactDom = __webpack_require__(40);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
 	var _reactRouter = __webpack_require__(27);
 	
-	var _reactRedux = __webpack_require__(40);
+	var _reactRedux = __webpack_require__(41);
 	
-	var _promisePolyfill = __webpack_require__(97);
+	var _promisePolyfill = __webpack_require__(99);
 	
 	var _promisePolyfill2 = _interopRequireDefault(_promisePolyfill);
 	
-	var _Header = __webpack_require__(147);
+	var _jquery = __webpack_require__(97);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	var _Header = __webpack_require__(150);
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
@@ -679,7 +761,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 144:
+/***/ 146:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -694,7 +776,7 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _eventActions = __webpack_require__(51);
+	var _eventActions = __webpack_require__(36);
 	
 	var _eventActions2 = _interopRequireDefault(_eventActions);
 	
@@ -718,7 +800,7 @@ webpackJsonp([1],{
 	  _createClass(CalendarDayBlock, [{
 	    key: 'eventDetails',
 	    value: function eventDetails(eventId) {
-	      this.props.dispatch(_eventActions2.default.eventDetails(eventId));
+	      this.props.dispatch(_eventActions2.default.showEventDetails(eventId));
 	    }
 	  }, {
 	    key: 'render',
@@ -740,7 +822,6 @@ webpackJsonp([1],{
 	        _react2.default.createElement(
 	          'section',
 	          { className: 'day-events flexible flex flex--column items--end' },
-	          '          ',
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'flexible width-100' },
@@ -766,7 +847,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 145:
+/***/ 147:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -781,7 +862,7 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _DeleteDashboardEvent = __webpack_require__(146);
+	var _DeleteDashboardEvent = __webpack_require__(148);
 	
 	var _DeleteDashboardEvent2 = _interopRequireDefault(_DeleteDashboardEvent);
 	
@@ -833,6 +914,20 @@ webpackJsonp([1],{
 	          { className: 'event-duration flex flex--around self--center' },
 	          _react2.default.createElement(
 	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              this.props.day
+	            ),
+	            _react2.default.createElement(
+	              'h4',
+	              null,
+	              'Day'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
 	            { className: 'event-start' },
 	            _react2.default.createElement(
 	              'span',
@@ -866,6 +961,9 @@ webpackJsonp([1],{
 	          )
 	        ),
 	        _react2.default.createElement(_DeleteDashboardEvent2.default, {
+	          eventId: this.props.eventId,
+	          indicators: this.props.indicators,
+	          eventIdentifiers: this.props.eventIdentifiers,
 	          dispatch: this.props.dispatch
 	        })
 	      );
@@ -879,7 +977,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 146:
+/***/ 148:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -893,6 +991,10 @@ webpackJsonp([1],{
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _DeleteEventModal = __webpack_require__(149);
+	
+	var _DeleteEventModal2 = _interopRequireDefault(_DeleteEventModal);
 	
 	var _helperActions = __webpack_require__(16);
 	
@@ -916,9 +1018,9 @@ webpackJsonp([1],{
 	  }
 	
 	  _createClass(DeleteDashboardEvent, [{
-	    key: 'setDashboardDeleteIndicator',
-	    value: function setDashboardDeleteIndicator(e, indicator) {
-	      this.props.dispatch(_helperActions2.default.setDashboardDeleteIndicator(indicator));
+	    key: 'setDeleteEvent',
+	    value: function setDeleteEvent(e, indicator, eventId) {
+	      this.props.dispatch(_helperActions2.default.setDeleteEvent(indicator, eventId));
 	    }
 	  }, {
 	    key: 'render',
@@ -933,9 +1035,12 @@ webpackJsonp([1],{
 	            return _this2.deleteIndicator = deleteIndicator;
 	          },
 	          onClick: function onClick(e) {
-	            return _this2.setDashboardDeleteIndicator(e, true);
+	            return _this2.setDeleteEvent(e, true, _this2.props.eventId);
 	          },
-	          className: 'fa fa-times', 'aria-hidden': 'true', title: 'Delete Event' })
+	          className: 'fa fa-times', 'aria-hidden': 'true', title: 'Delete Event' }),
+	        this.props.eventIdentifiers.deleteEvent === this.props.eventId && this.props.indicators.dashboardDeleteIndicator ? _react2.default.createElement(_DeleteEventModal2.default, {
+	          dispatch: this.props.dispatch
+	        }) : null
 	      );
 	    }
 	  }]);
@@ -947,7 +1052,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 147:
+/***/ 149:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -962,7 +1067,96 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(39);
+	var _eventActions = __webpack_require__(36);
+	
+	var _eventActions2 = _interopRequireDefault(_eventActions);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var DeleteEventModal = function (_React$Component) {
+	  _inherits(DeleteEventModal, _React$Component);
+	
+	  function DeleteEventModal(props, context) {
+	    _classCallCheck(this, DeleteEventModal);
+	
+	    return _possibleConstructorReturn(this, (DeleteEventModal.__proto__ || Object.getPrototypeOf(DeleteEventModal)).call(this, props, context));
+	  }
+	
+	  _createClass(DeleteEventModal, [{
+	    key: 'delete',
+	    value: function _delete(answer) {
+	      this.props.dispatch(_eventActions2.default.deleteEventAnswer(answer));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'delete-event-modal overlay flex flex--center flex--column' },
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'text-green uppercase' },
+	          'Delete Event?'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'delete-question flexible flex flex--around items--stretch' },
+	          _react2.default.createElement(
+	            'button',
+	            {
+	              'data-answer': 'yes',
+	              className: 'self--center text-white bold-font uppercase',
+	              onClick: function onClick() {
+	                return _this2.delete(true);
+	              } },
+	            'Yup'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            {
+	              'data-answer': 'no',
+	              className: 'self--center text-white bold-font uppercase',
+	              onClick: function onClick() {
+	                return _this2.delete(false);
+	              } },
+	            'Nope'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return DeleteEventModal;
+	}(_react2.default.Component);
+	
+	exports.default = DeleteEventModal;
+
+/***/ },
+
+/***/ 150:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(40);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
@@ -1112,7 +1306,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 148:
+/***/ 151:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1127,7 +1321,7 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _eventActions = __webpack_require__(51);
+	var _eventActions = __webpack_require__(36);
 	
 	var _eventActions2 = _interopRequireDefault(_eventActions);
 	
@@ -1180,7 +1374,7 @@ webpackJsonp([1],{
 	  }, {
 	    key: 'eventDetails',
 	    value: function eventDetails(dispatch, eventId) {
-	      dispatch(_eventActions2.default.eventDetails(eventId));
+	      dispatch(_eventActions2.default.showEventDetails(eventId));
 	    }
 	  }, {
 	    key: 'render',
@@ -1224,7 +1418,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 149:
+/***/ 152:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1241,7 +1435,7 @@ webpackJsonp([1],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(40);
+	var _reactRedux = __webpack_require__(41);
 	
 	var _helperActions = __webpack_require__(16);
 	
@@ -1251,7 +1445,7 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _DashboardEvent = __webpack_require__(145);
+	var _DashboardEvent = __webpack_require__(147);
 	
 	var _DashboardEvent2 = _interopRequireDefault(_DashboardEvent);
 	
@@ -1310,7 +1504,12 @@ webpackJsonp([1],{
 	  }, {
 	    key: 'renderEvent',
 	    value: function renderEvent(event) {
-	      return _react2.default.createElement(_DashboardEvent2.default, _extends({ dispatch: this.props.dispatch, key: event.eventId }, event));
+	      return _react2.default.createElement(_DashboardEvent2.default, _extends({
+	        dispatch: this.props.dispatch,
+	        key: event.eventId,
+	        indicators: this.props.indicators,
+	        eventIdentifiers: this.props.eventIdentifiers
+	      }, event));
 	    }
 	  }, {
 	    key: 'switchTab',
@@ -1399,7 +1598,7 @@ webpackJsonp([1],{
 	              this.FilterByPriorityAndRenderEvents(this.props.events, this.state.tabActive)
 	            )
 	          ),
-	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : ''
+	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : null
 	        )
 	      );
 	    }
@@ -1412,7 +1611,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 150:
+/***/ 153:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1431,7 +1630,7 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _CalendarDayBlock = __webpack_require__(144);
+	var _CalendarDayBlock = __webpack_require__(146);
 	
 	var _CalendarDayBlock2 = _interopRequireDefault(_CalendarDayBlock);
 	
@@ -1447,7 +1646,7 @@ webpackJsonp([1],{
 	
 	var _helperActions2 = _interopRequireDefault(_helperActions);
 	
-	var _helpers = __webpack_require__(157);
+	var _helpers = __webpack_require__(83);
 	
 	var _helpers2 = _interopRequireDefault(_helpers);
 	
@@ -1629,10 +1828,10 @@ webpackJsonp([1],{
 	                )
 	              )
 	            ),
-	            this.props.eventIdentifiers.eventDetails ? _react2.default.createElement(_EventDetails2.default, {
+	            this.props.eventIdentifiers.showEventDetails ? _react2.default.createElement(_EventDetails2.default, {
 	              dispatch: this.props.dispatch,
 	              event: this.props.events.find(function (event) {
-	                return event.eventId === _this2.props.eventIdentifiers.eventDetails;
+	                return event.eventId === _this2.props.eventIdentifiers.showEventDetails;
 	              })
 	            }) : null
 	          ),
@@ -1649,7 +1848,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 151:
+/***/ 154:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1708,7 +1907,7 @@ webpackJsonp([1],{
 	        _react2.default.createElement(
 	          'main',
 	          { className: 'flexible flex flex--column relative' },
-	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : ''
+	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : null
 	        )
 	      );
 	    }
@@ -1721,7 +1920,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 152:
+/***/ 155:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1742,7 +1941,7 @@ webpackJsonp([1],{
 	
 	var _AsideNav2 = _interopRequireDefault(_AsideNav);
 	
-	var _MyWeekEvent = __webpack_require__(148);
+	var _MyWeekEvent = __webpack_require__(151);
 	
 	var _MyWeekEvent2 = _interopRequireDefault(_MyWeekEvent);
 	
@@ -1924,10 +2123,10 @@ webpackJsonp([1],{
 	                )
 	              )
 	            ),
-	            this.props.eventIdentifiers.eventDetails ? _react2.default.createElement(_EventDetails2.default, {
+	            this.props.eventIdentifiers.showEventDetails ? _react2.default.createElement(_EventDetails2.default, {
 	              dispatch: this.props.dispatch,
 	              event: this.props.events.find(function (event) {
-	                return event.eventId === _this5.props.eventIdentifiers.eventDetails;
+	                return event.eventId === _this5.props.eventIdentifiers.showEventDetails;
 	              })
 	            }) : null
 	          ),
@@ -1944,7 +2143,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 153:
+/***/ 156:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1994,7 +2193,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 154:
+/***/ 157:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2053,7 +2252,7 @@ webpackJsonp([1],{
 	        _react2.default.createElement(
 	          'main',
 	          { className: 'flexible flex flex--column relative' },
-	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : ''
+	          this.props.indicators.addEventIndicator ? _react2.default.createElement(_AddEvent2.default, { dispatch: this.props.dispatch }) : null
 	        )
 	      );
 	    }
@@ -2066,7 +2265,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 155:
+/***/ 158:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2149,7 +2348,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 156:
+/***/ 159:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2234,39 +2433,8 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 157:
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	exports.default = function () {
-	  var months = void 0,
-	      days = void 0;
-	
-	  months = [{ 'slug': 'Jan', 'full': 'January' }, { 'slug': 'Feb', 'full': 'February' }, { 'slug': 'Mar', 'full': 'March' }, { 'slug': 'Apr', 'full': 'April' }, { 'slug': 'May', 'full': 'May' }, { 'slug': 'Jun', 'full': 'June' }, { 'slug': 'Jul', 'full': 'July' }, { 'slug': 'Aug', 'full': 'August' }, { 'slug': 'Sep', 'full': 'September' }, { 'slug': 'Oct', 'full': 'October' }, { 'slug': 'Nov', 'full': 'November' }, { 'slug': 'Dec', 'full': 'December' }];
-	
-	  days = [{ 'slug': 'Mon', 'full': 'Monday' }, { 'slug': 'Tue', 'full': 'Tuesday' }, { 'slug': 'Wed', 'full': 'Wednesday' }, { 'slug': 'Thu', 'full': 'Thursday' }, { 'slug': 'Fri', 'full': 'Friday' }, { 'slug': 'Sat', 'full': 'Saturday' }, { 'slug': 'Sun', 'full': 'Sunday' }];
-	
-	  return {
-	    normalizeMonth: function normalizeMonth(monthNum) {
-	      //expecting numbers from 1 to 12
-	      return months[--monthNum];
-	    },
-	    normalizeDay: function normalizeDay(dayNum) {
-	      //expecting numbers from 1 to 7
-	      return days[--dayNum];
-	    }
-	  };
-	}();
-
-/***/ },
-
-/***/ 158:
-/***/ function(module, exports) {
+/***/ 160:
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -2275,16 +2443,18 @@ webpackJsonp([1],{
 	});
 	exports.default = reducer;
 	
+	var _helpers = __webpack_require__(83);
+	
+	var _helpers2 = _interopRequireDefault(_helpers);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 	
 	function reducer(state, action) {
 	  switch (action.type) {
 	    //helper reducer
 	    case 'CHANGE_ROUTE':
-	      console.log(action.payload);
-	      console.log(state.eventDetails);
-	      console.log(state.indicators);
-	      console.log(state.eventIdentifiers);
 	      return Object.assign.apply(Object, [{}, state, {
 	        route: action.payload,
 	        indicators: {
@@ -2292,7 +2462,8 @@ webpackJsonp([1],{
 	          dashboardDeleteIndicator: false
 	        },
 	        eventIdentifiers: {
-	          eventDetails: null
+	          showEventDetails: null,
+	          deleteEvent: null
 	        }
 	      }].concat(_toConsumableArray(state)));
 	    case 'SET_ADD_EVENT_INDICATOR':
@@ -2301,18 +2472,31 @@ webpackJsonp([1],{
 	          addEventIndicator: action.payload
 	        }].concat(_toConsumableArray(state.indicators)))
 	      }].concat(_toConsumableArray(state)));
-	    case 'SET_DASHBOARD_DELETE_INDICATOR':
+	    case 'SET_DELETE_EVENT':
 	      return Object.assign.apply(Object, [{}, state, {
 	        indicators: Object.assign.apply(Object, [{}, {
-	          dashboardDeleteIndicator: action.payload
-	        }].concat(_toConsumableArray(state.indicators)))
+	          dashboardDeleteIndicator: action.payload.indicator
+	        }].concat(_toConsumableArray(state.indicators))),
+	        eventIdentifiers: Object.assign.apply(Object, [{}, {
+	          deleteEvent: action.payload.eventId
+	        }].concat(_toConsumableArray(state.eventIdentifiers)))
 	      }].concat(_toConsumableArray(state)));
 	    //event reducer
-	    case 'EVENT_DETAILS':
+	    case 'SHOW_EVENT_DETAILS':
 	      return Object.assign.apply(Object, [{}, state, {
 	        eventIdentifiers: Object.assign.apply(Object, [{}, {
-	          eventDetails: action.payload
+	          showEventDetails: action.payload
 	        }].concat(_toConsumableArray(state.eventIdentifiers)))
+	      }].concat(_toConsumableArray(state)));
+	    case 'DELETE_EVENT_ANSWER':
+	      return Object.assign.apply(Object, [{}, state, {
+	        indicators: Object.assign.apply(Object, [{}, {
+	          dashboardDeleteIndicator: false
+	        }].concat(_toConsumableArray(state.indicators))),
+	        eventIdentifiers: Object.assign.apply(Object, [{}, {
+	          deleteEvent: null
+	        }].concat(_toConsumableArray(state.eventIdentifiers))),
+	        events: action.payload ? _helpers2.default.sliceObjectFromArrayByIdFilter(state.events, 'eventId', state.eventIdentifiers.deleteEvent) : state.events
 	      }].concat(_toConsumableArray(state)));
 	    default:
 	      return state;
@@ -2321,7 +2505,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 159:
+/***/ 161:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2336,7 +2520,7 @@ webpackJsonp([1],{
 	
 	var _reactRouter = __webpack_require__(27);
 	
-	var _Page = __webpack_require__(143);
+	var _Page = __webpack_require__(145);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
@@ -2344,35 +2528,35 @@ webpackJsonp([1],{
 	
 	var _Main2 = _interopRequireDefault(_Main);
 	
-	var _Signup = __webpack_require__(156);
+	var _Signup = __webpack_require__(159);
 	
 	var _Signup2 = _interopRequireDefault(_Signup);
 	
-	var _Signin = __webpack_require__(155);
+	var _Signin = __webpack_require__(158);
 	
 	var _Signin2 = _interopRequireDefault(_Signin);
 	
-	var _Dashboard = __webpack_require__(149);
+	var _Dashboard = __webpack_require__(152);
 	
 	var _Dashboard2 = _interopRequireDefault(_Dashboard);
 	
-	var _MyWeek = __webpack_require__(152);
+	var _MyWeek = __webpack_require__(155);
 	
 	var _MyWeek2 = _interopRequireDefault(_MyWeek);
 	
-	var _Deadlines = __webpack_require__(150);
+	var _Deadlines = __webpack_require__(153);
 	
 	var _Deadlines2 = _interopRequireDefault(_Deadlines);
 	
-	var _Grades = __webpack_require__(151);
+	var _Grades = __webpack_require__(154);
 	
 	var _Grades2 = _interopRequireDefault(_Grades);
 	
-	var _Notes = __webpack_require__(154);
+	var _Notes = __webpack_require__(157);
 	
 	var _Notes2 = _interopRequireDefault(_Notes);
 	
-	var _NotFound = __webpack_require__(153);
+	var _NotFound = __webpack_require__(156);
 	
 	var _NotFound2 = _interopRequireDefault(_NotFound);
 	
@@ -2421,7 +2605,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 160:
+/***/ 162:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2433,11 +2617,11 @@ webpackJsonp([1],{
 	
 	var _redux = __webpack_require__(79);
 	
-	var _reduxLogger = __webpack_require__(139);
+	var _reduxLogger = __webpack_require__(141);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
-	var _reducer = __webpack_require__(158);
+	var _reducer = __webpack_require__(160);
 	
 	var _reducer2 = _interopRequireDefault(_reducer);
 	
@@ -2466,7 +2650,8 @@ webpackJsonp([1],{
 	      dashboardDeleteIndicator: false
 	    },
 	    eventIdentifiers: {
-	      eventDetails: null
+	      showEventDetails: null,
+	      deleteEvent: null
 	    },
 	    user: {
 	      userLoggedIn: true,
@@ -2493,104 +2678,6 @@ webpackJsonp([1],{
 	    eventDetails: '',
 	    events: [{
 	      eventId: 'sadgkagsdhl',
-	      eventHeadline: 'First ToDo',
-	      eventDesc: 'First Mock Todo For Testing',
-	      day: 'Mon',
-	      dayNum: 13,
-	      fullStartTime: '08:00 AM',
-	      hour: '8',
-	      startInMin: 480,
-	      timeOfDay: 'AM',
-	      end: '09:00 AM',
-	      endInMin: 540,
-	      durationInMin: 60,
-	      priority: 'high'
-	    }, {
-	      eventId: '26265257',
-	      eventHeadline: 'First ToDo',
-	      eventDesc: 'First Mock Todo For Testing',
-	      day: 'Mon',
-	      dayNum: 13,
-	      fullStartTime: '08:00 AM',
-	      hour: '8',
-	      startInMin: 480,
-	      timeOfDay: 'AM',
-	      end: '09:00 AM',
-	      endInMin: 540,
-	      durationInMin: 60,
-	      priority: 'high'
-	    }, {
-	      eventId: '265i562i',
-	      eventHeadline: 'First ToDo',
-	      eventDesc: 'First Mock Todo For Testing',
-	      day: 'Mon',
-	      dayNum: 13,
-	      fullStartTime: '08:00 AM',
-	      hour: '8',
-	      startInMin: 480,
-	      timeOfDay: 'AM',
-	      end: '09:00 AM',
-	      endInMin: 540,
-	      durationInMin: 60,
-	      priority: 'high'
-	    }, {
-	      eventId: 'rhsth42',
-	      eventHeadline: 'First ToDo',
-	      eventDesc: 'First Mock Todo For Testing',
-	      day: 'Mon',
-	      dayNum: 13,
-	      fullStartTime: '08:00 AM',
-	      hour: '8',
-	      startInMin: 480,
-	      timeOfDay: 'AM',
-	      end: '09:00 AM',
-	      endInMin: 540,
-	      durationInMin: 60,
-	      priority: 'high'
-	    }, {
-	      eventId: '367jyetj65',
-	      eventHeadline: 'First ToDo',
-	      eventDesc: 'First Mock Todo For Testing',
-	      day: 'Mon',
-	      dayNum: 13,
-	      fullStartTime: '08:00 AM',
-	      hour: '8',
-	      startInMin: 480,
-	      timeOfDay: 'AM',
-	      end: '09:00 AM',
-	      endInMin: 540,
-	      durationInMin: 60,
-	      priority: 'high'
-	    }, {
-	      eventId: '25j6ej653w5',
-	      eventHeadline: 'First ToDo',
-	      eventDesc: 'First Mock Todo For Testing',
-	      day: 'Mon',
-	      dayNum: 13,
-	      fullStartTime: '08:00 AM',
-	      hour: '8',
-	      startInMin: 480,
-	      timeOfDay: 'AM',
-	      end: '09:00 AM',
-	      endInMin: 540,
-	      durationInMin: 60,
-	      priority: 'high'
-	    }, {
-	      eventId: '235i76etdy',
-	      eventHeadline: 'First ToDo',
-	      eventDesc: 'First Mock Todo For Testing',
-	      day: 'Mon',
-	      dayNum: 13,
-	      fullStartTime: '08:00 AM',
-	      hour: '8',
-	      startInMin: 480,
-	      timeOfDay: 'AM',
-	      end: '09:00 AM',
-	      endInMin: 540,
-	      durationInMin: 60,
-	      priority: 'high'
-	    }, {
-	      eventId: '6jdfsxjfs',
 	      eventHeadline: 'First ToDo',
 	      eventDesc: 'First Mock Todo For Testing',
 	      day: 'Mon',
@@ -2681,7 +2768,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 165:
+/***/ 167:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

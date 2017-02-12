@@ -4,6 +4,7 @@ import { Router } from 'react-router';
 
 import { connect } from 'react-redux';
 import Promise from 'promise-polyfill';
+import $ from 'jquery';
 
 import Header from './components/modules/Header';
 import Main from './components/modules/Main';
@@ -21,6 +22,7 @@ class Page extends React.Component {
   componentWillMount() {
     if(this.props.env === 'dev-hmr')
       console.log("Hot Module Reload enabled.");
+
   }
 
   componentDidMount() {

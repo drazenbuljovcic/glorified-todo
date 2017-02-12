@@ -28,7 +28,9 @@ const common = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify({ "env": process.env.NODE_ENV})
+      'process.env': JSON.stringify({ "env": process.env.NODE_ENV}),
+      'jQuery': 'jquery',
+      '$': 'jquery'
     })
   ],
   module: {

@@ -42,7 +42,7 @@ export default class MyWeekEvent extends React.Component {
   }
 
   eventDetails(dispatch, eventId) {
-    dispatch(eventActions.eventDetails(eventId));
+    dispatch(eventActions.showEventDetails(eventId));
   }
 
   render() {

@@ -108,6 +108,11 @@ table {
       -ms-flex-align: baseline;
           align-items: baseline; }
 
+.items--stretch {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch; }
+
 .self--start {
   -ms-flex-item-align: start;
       align-self: flex-start; }
@@ -608,7 +613,7 @@ section.event-details {
 div.overlay {
   background-color: rgba(36, 92, 77, 0.5);
   cursor: pointer; }
-  div.overlay div {
+  div.overlay div.add-form {
     cursor: default;
     width: 500px;
     height: 500px;
@@ -620,6 +625,27 @@ div.delete-dashboard-event i {
   div.delete-dashboard-event i:before {
     font-size: 2em;
     color: rgba(169, 33, 24, 0.6); }
+
+div.delete-event-modal {
+  cursor: default; }
+  div.delete-event-modal span {
+    font-size: 1.5em;
+    line-height: 2em; }
+  div.delete-event-modal div.delete-question button {
+    border: none;
+    outline: none;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 0 25px;
+    padding: 5px 10px; }
+    div.delete-event-modal div.delete-question button:hover {
+      box-shadow: 0 2px 12px rgba(34, 49, 63, 0.2); }
+    div.delete-event-modal div.delete-question button[data-answer=yes] {
+      background-color: rgba(36, 92, 77, 0.5); }
+    div.delete-event-modal div.delete-question button[data-answer=no] {
+      background-color: rgba(169, 33, 24, 0.5); }
 
 @media screen and (max-width: 660px) {
   div.signin-wrapper div.signin-modal {

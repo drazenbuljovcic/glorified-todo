@@ -1,7 +1,7 @@
 const ACTIONS = {
   CHANGE_ROUTE: 'CHANGE_ROUTE',
   SET_ADD_EVENT_INDICATOR: 'SET_ADD_EVENT_INDICATOR',
-  SET_DASHBOARD_DELETE_INDICATOR: 'SET_DASHBOARD_DELETE_INDICATOR'
+  SET_DELETE_EVENT: 'SET_DELETE_EVENT',
 }
 
 export default {
@@ -17,10 +17,13 @@ export default {
       payload: indicator
     }
   },
-  setDashboardDeleteIndicator: (indicator) => {
+  setDeleteEvent: (indicator, eventId) => {
     return {
-      type: ACTIONS.SET_DASHBOARD_DELETE_INDICATOR,
-      payload: indicator
+      type: ACTIONS.SET_DELETE_EVENT,
+      payload: {
+        indicator: indicator,
+        eventId: eventId  
+      }
     }
   }
 }

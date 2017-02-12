@@ -95,11 +95,11 @@ export default class MyWeek extends React.Component {
               </li>
             </ul>
             {
-              this.props.eventIdentifiers.eventDetails
+              this.props.eventIdentifiers.showEventDetails
               ?
                 <EventDetails 
                   dispatch={this.props.dispatch}
-                  event={this.props.events.find(event => event.eventId === this.props.eventIdentifiers.eventDetails)} 
+                  event={this.props.events.find(event => event.eventId === this.props.eventIdentifiers.showEventDetails)} 
                 />
               : 
                 null

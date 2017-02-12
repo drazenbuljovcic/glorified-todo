@@ -21,8 +21,10 @@ export default class Notes extends React.Component {
         <main className="flexible flex flex--column relative">
         {
           this.props.indicators.addEventIndicator
-            ? <AddEvent dispatch={this.props.dispatch}/>
-            : ''
+            ? 
+              <AddEvent dispatch={this.props.dispatch}/>
+            : 
+              null
         }
         </main>
       </section>

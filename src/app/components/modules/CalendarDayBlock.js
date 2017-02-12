@@ -8,7 +8,7 @@ export default class CalendarDayBlock extends React.Component {
   }
   
   eventDetails(eventId) {
-    this.props.dispatch(eventActions.eventDetails(eventId));
+    this.props.dispatch(eventActions.showEventDetails(eventId));
   }
   
   render() {
@@ -19,7 +19,8 @@ export default class CalendarDayBlock extends React.Component {
         data-weekend={this.props.weekend}
         className="calendar-day-block flexible flex">
         <figcaption className="day-indicator flex flex--center text-green">{this.props.dayNum}</figcaption>
-        <section className="day-events flexible flex flex--column items--end">          <div className="flexible width-100">
+        <section className="day-events flexible flex flex--column items--end">          
+          <div className="flexible width-100">
             {this.props.events.map(event => (
               <div
                 key={`event-${event.eventId}`}

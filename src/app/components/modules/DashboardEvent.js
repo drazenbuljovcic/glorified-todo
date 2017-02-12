@@ -16,6 +16,10 @@ export default class DashboardEvent extends React.Component {
           <div className={'event-details flexible'}>{this.props.eventDesc}</div>
         </div>
         <div className="event-duration flex flex--around self--center">
+          <div>
+            <span>{this.props.day}</span>
+            <h4>Day</h4>
+            </div>
           <div className="event-start">
             <span>{this.props.fullStartTime}</span>          
             <h4>Start</h4>
@@ -26,7 +30,10 @@ export default class DashboardEvent extends React.Component {
             <h4>End</h4>
           </div>
         </div>
-        <DeleteDashboardEvent 
+        <DeleteDashboardEvent
+          eventId={this.props.eventId}
+          indicators={this.props.indicators}
+          eventIdentifiers={this.props.eventIdentifiers}
           dispatch={this.props.dispatch}
         />
       </section>

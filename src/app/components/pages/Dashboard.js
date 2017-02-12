@@ -36,7 +36,12 @@ export default class Dashboard extends React.Component {
   }
 
   renderEvent(event) {
-    return <DashboardEvent dispatch={this.props.dispatch} key={event.eventId} {...event} />;
+    return <DashboardEvent 
+             dispatch={this.props.dispatch} 
+             key={event.eventId} 
+             indicators={this.props.indicators}
+             eventIdentifiers={this.props.eventIdentifiers}
+             {...event} />;
   }
 
   switchTab(priority) {
@@ -82,8 +87,10 @@ export default class Dashboard extends React.Component {
           </dialog>
           {
             this.props.indicators.addEventIndicator
-              ? <AddEvent dispatch={this.props.dispatch}/>
-              : ''
+              ? 
+                <AddEvent dispatch={this.props.dispatch}/>
+              : 
+                null
           }
         </main>
       </section>

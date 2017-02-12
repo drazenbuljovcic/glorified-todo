@@ -34,6 +34,10 @@ export default (() => {
     normalizeDay: (dayNum) => {
       //expecting numbers from 1 to 7
       return days[--dayNum]
+    },
+    sliceObjectFromArrayByIdFilter: (arr, objId, filter) => {
+      let objIndex = arr.findIndex(obj => obj[objId] === filter)
+      return (arr.slice(0, objIndex).concat(arr.slice(objIndex + 1)));
     }
   }
 })()

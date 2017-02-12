@@ -32,7 +32,9 @@ const common = {
     }),
     new ExtractPlugin('app.bundle.css'),
     new webpack.DefinePlugin({
-      'process.env': JSON.stringify({ "env": process.env.NODE_ENV})
+      'process.env': JSON.stringify({ "env": process.env.NODE_ENV}),
+      'jQuery': 'jquery',
+      '$': 'jquery'
     })
   ],
   module: {
