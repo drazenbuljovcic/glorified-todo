@@ -6,16 +6,7 @@ import {
 } from 'redux';
 import logger from 'redux-logger';
 
-// import initialState from './config';
-// import helperReducer from './reducers/helperReducer';
-// import toDoReducer from './reducers/toDoReducer';
-
 import reducer from './reducers/reducer';
-
-// let reducers = combineReducers({
-//   helperReducer,
-//   toDoReducer
-// });
 
 let reducers = reducer;
 

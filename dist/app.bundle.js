@@ -57,29 +57,29 @@ webpackJsonp([1],{
 	  SET_DELETE_EVENT: 'SET_DELETE_EVENT'
 	};
 	
-	exports.default = {
-	  changeRoute: function changeRoute(route) {
-	    return {
-	      type: ACTIONS.CHANGE_ROUTE,
-	      payload: route
-	    };
-	  },
-	  setAddEventIndicator: function setAddEventIndicator(indicator) {
-	    return {
-	      type: ACTIONS.SET_ADD_EVENT_INDICATOR,
-	      payload: indicator
-	    };
-	  },
-	  setDeleteEvent: function setDeleteEvent(indicator, eventId) {
+	exports.default = function () {
+	
+	  function changeRoute(route) {
+	    return { type: ACTIONS.CHANGE_ROUTE, payload: route };
+	  }
+	
+	  function setAddEventIndicator(indicator) {
+	    return { type: ACTIONS.SET_ADD_EVENT_INDICATOR, payload: indicator };
+	  }
+	
+	  function setDeleteEvent(indicator, eventId) {
 	    return {
 	      type: ACTIONS.SET_DELETE_EVENT,
-	      payload: {
-	        indicator: indicator,
-	        eventId: eventId
-	      }
+	      payload: { indicator: indicator, eventId: eventId }
 	    };
 	  }
-	};
+	
+	  return {
+	    changeRoute: changeRoute,
+	    setAddEventIndicator: setAddEventIndicator,
+	    setDeleteEvent: setDeleteEvent
+	  };
+	}();
 
 /***/ },
 
@@ -331,20 +331,21 @@ webpackJsonp([1],{
 	  'DELETE_EVENT_ANSWER': 'DELETE_EVENT_ANSWER'
 	};
 	
-	exports.default = {
-	  showEventDetails: function showEventDetails(event) {
-	    return {
-	      type: ACTIONS.SHOW_EVENT_DETAILS,
-	      payload: event
-	    };
-	  },
-	  deleteEventAnswer: function deleteEventAnswer(answer) {
-	    return {
-	      type: ACTIONS.DELETE_EVENT_ANSWER,
-	      payload: answer
-	    };
+	exports.default = function () {
+	
+	  function showEventDetails(event) {
+	    return { type: ACTIONS.SHOW_EVENT_DETAILS, payload: event };
 	  }
-	};
+	
+	  function deleteEventAnswer(answer) {
+	    return { type: ACTIONS.DELETE_EVENT_ANSWER, payload: answer };
+	  }
+	
+	  return {
+	    showEventDetails: showEventDetails,
+	    deleteEventAnswer: deleteEventAnswer
+	  };
+	}();
 
 /***/ },
 
@@ -2443,61 +2444,30 @@ webpackJsonp([1],{
 	});
 	exports.default = reducer;
 	
-	var _helpers = __webpack_require__(83);
+	var _helperReducerFunctions = __webpack_require__(297);
 	
-	var _helpers2 = _interopRequireDefault(_helpers);
+	var _helperReducerFunctions2 = _interopRequireDefault(_helperReducerFunctions);
+	
+	var _eventReducerFunctions = __webpack_require__(298);
+	
+	var _eventReducerFunctions2 = _interopRequireDefault(_eventReducerFunctions);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
 	function reducer(state, action) {
 	  switch (action.type) {
-	    //helper reducer
+	    //helper reducer functions
 	    case 'CHANGE_ROUTE':
-	      return Object.assign.apply(Object, [{}, state, {
-	        route: action.payload,
-	        indicators: {
-	          addEventIndicator: false,
-	          dashboardDeleteIndicator: false
-	        },
-	        eventIdentifiers: {
-	          showEventDetails: null,
-	          deleteEvent: null
-	        }
-	      }].concat(_toConsumableArray(state)));
+	      return _helperReducerFunctions2.default.changeRoute(state, action);
 	    case 'SET_ADD_EVENT_INDICATOR':
-	      return Object.assign.apply(Object, [{}, state, {
-	        indicators: Object.assign.apply(Object, [{}, {
-	          addEventIndicator: action.payload
-	        }].concat(_toConsumableArray(state.indicators)))
-	      }].concat(_toConsumableArray(state)));
+	      return _helperReducerFunctions2.default.setAddEventIndicator(state, action);
 	    case 'SET_DELETE_EVENT':
-	      return Object.assign.apply(Object, [{}, state, {
-	        indicators: Object.assign.apply(Object, [{}, {
-	          dashboardDeleteIndicator: action.payload.indicator
-	        }].concat(_toConsumableArray(state.indicators))),
-	        eventIdentifiers: Object.assign.apply(Object, [{}, {
-	          deleteEvent: action.payload.eventId
-	        }].concat(_toConsumableArray(state.eventIdentifiers)))
-	      }].concat(_toConsumableArray(state)));
+	      return _helperReducerFunctions2.default.setEventToBeDeleted(state, action);
 	    //event reducer
 	    case 'SHOW_EVENT_DETAILS':
-	      return Object.assign.apply(Object, [{}, state, {
-	        eventIdentifiers: Object.assign.apply(Object, [{}, {
-	          showEventDetails: action.payload
-	        }].concat(_toConsumableArray(state.eventIdentifiers)))
-	      }].concat(_toConsumableArray(state)));
+	      return _eventReducerFunctions2.default.showEventDetails(state, action);
 	    case 'DELETE_EVENT_ANSWER':
-	      return Object.assign.apply(Object, [{}, state, {
-	        indicators: Object.assign.apply(Object, [{}, {
-	          dashboardDeleteIndicator: false
-	        }].concat(_toConsumableArray(state.indicators))),
-	        eventIdentifiers: Object.assign.apply(Object, [{}, {
-	          deleteEvent: null
-	        }].concat(_toConsumableArray(state.eventIdentifiers))),
-	        events: action.payload ? _helpers2.default.sliceObjectFromArrayByIdFilter(state.events, 'eventId', state.eventIdentifiers.deleteEvent) : state.events
-	      }].concat(_toConsumableArray(state)));
+	      return _eventReducerFunctions2.default.maybeDeleteEvent(state, action);
 	    default:
 	      return state;
 	  }
@@ -2627,16 +2597,7 @@ webpackJsonp([1],{
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// let reducers = combineReducers({
-	//   helperReducer,
-	//   toDoReducer
-	// });
-	
 	var reducers = _reducer2.default;
-	
-	// import initialState from './config';
-	// import helperReducer from './reducers/helperReducer';
-	// import toDoReducer from './reducers/toDoReducer';
 	
 	var reduxCreateStore = (0, _redux.compose)((0, _redux.applyMiddleware)((0, _reduxLogger2.default)()))(_redux.createStore);
 	
@@ -2772,6 +2733,93 @@ webpackJsonp([1],{
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+
+/***/ 297:
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports.default = function () {
+	
+	  function changeRoute(state, action) {
+	    return _extends({}, state, {
+	      indicators: _extends({}, state.indicators, { addEventIndicator: false, dashboardDeleteIndicator: false }),
+	      eventIdentifiers: _extends({}, state.eventIdentifiers, { showEventDetails: null, deleteEvent: null }),
+	      route: action.payload
+	    });
+	  }
+	
+	  function setAddEventIndicator(state, action) {
+	    return _extends({}, state, {
+	      indicators: _extends({}, state.indicator, { addEventIndicator: action.payload })
+	    });
+	  }
+	
+	  function setEventToBeDeleted(state, action) {
+	    return _extends({}, state, {
+	      indicators: _extends({}, state.indicators, { dashboardDeleteIndicator: action.payload.indicator }),
+	      eventIdentifiers: _extends({}, state.eventIdentifiers, { deleteEvent: action.payload.eventId
+	      })
+	    });
+	  }
+	
+	  return {
+	    changeRoute: changeRoute,
+	    setAddEventIndicator: setAddEventIndicator,
+	    setEventToBeDeleted: setEventToBeDeleted
+	  };
+	}();
+
+/***/ },
+
+/***/ 298:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _helpers = __webpack_require__(83);
+	
+	var _helpers2 = _interopRequireDefault(_helpers);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
+	exports.default = function () {
+	
+	  function showEventDetails(state, action) {
+	    return _extends({}, state, {
+	      eventIdentifiers: _extends({}, state.eventIdentifiers, { showEventDetails: action.payload })
+	    });
+	  }
+	
+	  function maybeDeleteEvent(state, action) {
+	    return _extends({}, state, {
+	      indicators: _extends({}, state.indicators, { dashboardDeleteIndicator: false }),
+	      eventIdentifiers: _extends({}, state.eventIdentifiers, { deleteEvent: null }),
+	      events: action.payload ? [].concat(_toConsumableArray(_helpers2.default.sliceObjectFromArrayByIdFilter(state.events, 'eventId', state.eventIdentifiers.deleteEvent))) : [].concat(_toConsumableArray(state.events))
+	    });
+	  }
+	
+	  return {
+	    showEventDetails: showEventDetails,
+	    maybeDeleteEvent: maybeDeleteEvent
+	  };
+	}();
 
 /***/ }
 

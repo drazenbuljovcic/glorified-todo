@@ -3,17 +3,19 @@ const ACTIONS = {
   'DELETE_EVENT_ANSWER': 'DELETE_EVENT_ANSWER'
 }
 
-export default {
-  showEventDetails(event) {
-    return {
-      type: ACTIONS.SHOW_EVENT_DETAILS,
-      payload: event
-    }
-  },
-  deleteEventAnswer(answer) {
-    return {
-      type: ACTIONS.DELETE_EVENT_ANSWER,
-      payload: answer
-    }
+export default (() => {
+
+  function showEventDetails(event) {
+    return { type: ACTIONS.SHOW_EVENT_DETAILS, payload: event }
   }
-}
+
+  function deleteEventAnswer(answer) {
+    return { type: ACTIONS.DELETE_EVENT_ANSWER, payload: answer }
+  }
+
+  return {
+    showEventDetails,
+    deleteEventAnswer
+  }
+
+})()
